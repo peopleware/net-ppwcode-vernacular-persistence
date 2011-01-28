@@ -15,19 +15,19 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <OutputPath>bin\Documentation\</OutputPath>
-    <HtmlHelpName>PPWCode Exceptions Vernacular Documentation</HtmlHelpName>
+    <HtmlHelpName>PPWCode Semantics Vernacular Documentation</HtmlHelpName>
     <Language>en-US</Language>
     <HelpFileFormat>Website</HelpFileFormat>
-    <CopyrightHref>http://www.ppwcode.org/dotnet/projectdocs/Vernacular/Exceptions/</CopyrightHref>
+    <CopyrightHref>http://www.ppwcode.org/dotnet/projectdocs/Vernacular/Semantics/</CopyrightHref>
     <CopyrightText>Copyright PeopleWare n.v. 2010 - 2011. Released under the Apache v2 License.</CopyrightText>
     <FeedbackEMailAddress>info%40peopleware.be</FeedbackEMailAddress>
     <FeedbackEMailLinkText>Contact PeopleWare</FeedbackEMailLinkText>
-    <HeaderText>PPWCode Exceptions Vernacular I</HeaderText>
-    <HelpTitle>PPWCode Exceptions Vernacular Documentation</HelpTitle>
+    <HeaderText>PPWCode Semantics Vernacular I</HeaderText>
+    <HelpTitle>PPWCode Semantics Vernacular Documentation</HelpTitle>
     <MissingTags>AutoDocumentCtors, Namespace, IncludeTargets, AutoDocumentDispose</MissingTags>
     <VisibleItems>Attributes, InheritedMembers, InheritedFrameworkMembers, Protected</VisibleItems>
     <DocumentationSources>
-      <DocumentationSource sourceFile="PPWCode.Vernacular.Exceptions.I.csproj" configuration="Debug" />
+      <DocumentationSource sourceFile="PPWCode.Vernacular.Semantics.I.csproj" configuration="Debug" />
     </DocumentationSources>
     <BuildLogFile>
     </BuildLogFile>
@@ -39,7 +39,7 @@
     </SandcastlePath>
     <WorkingPath>
     </WorkingPath>
-    <ProjectSummary>The definition of the PPWCode Exceptions Vernacular, and code to use it.</ProjectSummary>
+    <ProjectSummary>The definition of the PPWCode Semantics Vernacular, and code to use it.</ProjectSummary>
     <NamingMethod>MemberName</NamingMethod>
     <PresentationStyle>vs2005</PresentationStyle>
     <SyntaxFilters>CSharp</SyntaxFilters>
@@ -66,6 +66,13 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\Jean-Jacques_Rousseau_(painted_portrait).jpg" />
+    <Content Include="img\180px-Jean-Jacques_Rousseau_(painted_portrait).jpg" />
+  </ItemGroup>
   <!-- Import the SHFB build targets -->
   <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
 </Project>
