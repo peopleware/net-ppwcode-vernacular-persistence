@@ -73,6 +73,14 @@
     <Content Include="img\Jean-Jacques_Rousseau_(painted_portrait).jpg" />
     <Content Include="img\180px-Jean-Jacques_Rousseau_(painted_portrait).jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Contracts">
+      <HintPath>..\..\PensioB\lib\Microsoft.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="PPWCode.Vernacular.Exceptions.I">
+      <HintPath>..\lib\PPWCode.Vernacular.Exceptions\I\Debug\PPWCode.Vernacular.Exceptions.I.dll</HintPath>
+    </Reference>
+  </ItemGroup>
   <!-- Import the SHFB build targets -->
   <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
 </Project>
