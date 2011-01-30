@@ -99,6 +99,9 @@ namespace PPWCode.Vernacular.Semantics.I
         /// <remarks>
         /// <para>This method has no effects. If it ends nominally,
         /// and if it throws an exception, no state is changed.</para>
+        /// <para>It is not <c>[Pure]</c> however, since it changes
+        /// the state of the exception to
+        /// <see cref="CompoundSemanticException.Closed"/>.</para>
         /// </remarks>
         void ThrowIfNotCivilized();
     }
@@ -130,7 +133,14 @@ namespace PPWCode.Vernacular.Semantics.I
 
         public void ThrowIfNotCivilized()
         {
-            //NOP
+            Contract.Ensures(
+                IsCivilized(),
+                "Method must end nominally if this is civilized, " +
+                    "and is not allowed to end nominally if this is not.");
+            Contract.EnsuresOnThrow<CompoundSemanticException>(
+                ! IsCivilized(),
+                "If this method throws a CompoundSemanticException, this" +
+                    "was and is not civilized.");
         }
 
         public abstract bool IsSerialized { get; }

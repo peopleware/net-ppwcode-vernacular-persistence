@@ -45,11 +45,14 @@ namespace PPWCode.Vernacular.Semantics.I
         /// <inheritdoc cref="IRousseauObject.WildExceptions"/>
         /// Default implementation.
         /// </summary>
+        /// <returns>An empty, unclosed
+        /// <see cref="CompoundSemanticException"/>. This is not a postcondition
+        /// that is demanded of subclasses. It is intended as a helper functionality
+        /// for subclasses.</returns>
         /// <remarks>
         /// Subclasses that override this method should use the following
         /// pattern:
-        /// </remarks>
-        /// <example>
+        /// <code>
         /// [Pure]
         /// public override CompoundSemanticException WildExceptions()
         /// {
@@ -62,7 +65,8 @@ namespace PPWCode.Vernacular.Semantics.I
         ///     ... // repeat for more requirements
         ///     return cse;
         /// }
-        /// </example>
+        /// </code>
+        /// </remarks>
         [Pure]
         public virtual CompoundSemanticException WildExceptions()
         {
@@ -71,7 +75,6 @@ namespace PPWCode.Vernacular.Semantics.I
 
         /// <summary>
         /// <inheritdoc cref="IRousseauObject.ThrowIfNotCivilized"/>
-        /// Default implementation.
         /// </summary>
         [Pure]
         public void ThrowIfNotCivilized()
