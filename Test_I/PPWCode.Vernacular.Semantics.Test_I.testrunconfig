@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRunConfiguration name="PPWCodeSemanticsUnitTests" id="063877F9-22F8-457e-8A45-5C98127513C6" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <NamingScheme baseName="PPWCodeSemanticsUnitTests" useDefault="false" />
+  <TestTypeSpecific />
+</TestRunConfiguration>
