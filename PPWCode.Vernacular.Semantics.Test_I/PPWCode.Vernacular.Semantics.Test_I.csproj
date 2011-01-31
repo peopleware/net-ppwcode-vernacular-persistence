@@ -113,6 +113,7 @@
   <ItemGroup>
     <Compile Include="AbstractRousseauObjectTest.cs" />
     <Compile Include="AbstractSemanticObjectTest.cs" />
+    <Compile Include="RousseauObject.cs" />
     <Compile Include="SemanticObjectA.cs" />
     <Compile Include="SemanticObjectB.cs" />
     <Compile Include="SemanticObjectC.cs" />
