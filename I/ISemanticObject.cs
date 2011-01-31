@@ -1,20 +1,25 @@
-﻿//Copyright 2004 - $Date: 2008-11-15 23:58:07 +0100 (za, 15 nov 2008) $ by PeopleWare n.v..
+﻿/*
+ * Copyright 2004 - $Date: 2008-11-15 23:58:07 +0100 (za, 15 nov 2008) $ by PeopleWare n.v..
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-//Licensed under the Apache License, Version 2.0 (the "License");
-//you may not use this file except in compliance with the License.
-//You may obtain a copy of the License at
+#region Using
 
-//http://www.apache.org/licenses/LICENSE-2.0
-
-//Unless required by applicable law or agreed to in writing, software
-//distributed under the License is distributed on an "AS IS" BASIS,
-//WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//See the License for the specific language governing permissions and
-//limitations under the License.
-
-using System;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
+
+#endregion
 
 namespace PPWCode.Vernacular.Semantics.I
 {
@@ -25,7 +30,7 @@ namespace PPWCode.Vernacular.Semantics.I
     /// <remarks>
     /// <para>Semantic objects should always be used <em>by reference</em>. For this
     /// reason, the contracts of <see cref="Equals"/> and <see cref="GetHashCode"/>
-    /// inherited from <see cref="Object"/>, are frozen here.</para>
+    /// inherited from <see cref="object"/>, are frozen here.</para>
     /// <para>Furthermore, in an ideal world, to keep things under control, there should
     /// be exactly <strong>1</strong> computer object for each relevant real-world object
     /// (abstraction function should be a surjection). Duplicate representatives of
@@ -43,7 +48,7 @@ namespace PPWCode.Vernacular.Semantics.I
     /// <para><see cref="ToString"/> should only be used for debugging and logging
     /// purposes. For semantic object, <see cref="ToString"/> should return a
     /// <see cref="string"/> that shows the class name and hash code (like
-    /// <see cref="Object.ToString"/> does, followed by a comma-separated list of
+    /// <see cref="object.ToString"/> does, followed by a comma-separated list of
     /// <c>PropertyName = propertyValue</c> entries. Experience shows that this is not
     /// that hard, but that great care should be taken that no infinite loop is introduced
     /// in the code when navigating over the object graph. Therefore, the general rule

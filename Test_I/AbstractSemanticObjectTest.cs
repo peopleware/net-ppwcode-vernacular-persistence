@@ -1,36 +1,45 @@
-﻿using System.Collections.Generic;
+﻿/*
+ * Copyright 2004 - $Date: 2008-11-15 23:58:07 +0100 (za, 15 nov 2008) $ by PeopleWare n.v..
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#region Using
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 
-using PPWCode.Vernacular.Semantics.I;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Runtime.Serialization;
+
+using PPWCode.Vernacular.Semantics.I;
+
+#endregion
 
 namespace PPWCode.Vernacular.Semantics.Test_I
 {
-    [TestClass()]
+    [TestClass]
     public class AbstractSemanticObjectTest
     {
-        private TestContext testContextInstance;
-
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.
         ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
+        public TestContext TestContext { get; set; }
 
         #region Additional test attributes
+
         // 
         //You can use the following additional attributes as you write your tests:
         //
@@ -58,10 +67,13 @@ namespace PPWCode.Vernacular.Semantics.Test_I
         //{
         //}
         //
+
         #endregion
 
-
-        private static readonly string[] SOME_STRINGS = new string[] { "A string", "another string", "", null, "You name here" };
+        private static readonly string[] s_SomeStrings = new[]
+        {
+            "A string", "another string", "", null, "You name here"
+        };
 
         public AbstractSemanticObject[] BuildBs()
         {
@@ -70,16 +82,18 @@ namespace PPWCode.Vernacular.Semantics.Test_I
             SemanticObjectC lastC = null;
             for (int i = 0; i < 5; i++)
             {
-                SemanticObjectB b = new SemanticObjectB()
+                SemanticObjectB b = new SemanticObjectB
                 {
                     IntProperty = i,
-                    StringProperty = SOME_STRINGS[i]
+                    StringProperty = s_SomeStrings[i]
                 };
                 for (int j = 0; j < 10; j++)
                 {
-                    SemanticObjectC c = new SemanticObjectC();
-                    c.B = b;
-                    c.A = a;
+                    SemanticObjectC c = new SemanticObjectC
+                    {
+                        B = b,
+                        A = a
+                    };
                     lastC = c;
                 }
                 b.A = a;
@@ -100,14 +114,14 @@ namespace PPWCode.Vernacular.Semantics.Test_I
 
         public void DelegateMethod(object obj, PropertyChangedEventArgs pceArgs)
         {
-            m_DelegateMethodeCalled = new CallMock()
+            m_DelegateMethodeCalled = new CallMock
             {
                 Obj = obj,
                 PceArgs = pceArgs
             };
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void IsSerializedTest()
         {
             AbstractSemanticObject[] subjects = BuildBs();
@@ -117,7 +131,7 @@ namespace PPWCode.Vernacular.Semantics.Test_I
             }
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void ToLimitedStringTest()
         {
             List<AbstractSemanticObject> all = new List<AbstractSemanticObject>(BuildBs());
@@ -125,16 +139,15 @@ namespace PPWCode.Vernacular.Semantics.Test_I
             SemanticObjectB aBasB = (SemanticObjectB)aB;
             all.Add(aBasB.A);
             all.AddRange(aBasB.Cs.Cast<AbstractSemanticObject>());
-            string result;
             foreach (AbstractSemanticObject aso in all)
             {
-                result = aso.LimitedToString();
+                string result = aso.LimitedToString();
                 Trace.WriteLine(result);
                 Trace.Flush();
             }
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void ToStringTest()
         {
             AbstractSemanticObject[] subjects = BuildBs();
@@ -150,13 +163,13 @@ namespace PPWCode.Vernacular.Semantics.Test_I
                 foreach (AbstractSemanticObject c in b.Cs)
                 {
                     result = c.ToString();
-                    Trace.WriteLine(result);                    
+                    Trace.WriteLine(result);
                 }
                 Trace.Flush();
             }
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void OnPropertyChangedTest()
         {
             AbstractSemanticObject[] subjects = BuildBs();
@@ -176,7 +189,7 @@ namespace PPWCode.Vernacular.Semantics.Test_I
                     Assert.IsNotNull(m_DelegateMethodeCalled.PceArgs);
                     Assert.AreEqual("IntProperty", m_DelegateMethodeCalled.PceArgs.PropertyName);
                     m_DelegateMethodeCalled = null;
-                    foreach (string s in SOME_STRINGS)
+                    foreach (string s in s_SomeStrings)
                     {
                         b.StringProperty = s;
                     }
@@ -188,7 +201,7 @@ namespace PPWCode.Vernacular.Semantics.Test_I
             }
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void GetHashCodeTest()
         {
             AbstractSemanticObject[] subjects = BuildBs();
@@ -198,7 +211,7 @@ namespace PPWCode.Vernacular.Semantics.Test_I
             }
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void CreateAbstractSemanticObject()
         {
             AbstractSemanticObject result = new SemanticObjectB();
@@ -209,7 +222,7 @@ namespace PPWCode.Vernacular.Semantics.Test_I
         /// <summary>
         ///A test for Equals
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void EqualsTest()
         {
             List<AbstractSemanticObject> all = new List<AbstractSemanticObject>(BuildBs());
