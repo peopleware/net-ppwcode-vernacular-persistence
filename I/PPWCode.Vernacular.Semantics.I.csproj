@@ -94,14 +94,14 @@
     <When Condition=" '$(Configuration)' == 'Release' ">
       <ItemGroup>
         <Reference Include="PPWCode.Vernacular.Exceptions.I, Version=2.0.4036.24110, Culture=neutral, processorArchitecture=MSIL">
-          <SpecificVersion>True</SpecificVersion>
+          <SpecificVersion>False</SpecificVersion>
           <HintPath>..\lib\PPWCode.Vernacular.Exceptions\I\Release\PPWCode.Vernacular.Exceptions.I.dll</HintPath>
         </Reference>
       </ItemGroup>
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="PPWCode.Vernacular.Exceptions.I, Version=2.0.4036.24110, Culture=neutral, processorArchitecture=MSIL">
+        <Reference Include="PPWCode.Vernacular.Exceptions.I, Version=2.0.4036.2411, Culture=neutral, processorArchitecture=MSIL">
           <SpecificVersion>False</SpecificVersion>
           <HintPath>..\lib\PPWCode.Vernacular.Exceptions\I\Debug\PPWCode.Vernacular.Exceptions.I.dll</HintPath>
         </Reference>
