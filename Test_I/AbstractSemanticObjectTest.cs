@@ -86,7 +86,7 @@ namespace PPWCode.Vernacular.Semantics.Test_I
                 result[i] = b;
             }
             // this creates a loop, as it is downstream, but not a collection
-            //a.C = lastC;
+            a.C = lastC;
             return result;
         }
 
@@ -114,6 +114,23 @@ namespace PPWCode.Vernacular.Semantics.Test_I
             foreach (AbstractSemanticObject so in subjects)
             {
                 bool result = so.IsSerialized;
+            }
+        }
+
+        [TestMethod()]
+        public void ToLimitedStringTest()
+        {
+            List<AbstractSemanticObject> all = new List<AbstractSemanticObject>(BuildBs());
+            AbstractSemanticObject aB = all[0];
+            SemanticObjectB aBasB = (SemanticObjectB)aB;
+            all.Add(aBasB.A);
+            all.AddRange(aBasB.Cs.Cast<AbstractSemanticObject>());
+            string result;
+            foreach (AbstractSemanticObject aso in all)
+            {
+                result = aso.LimitedToString();
+                Trace.WriteLine(result);
+                Trace.Flush();
             }
         }
 

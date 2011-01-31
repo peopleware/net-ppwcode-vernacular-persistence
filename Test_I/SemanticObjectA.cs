@@ -51,10 +51,10 @@ namespace PPWCode.Vernacular.Semantics.Test_I
             m_Bs.Remove(b);
         }
 
-        // this could create a loop, as it is downstream, but not a collection
-        ///// <summary>
-        ///// Closing the loop.
-        ///// </summary>
-        //public SemanticObjectC C { get; set; }
+        /// <summary>
+        /// Closing the loop.
+        /// This could create a loop, as it is downstream, but not a collection
+        /// </summary>
+        public SemanticObjectC C { get; set; }
     }
 }

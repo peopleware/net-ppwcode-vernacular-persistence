@@ -50,6 +50,11 @@ namespace PPWCode.Vernacular.Semantics.Test_I
         /// <summary>
         /// Closing the loop.
         /// </summary>
-        public SemanticObjectA A;
+        public SemanticObjectA A { get; set; }
+
+        public override string LimitedToString()
+        {
+            return "TEST";
+        }
     }
 }

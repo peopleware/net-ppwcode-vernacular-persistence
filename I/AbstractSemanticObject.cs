@@ -131,6 +131,10 @@ namespace PPWCode.Vernacular.Semantics.I
                             sb.AppendFormat("[? elements]");
                         }
                     }
+                    else if (value is AbstractSemanticObject)
+                    {
+                        sb.Append(((AbstractSemanticObject)value).LimitedToString());
+                    }
                     else
                     {
                         sb.AppendFormat("'{0}'", value);
@@ -138,6 +142,30 @@ namespace PPWCode.Vernacular.Semantics.I
                 }
                 sb.Append(" }");
             }
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// This method returns a limited string representation
+        /// of this object, intended for debugging purposes.
+        /// </summary>
+        /// <remarks>
+        /// <para>The method is used in <see cref="ToString"/>,
+        /// when this refers to other <c>AbstractSemanticObject</c>
+        /// instances via a simple reference.</para>
+        /// <para>The default implementation of this method does
+        /// not include representations of other objects, but only
+        /// a representation of the type and the <see cref="GetHashCode"/>.</para>
+        /// <para>Subclasses can override this method to return
+        /// a simple string representation that better indentifies this
+        /// object.</para>
+        /// </remarks>
+        public virtual string LimitedToString()
+        {
+            StringBuilder sb = new StringBuilder(base.ToString());
+            sb.Append("{ ");
+            sb.AppendFormat("HashCode = '{0}'", GetHashCode());
+            sb.Append(" }");
             return sb.ToString();
         }
 
