@@ -14,15 +14,21 @@
  * limitations under the License.
  */
 
-namespace PPWCode.Vernacular.Semantics.I
+using System;
+using System.ServiceModel.Configuration;
+
+namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
 {
-    /// <summary>
-    /// Library expressing the PPWCode Persistence Vernacular.
-    /// </summary>
-    /// <remarks>
-    /// TODO
-    /// </remarks>
-    internal sealed class NamespaceDoc
+    public class ExceptionMarshallingElement : BehaviorExtensionElement
     {
+        public override Type BehaviorType
+        {
+            get { return typeof(ExceptionMarshallingBehaviorAttribute); }
+        }
+
+        protected override object CreateBehavior()
+        {
+            return new ExceptionMarshallingBehaviorAttribute();
+        }
     }
 }

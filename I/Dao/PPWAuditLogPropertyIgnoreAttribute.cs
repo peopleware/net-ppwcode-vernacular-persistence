@@ -14,15 +14,23 @@
  * limitations under the License.
  */
 
-namespace PPWCode.Vernacular.Semantics.I
+#region Using
+
+using System;
+using System.Runtime.InteropServices;
+
+#endregion
+
+namespace PPWCode.Vernacular.Persistence.I.Dao
 {
-    /// <summary>
-    /// Library expressing the PPWCode Persistence Vernacular.
-    /// </summary>
-    /// <remarks>
-    /// TODO
-    /// </remarks>
-    internal sealed class NamespaceDoc
+    [Serializable, ComVisible(true), AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
+    public class PPWAuditLogPropertyIgnoreAttribute : Attribute
     {
+        public PPWAuditLogActionEnum AuditLogAction { get; set; }
+
+        public PPWAuditLogPropertyIgnoreAttribute()
+        {
+            AuditLogAction = PPWAuditLogActionEnum.ALL;
+        }
     }
 }

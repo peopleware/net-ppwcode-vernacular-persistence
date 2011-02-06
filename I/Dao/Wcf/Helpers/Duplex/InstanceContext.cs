@@ -14,15 +14,28 @@
  * limitations under the License.
  */
 
-namespace PPWCode.Vernacular.Semantics.I
+using System.ServiceModel;
+
+namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Duplex
 {
-    /// <summary>
-    /// Library expressing the PPWCode Persistence Vernacular.
-    /// </summary>
-    /// <remarks>
-    /// TODO
-    /// </remarks>
-    internal sealed class NamespaceDoc
+    public class InstanceContext<T>
     {
+        public InstanceContext Context { get; private set; }
+
+        public InstanceContext(T callbackInstance)
+        {
+            Context = new InstanceContext(callbackInstance);
+        }
+        public void ReleaseServiceInstance()
+        {
+            Context.ReleaseServiceInstance();
+        }
+        public T ServiceInstance
+        {
+            get
+            {
+                return (T)Context.GetServiceInstance();
+            }
+        }
     }
 }

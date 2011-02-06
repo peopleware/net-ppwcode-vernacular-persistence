@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<TestRunConfiguration name="PPWCodeSemanticsUnitTests" id="063877F9-22F8-457e-8A45-5C98127513C6" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
-  <NamingScheme baseName="PPWCodeSemanticsUnitTests" useDefault="false" />
+<TestRunConfiguration name="PPWCodePersistenceUnitTests" id="C240AA63-4124-4005-843C-F421351033B2" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <NamingScheme baseName="PPWCodePersistenceUnitTests" useDefault="false" />
   <TestTypeSpecific />
 </TestRunConfiguration>
