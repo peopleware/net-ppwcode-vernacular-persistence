@@ -180,7 +180,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PPWCode.Vernacular.Persistence_I\PPWCode.Vernacular.Persistence.I.csproj">
+    <ProjectReference Include="..\I\PPWCode.Vernacular.Persistence.I.csproj">
       <Project>{D113DEEF-95FD-4A84-B0D4-DF92201592B3}</Project>
       <Name>PPWCode.Vernacular.Persistence.I</Name>
     </ProjectReference>
