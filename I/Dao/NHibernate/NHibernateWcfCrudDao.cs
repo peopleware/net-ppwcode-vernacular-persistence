@@ -55,14 +55,15 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             UseSecurity = valueFromConfig != null ? Convert.ToBoolean(valueFromConfig) : true;
             valueFromConfig = ConfigurationManager.AppSettings["UseProfiler"];
             UseProfiler = valueFromConfig != null ? Convert.ToBoolean(valueFromConfig) : false;
+            if (UseProfiler)
+            {
+                StartNHibernateProfiler();
+                AppDomain.CurrentDomain.ProcessExit += (sender, e) => EndNHibernateProfiler();
+            }
         }
 
         protected NHibernateWcfCrudDao()
         {
-            if (UseProfiler)
-            {
-                StartNHibernateProfiler();
-            }
             // ReSharper disable DoNotCallOverridableMethodsInConstructor
             SessionFactory = GetSessionFactory();
             // ReSharper restore DoNotCallOverridableMethodsInConstructor
@@ -93,10 +94,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                 if (SessionFactory != null)
                 {
                     CurrentSessionContext.Unbind(SessionFactory);
-                }
-                if (UseProfiler)
-                {
-                    EndNHibernateProfiler();
                 }
             }
             base.Cleanup();
