@@ -333,8 +333,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         public override void FlushAllCaches()
         {
-            base.FlushAllCaches();
-
             SessionFactory.EvictQueries();
             foreach (var collectionMetadata in SessionFactory.GetAllCollectionMetadata())
             {

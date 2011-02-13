@@ -28,7 +28,7 @@ using log4net;
 
 namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
 {
-    public class WcfCrudDao :
+    public abstract class WcfCrudDao :
         IWcfCrudDao
     {
         #region Fields
@@ -151,9 +151,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
             return result;
         }
 
-        public virtual void FlushAllCaches()
-        {
-        }
+        public abstract void FlushAllCaches();
 
         protected void DoFlush()
         {
