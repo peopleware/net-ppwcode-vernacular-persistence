@@ -207,11 +207,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Solution Items\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
     <Compile Include="AbstractPersistentObjectTest.cs" />
     <Compile Include="AbstractVersionedPersistentObjectTest.cs" />
     <Compile Include="Dao\NHibernate\NHibernateAbstractDaoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\SolutionInfo.cs" />
     <Compile Include="Dao\NHibernate\UriUserTypeTest.cs" />
   </ItemGroup>
   <ItemGroup>
