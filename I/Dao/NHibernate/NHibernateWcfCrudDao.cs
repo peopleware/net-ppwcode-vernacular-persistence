@@ -24,7 +24,6 @@ using System.ServiceModel;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
 
 using NHibernate;
-using NHibernate.Context;
 
 using PPWCode.Util.OddsAndEnds.I.Extensions;
 using PPWCode.Vernacular.Exceptions.I;
@@ -41,12 +40,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
     public abstract class NHibernateWcfCrudDao :
         WcfCrudDao
     {
-        #region Fields
-
-        private bool IsOwnerOfSession { get; set; }
-
-        #endregion
-
         #region Constructors
 
         static NHibernateWcfCrudDao()
@@ -68,35 +61,9 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             SessionFactory = GetSessionFactory();
             // ReSharper restore DoNotCallOverridableMethodsInConstructor
             NHibernateStatelessCrudDao nHibernateStatelessCrudDao = UseSecurity ? new NHibernateSecurityStatelessCrudDao() : new NHibernateStatelessCrudDao();
-            if (!CurrentSessionContext.HasBind(SessionFactory))
-            {
-                nHibernateStatelessCrudDao.Session = SessionFactory.OpenSession();
-                CurrentSessionContext.Bind(nHibernateStatelessCrudDao.Session);
-                IsOwnerOfSession = true;
-            }
-            else
-            {
-                nHibernateStatelessCrudDao.Session = SessionFactory.GetCurrentSession();
-                IsOwnerOfSession = false;
-            }
+            nHibernateStatelessCrudDao.Session = SessionFactory.OpenSession();
             Session = nHibernateStatelessCrudDao.Session;
             StatelessCrudDao = nHibernateStatelessCrudDao;
-        }
-
-        #endregion
-
-        #region Cleanup (disposable pattern)
-
-        protected override void Cleanup()
-        {
-            if (IsOwnerOfSession)
-            {
-                if (SessionFactory != null)
-                {
-                    CurrentSessionContext.Unbind(SessionFactory);
-                }
-            }
-            base.Cleanup();
         }
 
         #endregion

@@ -29,7 +29,8 @@ namespace PPWCode.Vernacular.Persistence.I
     [Serializable, DataContract(IsReference = true)]
     public abstract class AbstractPersistentObject :
         AbstractRousseauObject,
-        IPersistentObject
+        IPersistentObject,
+        IExtensibleDataObject
     {
         #region Constructor
 
@@ -47,22 +48,13 @@ namespace PPWCode.Vernacular.Persistence.I
 
         public long? PersistenceId
         {
-            get
-            {
-                return m_PersistenceId;
-            }
-            set
-            {
-                m_PersistenceId = value;
-            }
+            get { return m_PersistenceId; }
+            set { m_PersistenceId = value; }
         }
 
         public bool IsTransient
         {
-            get
-            {
-                return m_PersistenceId == null;
-            }
+            get { return m_PersistenceId == null; }
         }
 
         [Pure]
@@ -74,6 +66,12 @@ namespace PPWCode.Vernacular.Persistence.I
                              ? false
                              : PersistenceId.Value == other.PersistenceId.Value;
         }
+
+        #endregion
+
+        #region Implementation of IExtensibleDataObject
+
+        ExtensionDataObject IExtensibleDataObject.ExtensionData { get; set; }
 
         #endregion
     }

@@ -19,6 +19,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Security.Principal;
 
 using Iesi.Collections.Generic;
 
@@ -47,36 +48,39 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
 
         #region Constructors
 
-        // ReSharper disable SuspiciousTypeConversion.Global
         protected ClientCrudDao(IWcfCrudDao crudDao)
             : base(crudDao)
         {
             Contract.Requires(crudDao != null);
             Contract.Ensures(crudDao == CrudDao);
-
-            m_CrudDao = crudDao;
+            Contract.Ensures(WindowsIdentity == null);
         }
 
-        // ReSharper restore SuspiciousTypeConversion.Global
+        protected ClientCrudDao(IWcfCrudDao crudDao, WindowsIdentity windowsIdentity)
+            : base(crudDao, windowsIdentity)
+        {
+            Contract.Requires(crudDao != null);
+            Contract.Requires(windowsIdentity == null
+                              || (windowsIdentity.IsAuthenticated
+                                  && (windowsIdentity.ImpersonationLevel == TokenImpersonationLevel.Impersonation
+                                      || windowsIdentity.ImpersonationLevel == TokenImpersonationLevel.Delegation)));
+            Contract.Ensures(crudDao == CrudDao);
+            Contract.Ensures(WindowsIdentity == windowsIdentity);
+        }
 
         #endregion
 
         #region Properties
 
-        private IWcfCrudDao m_CrudDao;
-
         [Pure]
-        // ReSharper disable MemberCanBePrivate.Global
-            public IWcfCrudDao CrudDao
+        public IWcfCrudDao CrudDao
         {
             get
             {
                 CheckObjectAlreadyDisposed();
-                return m_CrudDao;
+                return (IWcfCrudDao)Obj;
             }
         }
-
-        // ReSharper restore MemberCanBePrivate.Global
 
         #endregion
 
@@ -86,24 +90,42 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             where T : class, IPersistentObject
         {
             CheckObjectAlreadyDisposed();
-            return (T)m_CrudDao.Retrieve(typeof(T).GetQualifiedName(), id);
+            return (T)Retrieve(typeof(T).GetQualifiedName(), id);
         }
 
         public IPersistentObject Retrieve(string persistenceObjectType, long? id)
         {
             CheckObjectAlreadyDisposed();
-            return m_CrudDao.Retrieve(persistenceObjectType, id);
+            if (WindowsIdentity != null)
+            {
+                using (WindowsIdentity.Impersonate())
+                {
+                    return CrudDao.Retrieve(persistenceObjectType, id);
+                }
+            }
+            return CrudDao.Retrieve(persistenceObjectType, id);
         }
 
         public ICollection<T> RetrieveAll<T>()
             where T : class, IPersistentObject
         {
             CheckObjectAlreadyDisposed();
-            ICollection<T> result = new HashedSet<T>();
-            ICollection<IPersistentObject> tmp = m_CrudDao.RetrieveAll(typeof(T).GetQualifiedName());
-            foreach (IPersistentObject obj in tmp)
+            ICollection<IPersistentObject> items;
+            if (WindowsIdentity != null)
             {
-                result.Add((T)obj);
+                using (WindowsIdentity.Impersonate())
+                {
+                    items = CrudDao.RetrieveAll(typeof(T).GetQualifiedName());
+                }
+            }
+            else
+            {
+                items = CrudDao.RetrieveAll(typeof(T).GetQualifiedName());
+            }
+            ICollection<T> result = new HashedSet<T>();
+            foreach (IPersistentObject item in items)
+            {
+                result.Add((T)item);
             }
             return result;
         }
@@ -112,21 +134,42 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             where T : class, IPersistentObject
         {
             CheckObjectAlreadyDisposed();
-            return (T)m_CrudDao.Create(po);
+            if (WindowsIdentity != null)
+            {
+                using (WindowsIdentity.Impersonate())
+                {
+                    return (T)CrudDao.Create(po);
+                }
+            }
+            return (T)CrudDao.Create(po);
         }
 
         public T Update<T>(T po)
             where T : class, IPersistentObject
         {
             CheckObjectAlreadyDisposed();
-            return (T)m_CrudDao.Update(po);
+            if (WindowsIdentity != null)
+            {
+                using (WindowsIdentity.Impersonate())
+                {
+                    return (T)CrudDao.Update(po);
+                }
+            }
+            return (T)CrudDao.Update(po);
         }
 
         public ICollection<T> UpdateAll<T>(IEnumerable<T> col)
             where T : class, IPersistentObject
         {
             CheckObjectAlreadyDisposed();
-            return m_CrudDao.UpdateAll(col.OfType<IPersistentObject>().ToList()).OfType<T>().ToList();
+            if (WindowsIdentity != null)
+            {
+                using (WindowsIdentity.Impersonate())
+                {
+                    return CrudDao.UpdateAll(col.OfType<IPersistentObject>().ToList()).OfType<T>().ToList();
+                }
+            }
+            return CrudDao.UpdateAll(col.OfType<IPersistentObject>().ToList()).OfType<T>().ToList();
         }
 
         public T Save<T>(T po)
@@ -140,32 +183,64 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             where T : class, IPersistentObject
         {
             CheckObjectAlreadyDisposed();
-            return (T)m_CrudDao.Delete(po);
+            if (WindowsIdentity != null)
+            {
+                using (WindowsIdentity.Impersonate())
+                {
+                    return (T)CrudDao.Delete(po);
+                }
+            }
+            return (T)CrudDao.Delete(po);
         }
 
         public T Delete<T>(long? id)
             where T : class, IPersistentObject
         {
             CheckObjectAlreadyDisposed();
-            return (T)m_CrudDao.DeleteById(typeof(T).GetQualifiedName(), id);
+            if (WindowsIdentity != null)
+            {
+                using (WindowsIdentity.Impersonate())
+                {
+                    return (T)CrudDao.DeleteById(typeof(T).GetQualifiedName(), id);
+                }
+            }
+            return (T)CrudDao.DeleteById(typeof(T).GetQualifiedName(), id);
         }
 
         public T GetPropertyValue<T>(IPersistentObject po, string propertyName)
             where T : class
         {
             CheckObjectAlreadyDisposed();
-            return (T)m_CrudDao.GetPropertyValue(po, propertyName);
+            if (WindowsIdentity != null)
+            {
+                using (WindowsIdentity.Impersonate())
+                {
+                    return (T)CrudDao.GetPropertyValue(po, propertyName);
+                }
+            }
+            return (T)CrudDao.GetPropertyValue(po, propertyName);
         }
 
         public ICollection<T> GetChildren<T>(IPersistentObject po, string propertyName)
             where T : class
         {
             CheckObjectAlreadyDisposed();
-            ICollection<T> result = new HashedSet<T>();
-            ICollection<IPersistentObject> tmp = m_CrudDao.GetChildren(po, propertyName);
-            foreach (IPersistentObject obj in tmp)
+            ICollection<IPersistentObject> children;
+            if (WindowsIdentity != null)
             {
-                result.Add((T)obj);
+                using (WindowsIdentity.Impersonate())
+                {
+                    children = CrudDao.GetChildren(po, propertyName);
+                }
+            }
+            else
+            {
+                children = CrudDao.GetChildren(po, propertyName);
+            }
+            ICollection<T> result = new HashedSet<T>();
+            foreach (IPersistentObject child in children)
+            {
+                result.Add((T)child);
             }
             return result;
         }
@@ -174,7 +249,17 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             where T : class
         {
             CheckObjectAlreadyDisposed();
-            return m_CrudDao
+            if (WindowsIdentity != null)
+            {
+                using (WindowsIdentity.Impersonate())
+                {
+                    return CrudDao
+                        .GetChildren(po, propertyName)
+                        .Cast<T>()
+                        .ToList();
+                }
+            }
+            return CrudDao
                 .GetChildren(po, propertyName)
                 .Cast<T>()
                 .ToList();
@@ -183,17 +268,15 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
         public void FlushAllCaches()
         {
             CheckObjectAlreadyDisposed();
-            m_CrudDao.FlushAllCaches();
-        }
-
-        #endregion
-
-        #region Overrides of ClientDao
-
-        protected override void Cleanup()
-        {
-            base.Cleanup();
-            m_CrudDao = null;
+            if (WindowsIdentity != null)
+            {
+                using (WindowsIdentity.Impersonate())
+                {
+                    CrudDao.FlushAllCaches();
+                    return;
+                }
+            }
+            CrudDao.FlushAllCaches();
         }
 
         #endregion

@@ -19,6 +19,7 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.Reflection;
+using System.Security.Principal;
 using System.ServiceModel;
 
 using log4net;
@@ -53,28 +54,55 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
 
         #region Constructor
 
-        protected ClientDao(object obj)
+        protected ClientDao(object obj, WindowsIdentity windowsIdentity)
+        {
+            Contract.Requires(obj != null);
+            Contract.Requires(windowsIdentity == null
+                              || (windowsIdentity.IsAuthenticated
+                                  && (windowsIdentity.ImpersonationLevel == TokenImpersonationLevel.Impersonation
+                                      || windowsIdentity.ImpersonationLevel == TokenImpersonationLevel.Delegation)));
+            Contract.Ensures(obj == Obj);
+            Contract.Ensures(windowsIdentity == WindowsIdentity);
+
+            m_Obj = obj;
+            m_WindowsIdentity = windowsIdentity;
+        }
+
+        protected ClientDao(object obj) : this(obj, null)
         {
             Contract.Requires(obj != null);
             Contract.Ensures(obj == Obj);
-
-            m_Obj = obj;
+            Contract.Ensures(WindowsIdentity == null);
         }
 
         #endregion
 
         #region Properties
 
-        private object m_Obj;
+        private readonly object m_Obj;
 
         [Pure]
-        // ReSharper disable MemberCanBePrivate.Global
-            public object Obj
+        public object Obj
         {
-            get { return m_Obj; }
+            get
+            {
+                CheckObjectAlreadyDisposed();
+                return m_Obj;
+            }
         }
 
-        // ReSharper restore MemberCanBePrivate.Global
+        private readonly WindowsIdentity m_WindowsIdentity;
+
+        [Pure]
+        public WindowsIdentity WindowsIdentity
+        {
+            get
+            {
+                CheckObjectAlreadyDisposed();
+                return m_WindowsIdentity;
+            }
+        }
+
 
         #endregion
 
@@ -145,21 +173,20 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
 
         protected virtual void Cleanup()
         {
-            if (m_Obj == null)
+            if (Obj == null)
             {
                 return;
             }
-            ICommunicationObject co = m_Obj as ICommunicationObject;
+            ICommunicationObject co = Obj as ICommunicationObject;
             if (co != null)
             {
                 CloseProxy(co);
             }
-            IDisposable disposableObj = m_Obj as IDisposable;
+            IDisposable disposableObj = Obj as IDisposable;
             if (disposableObj != null)
             {
                 disposableObj.Dispose();
             }
-            m_Obj = null;
         }
 
         protected void CheckObjectAlreadyDisposed()
