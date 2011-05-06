@@ -1,7 +1,7 @@
 using System.Reflection;
 
 [assembly: AssemblyCompany("Peopleware NV")]
-[assembly: AssemblyProduct("PPWCode Vernacular Semantics")]
+[assembly: AssemblyProduct("PPWCode Vernacular Persistence")]
 [assembly: AssemblyCopyright("Copyright © PeopleWare NV 2010-2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -16,4 +16,4 @@ using System.Reflection;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.1.*")]
