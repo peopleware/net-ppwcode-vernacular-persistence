@@ -62,7 +62,23 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                         .ToList();
                     s_SecurityAction.Add(type, securityList);
                 }
-                IPrincipal principal = Thread.CurrentPrincipal;
+                IPrincipal principal;
+                if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
+                {
+                    principal = Thread.CurrentPrincipal;
+                }
+                else
+                {
+                    WindowsIdentity windowsIdentity = WindowsIdentity.GetCurrent();
+                    if (windowsIdentity != null && windowsIdentity.IsAuthenticated)
+                    {
+                        principal = new WindowsPrincipal(windowsIdentity);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
                 return securityList
                     .Exists(s =>
                             (s.SecurityAction & securityActionFlag) == securityActionFlag
