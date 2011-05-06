@@ -143,7 +143,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         public IPersistentObject Retrieve(string PersistentObjectType, long? Id)
         {
             Contract.Requires(Transaction.Current != null);
-            Contract.Requires(Transaction.Current.TransactionInformation.DistributedIdentifier == Guid.Empty);
             Contract.Requires(!string.IsNullOrEmpty(PersistentObjectType));
             Contract.Requires(typeof(IPersistentObject).IsAssignableFrom(Type.GetType(PersistentObjectType)));
             Contract.Requires(Id.HasValue);
@@ -160,7 +159,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         public ICollection<IPersistentObject> RetrieveAll(string PersistentObjectType)
         {
             Contract.Requires(Transaction.Current != null);
-            Contract.Requires(Transaction.Current.TransactionInformation.DistributedIdentifier == Guid.Empty);
             Contract.Requires(!string.IsNullOrEmpty(PersistentObjectType));
             Contract.Requires(typeof(IPersistentObject).IsAssignableFrom(Type.GetType(PersistentObjectType)));
             //Contract.Requires(IsOperational);
@@ -186,7 +184,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         public IPersistentObject Create(IPersistentObject po)
         {
             Contract.Requires(Transaction.Current != null);
-            Contract.Requires(Transaction.Current.TransactionInformation.DistributedIdentifier == Guid.Empty);
             //Contract.Requires(IsOperational);
             Contract.Requires(po != null);
             Contract.Requires(!po.PersistenceId.HasValue);
@@ -201,7 +198,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         public IPersistentObject Update(IPersistentObject po)
         {
             Contract.Requires(Transaction.Current != null);
-            Contract.Requires(Transaction.Current.TransactionInformation.DistributedIdentifier == Guid.Empty);
             //Contract.Requires(IsOperational);
             Contract.Requires(po != null);
             Contract.Requires(po.PersistenceId.HasValue);
@@ -216,7 +212,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         public ICollection<IPersistentObject> UpdateAll(ICollection<IPersistentObject> col)
         {
             Contract.Requires(Transaction.Current != null);
-            Contract.Requires(Transaction.Current.TransactionInformation.DistributedIdentifier == Guid.Empty);
             Contract.Ensures(Contract.Result<ICollection<IPersistentObject>>().Count == col.Count);
 
             return default(ICollection<IPersistentObject>);
@@ -225,7 +220,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         public IPersistentObject Delete(IPersistentObject po)
         {
             Contract.Requires(Transaction.Current != null);
-            Contract.Requires(Transaction.Current.TransactionInformation.DistributedIdentifier == Guid.Empty);
             //Contract.Requires(IsOperational);
             Contract.Requires(po != null);
             Contract.Requires(po.PersistenceId.HasValue);
@@ -240,7 +234,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         public IPersistentObject DeleteById(string PersistentObjectType, long? Id)
         {
             Contract.Requires(Transaction.Current != null);
-            Contract.Requires(Transaction.Current.TransactionInformation.DistributedIdentifier == Guid.Empty);
             Contract.Requires(!string.IsNullOrEmpty(PersistentObjectType));
             Contract.Requires(typeof(IPersistentObject).IsAssignableFrom(Type.GetType(PersistentObjectType)));
             Contract.Requires(Id.HasValue);
@@ -259,7 +252,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         public object GetPropertyValue(IPersistentObject po, string PropertyName)
         {
             Contract.Requires(Transaction.Current != null);
-            Contract.Requires(Transaction.Current.TransactionInformation.DistributedIdentifier == Guid.Empty);
             Contract.Requires(!string.IsNullOrEmpty(PropertyName));
             //Contract.Requires(IsOperational);
 
@@ -283,7 +275,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         public ICollection<IPersistentObject> GetChildren(IPersistentObject po, string PropertyName)
         {
             Contract.Requires(Transaction.Current != null);
-            Contract.Requires(Transaction.Current.TransactionInformation.DistributedIdentifier == Guid.Empty);
             Contract.Requires(!string.IsNullOrEmpty(PropertyName));
             //Contract.Requires(IsOperational);
 
