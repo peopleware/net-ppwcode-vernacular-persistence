@@ -91,7 +91,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             }
         }
 
-        private readonly WindowsIdentity m_WindowsIdentity;
+        private WindowsIdentity m_WindowsIdentity;
 
         [Pure]
         public WindowsIdentity WindowsIdentity
@@ -100,6 +100,16 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             {
                 CheckObjectAlreadyDisposed();
                 return m_WindowsIdentity;
+            }
+            set
+            {
+                Contract.Requires(value == null
+                                  || (value.IsAuthenticated
+                                      && (value.ImpersonationLevel == TokenImpersonationLevel.Impersonation
+                                          || value.ImpersonationLevel == TokenImpersonationLevel.Delegation)));
+
+                CheckObjectAlreadyDisposed();
+                m_WindowsIdentity = value;
             }
         }
 
@@ -167,7 +177,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             }
             catch (Exception e)
             {
-                s_Logger.Warn(MethodBase.GetCurrentMethod().Name, e);
+                s_Logger.Error(MethodBase.GetCurrentMethod().Name, e);
             }
         }
 
