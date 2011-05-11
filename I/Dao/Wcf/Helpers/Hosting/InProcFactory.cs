@@ -18,7 +18,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
@@ -65,11 +64,8 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
             {
                 binding = new NetNamedPipeBinding();
             }
-
             binding.TransactionFlow = true;
-
             s_Binding = binding;
-
             AppDomain.CurrentDomain.ProcessExit +=
                 (sender, e) =>
                 {
@@ -135,7 +131,17 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
         {
             HostRecord hostRecord = GetHostRecord<S, I>();
             ChannelFactory<I> factory = new ChannelFactory<I>(s_Binding, hostRecord.m_Address);
-            ApplyCustomBehavior(factory.Endpoint);
+            return factory.CreateChannel();
+        }
+
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public static I CreateInstance<S, I>(Action<ChannelFactory<I>> action)
+            where I : class
+            where S : class, I
+        {
+            HostRecord hostRecord = GetHostRecord<S, I>();
+            ChannelFactory<I> factory = new ChannelFactory<I>(s_Binding, hostRecord.m_Address);
+            action.Invoke(factory);
             return factory.CreateChannel();
         }
 
@@ -184,8 +190,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
 
                 hostRecord = new HostRecord(host, address);
                 s_Hosts.Add(typeof(S), hostRecord);
-                ServiceEndpoint endpoint = host.AddServiceEndpoint(typeof(I), s_Binding, address);
-                ApplyCustomBehavior(endpoint);
+                host.AddServiceEndpoint(typeof(I), s_Binding, address);
                 if (s_Throttles.ContainsKey(typeof(S)))
                 {
                     host.SetThrottle(s_Throttles[typeof(S)]);
@@ -195,25 +200,28 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
             return hostRecord;
         }
 
-        private static void ApplyCustomBehavior(ServiceEndpoint endpoint)
-        {
-            IEnumerable<DataContractSerializerOperationBehavior> behaviors = endpoint
-                .Contract
-                .Operations
-                .Select(description => description.Behaviors.Find<DataContractSerializerOperationBehavior>())
-                .Where(behavior => behavior != null);
-            foreach (DataContractSerializerOperationBehavior behavior in behaviors)
-            {
-                behavior.MaxItemsInObjectGraph = int.MaxValue;
-            }
-        }
-
         public static void CloseProxy<I>(I instance) where I : class
         {
             ICommunicationObject proxy = instance as ICommunicationObject;
-            if (proxy != null)
+            if (proxy == null)
             {
-                proxy.Close();
+                return;
+            }
+
+            switch (proxy.State)
+            {
+                case CommunicationState.Created:
+                case CommunicationState.Opening:
+                case CommunicationState.Opened:
+                    proxy.Close();
+                    break;
+                case CommunicationState.Closing:
+                case CommunicationState.Closed:
+                case CommunicationState.Faulted:
+                    proxy.Abort();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }
