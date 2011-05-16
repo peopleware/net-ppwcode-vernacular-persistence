@@ -48,6 +48,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         [OperationBehavior(
             TransactionScopeRequired = true,
             TransactionAutoComplete = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         public IPersistentObject Retrieve(string persistentObjectType, long? id)
         {
             CheckObjectAlreadyDisposed();
@@ -69,6 +70,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         [OperationBehavior(
             TransactionScopeRequired = true,
             TransactionAutoComplete = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         public ICollection<IPersistentObject> RetrieveAll(string persistentObjectType)
         {
             CheckObjectAlreadyDisposed();
@@ -81,6 +83,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         [OperationBehavior(
             TransactionScopeRequired = true,
             TransactionAutoComplete = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         public virtual IPersistentObject Create(IPersistentObject po)
         {
             CheckObjectAlreadyDisposed();
@@ -92,6 +95,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         [OperationBehavior(
             TransactionScopeRequired = true,
             TransactionAutoComplete = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         public virtual IPersistentObject Update(IPersistentObject po)
         {
             CheckObjectAlreadyDisposed();
@@ -103,6 +107,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         [OperationBehavior(
             TransactionScopeRequired = true,
             TransactionAutoComplete = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         public virtual ICollection<IPersistentObject> UpdateAll(ICollection<IPersistentObject> col)
         {
             CheckObjectAlreadyDisposed();
@@ -113,6 +118,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         [OperationBehavior(
             TransactionScopeRequired = true,
             TransactionAutoComplete = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         public virtual IPersistentObject Delete(IPersistentObject po)
         {
             CheckObjectAlreadyDisposed();
@@ -124,6 +130,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         [OperationBehavior(
             TransactionScopeRequired = true,
             TransactionAutoComplete = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         public IPersistentObject DeleteById(string persistentObjectType, long? id)
         {
             return Delete(Retrieve(persistentObjectType, id));
@@ -132,6 +139,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         [OperationBehavior(
             TransactionScopeRequired = true,
             TransactionAutoComplete = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         public object GetPropertyValue(IPersistentObject po, string propertyName)
         {
             CheckObjectAlreadyDisposed();
@@ -143,6 +151,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         [OperationBehavior(
             TransactionScopeRequired = true,
             TransactionAutoComplete = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         public ICollection<IPersistentObject> GetChildren(IPersistentObject po, string property)
         {
             CheckObjectAlreadyDisposed();
