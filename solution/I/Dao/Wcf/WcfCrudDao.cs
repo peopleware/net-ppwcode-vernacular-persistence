@@ -45,9 +45,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
 
         #region IWcfCrudDao Members
 
-        [OperationBehavior(
-            TransactionScopeRequired = true,
-            TransactionAutoComplete = true)]
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public IPersistentObject Retrieve(string persistentObjectType, long? id)
         {
             CheckObjectAlreadyDisposed();
@@ -66,9 +64,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
             return result;
         }
 
-        [OperationBehavior(
-            TransactionScopeRequired = true,
-            TransactionAutoComplete = true)]
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public ICollection<IPersistentObject> RetrieveAll(string persistentObjectType)
         {
             CheckObjectAlreadyDisposed();
@@ -78,9 +74,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
             return result;
         }
 
-        [OperationBehavior(
-            TransactionScopeRequired = true,
-            TransactionAutoComplete = true)]
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public virtual IPersistentObject Create(IPersistentObject po)
         {
             CheckObjectAlreadyDisposed();
@@ -89,9 +83,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
             return result;
         }
 
-        [OperationBehavior(
-            TransactionScopeRequired = true,
-            TransactionAutoComplete = true)]
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public virtual IPersistentObject Update(IPersistentObject po)
         {
             CheckObjectAlreadyDisposed();
@@ -100,9 +92,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
             return result;
         }
 
-        [OperationBehavior(
-            TransactionScopeRequired = true,
-            TransactionAutoComplete = true)]
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public virtual ICollection<IPersistentObject> UpdateAll(ICollection<IPersistentObject> col)
         {
             CheckObjectAlreadyDisposed();
@@ -110,9 +100,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
             return col.Select(o => StatelessCrudDao.Update(o)).ToList();
         }
 
-        [OperationBehavior(
-            TransactionScopeRequired = true,
-            TransactionAutoComplete = true)]
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public virtual IPersistentObject Delete(IPersistentObject po)
         {
             CheckObjectAlreadyDisposed();
@@ -121,17 +109,13 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
             return result;
         }
 
-        [OperationBehavior(
-            TransactionScopeRequired = true,
-            TransactionAutoComplete = true)]
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public IPersistentObject DeleteById(string persistentObjectType, long? id)
         {
             return Delete(Retrieve(persistentObjectType, id));
         }
 
-        [OperationBehavior(
-            TransactionScopeRequired = true,
-            TransactionAutoComplete = true)]
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public object GetPropertyValue(IPersistentObject po, string propertyName)
         {
             CheckObjectAlreadyDisposed();
@@ -140,9 +124,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
             return result;
         }
 
-        [OperationBehavior(
-            TransactionScopeRequired = true,
-            TransactionAutoComplete = true)]
+        [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public ICollection<IPersistentObject> GetChildren(IPersistentObject po, string property)
         {
             CheckObjectAlreadyDisposed();
