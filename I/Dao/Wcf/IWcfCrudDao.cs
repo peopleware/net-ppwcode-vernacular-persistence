@@ -54,12 +54,14 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         /// be a subtype of IPersistenObject.</param>
         /// <param name="aID">The primary key of the object we are looking for.</param>
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         IPersistentObject Retrieve(string persistentObjectType, long? id);
 
         /// <summary>
         /// Returns a complete collection of entities
         /// </summary>
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         ICollection<IPersistentObject> RetrieveAll(string persistentObjectType);
 
         /// <summary>
@@ -70,6 +72,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         ///  be no downstream objects in {@code pb}. It is a programming error to submit a object with downstream associated objects.
         /// </summary>
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         IPersistentObject Create(IPersistentObject po);
 
         /// <summary>
@@ -81,6 +84,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         /// {@code pb}.
         /// </summary>
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         IPersistentObject Update(IPersistentObject po);
 
         /// <summary>
@@ -92,6 +96,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         /// {@code pb}.
         /// </summary>
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         ICollection<IPersistentObject> UpdateAll(ICollection<IPersistentObject> col);
 
         /// <summary>
@@ -99,6 +104,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         /// The entire object is returned, for reasons of consistency with the other methods.
         /// </summary>
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         IPersistentObject Delete(IPersistentObject po);
 
         /// <summary>
@@ -106,6 +112,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         /// The entire object is returned, for reasons of consistency with the other methods.
         /// </summary>
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         IPersistentObject DeleteById(string persistentObjectType, long? id);
 
         /// <summary>
@@ -115,6 +122,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         /// <param name="propertyName"></param>
         /// <returns></returns>
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         object GetPropertyValue(IPersistentObject po, string propertyName);
 
         /// <summary>
@@ -124,6 +132,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         /// <param name="propertyName"></param>
         /// <returns></returns>
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         ICollection<IPersistentObject> GetChildren(IPersistentObject po, string propertyName);
 
         /// <summary>
@@ -131,6 +140,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         /// A good example for using this method is when you are writing integration tests.
         /// </summary>
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         void FlushAllCaches();
     }
 
