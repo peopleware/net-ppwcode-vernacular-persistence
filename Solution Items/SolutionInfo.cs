@@ -5,5 +5,5 @@ using System.Reflection;
 [assembly: AssemblyCopyright("Copyright © PeopleWare NV 2010-2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("1.2.0.0")]
-[assembly: AssemblyFileVersion("1.2.5095.0")]
+[assembly: AssemblyVersion("1.3.0.0")]
+[assembly: AssemblyFileVersion("1.3.5116.0")]
