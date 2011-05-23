@@ -113,10 +113,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         protected virtual void Cleanup()
         {
-            if (IsOperational)
-            {
-                Session.Dispose();
-            }
         }
 
         #endregion

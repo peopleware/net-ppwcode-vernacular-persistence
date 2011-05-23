@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics.Contracts;
 using System.ServiceModel;
 
 using HibernatingRhinos.Profiler.Appender.NHibernate;
@@ -57,27 +58,36 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         protected NHibernateWcfCrudDao()
         {
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            SessionFactory = GetSessionFactory();
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
-            NHibernateStatelessCrudDao nHibernateStatelessCrudDao = UseSecurity ? new NHibernateSecurityStatelessCrudDao() : new NHibernateStatelessCrudDao();
-            nHibernateStatelessCrudDao.Session = SessionFactory.OpenSession();
-            Session = nHibernateStatelessCrudDao.Session;
-            StatelessCrudDao = nHibernateStatelessCrudDao;
+            Contract.Assume(NHibernateContext.Current.Session != null);
+            Initialize(NHibernateContext.Current.Session);
         }
 
-        #endregion
-
-        #region Abstract GetSessionFactory Method
-
-        protected abstract ISessionFactory GetSessionFactory();
+        protected NHibernateWcfCrudDao(ISession session)
+        {
+            Contract.Requires(session != null);
+            Initialize(session);
+        }
+        private void Initialize(ISession session)
+        {
+            NHibernateStatelessCrudDao nHibernateStatelessCrudDao = UseSecurity
+                                                                        ? new NHibernateSecurityStatelessCrudDao()
+                                                                        : new NHibernateStatelessCrudDao();
+            Session = session;
+            nHibernateStatelessCrudDao.Session = Session;
+            StatelessCrudDao = nHibernateStatelessCrudDao;
+        }
 
         #endregion
 
         #region properties
 
         public ISession Session { get; set; }
-        protected ISessionFactory SessionFactory { get; private set; }
+
+        public ISessionFactory SessionFactory
+        {
+            get { return Session != null ? Session.SessionFactory : null; }
+        }
+
         protected static bool UseSecurity { get; private set; }
         protected static bool UseProfiler { get; private set; }
 

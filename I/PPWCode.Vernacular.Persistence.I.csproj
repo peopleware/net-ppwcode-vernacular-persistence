@@ -221,6 +221,11 @@
     <Compile Include="Dao\ClientCrudDao.cs" />
     <Compile Include="Dao\ClientDao.cs" />
     <Compile Include="Dao\DaoHelper.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateContext.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateContextAttribute.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateContextExtension.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateContextInitializer.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateFlushSessionOperationInterceptor.cs" />
     <Compile Include="Dao\NHibernate\NHibernateWcfCrudDao.cs" />
     <Compile Include="Dao\NHibernate\NHibernateSecurityStatelessCrudDao.cs" />
     <Compile Include="Dao\NHibernate\NHibernateSessionFactory.cs" />
@@ -253,6 +258,9 @@
     <Compile Include="Dao\Wcf\Helpers\Errors\ErrorHandlerHelper.cs" />
     <Compile Include="Dao\Wcf\Helpers\Errors\ExceptionLogbookEntry.cs" />
     <Compile Include="Dao\Wcf\Helpers\Errors\ExceptionMarshallingMessageInspector.cs" />
+    <Compile Include="Dao\Wcf\Helpers\GenericInterceptor\GenericInvoker.cs" />
+    <Compile Include="Dao\Wcf\Helpers\GenericInterceptor\OperationInterceptorBehaviorAttribute.cs" />
+    <Compile Include="Dao\Wcf\Helpers\GenericInterceptor\ServiceInterceptorBehaviorAttribute.cs" />
     <Compile Include="Dao\Wcf\Helpers\Hosting\ServiceThrottleHelper.cs" />
     <Compile Include="Dao\Wcf\Helpers\Hosting\InProcFactory.cs" />
     <Compile Include="Dao\Wcf\Helpers\Bindings\QueuedServiceHelper.cs" />
