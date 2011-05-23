@@ -39,11 +39,14 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.GenericInterceptor
         {
             IEnumerable<OperationDescription> operations = serviceDescription
                 .Endpoints
-                .SelectMany(endpoint => endpoint.Contract.Operations, (endpoint, operation) => new
-                {
-                    endpoint,
-                    operation
-                })
+                .SelectMany(
+                    endpoint => endpoint.Contract.Operations,
+                    (endpoint, operation) =>
+                    new
+                    {
+                        endpoint,
+                        operation
+                    })
                 .Where(@t => @t.operation.Behaviors.Find<OperationInterceptorBehaviorAttribute>() == null)
                 .Select(@t => @t.operation);
             foreach (OperationDescription operation in operations)

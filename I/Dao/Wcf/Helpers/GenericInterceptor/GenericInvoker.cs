@@ -43,13 +43,11 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.GenericInterceptor
         /// <summary>
         /// Exceptions here will abort the call
         /// </summary>
-        /// <returns></returns>
         protected abstract void PreInvoke(object instance, object[] inputs);
 
         /// <summary>
         /// Always called, even if operation had an exception
         /// </summary>
-        /// <returns></returns>
         protected abstract void PostInvoke(object instance, object returnedValue, object[] outputs, Exception exception);
 
         public object Invoke(object instance, object[] inputs, out object[] outputs)
