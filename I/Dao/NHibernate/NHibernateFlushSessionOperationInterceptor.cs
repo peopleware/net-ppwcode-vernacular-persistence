@@ -58,7 +58,11 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                 && nHibernateContextExtension.Session != null)
             {
                 s_Logger.Debug(@"Flush+Dispose NHibernate-Session from InstanceContext");
-                nHibernateContextExtension.Session.Flush();
+                
+                if (exception == null)
+                {
+                    nHibernateContextExtension.Session.Flush();
+                }
                 nHibernateContextExtension.Session.Dispose();
             }
             s_Logger.Debug(@"End PostInvoke");
