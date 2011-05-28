@@ -22,14 +22,12 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 
-using PPWCode.Vernacular.Persistence.I.Dao.NHibernate;
-
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers
+namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class NHibernateSerializationBehaviorAttribute :
+    public class NHibernateSerializationServiceBehaviorAttribute :
         Attribute,
         IServiceBehavior
     {

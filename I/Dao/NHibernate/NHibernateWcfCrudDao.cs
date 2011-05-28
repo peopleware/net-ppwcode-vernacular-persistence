@@ -36,7 +36,7 @@ using PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors;
 
 namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 {
-    [NHibernateSerializationBehavior]
+    [NHibernateSerializationServiceBehavior]
     [ErrorLogBehavior]
     public abstract class NHibernateWcfCrudDao :
         WcfCrudDao

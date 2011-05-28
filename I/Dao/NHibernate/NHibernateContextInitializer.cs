@@ -20,8 +20,6 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Dispatcher;
 
-using log4net;
-
 using NHibernate;
 
 using PPWCode.Util.OddsAndEnds.I.Extensions;
@@ -37,15 +35,8 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
     public class NHibernateContextInitializer
         : IInstanceContextInitializer
     {
-        #region Fields
-
-        private static readonly ILog s_Logger = LogManager.GetLogger(typeof(NHibernateContextInitializer));
-
-        #endregion
-
         public void Initialize(InstanceContext instanceContext, Message message)
         {
-            s_Logger.Debug(@"Start NHibernateContextInitializer.Initialize");
             ISessionFactory sessionFactory = ContextRegistry
                 .GetContext()
                 .GetObject<ISessionFactory>(@"NHibernateSessionFactory");
@@ -53,9 +44,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                                    ? sessionFactory.OpenSession()
                                    : null;
             NHibernateContextExtension nHibernateContextExtension = new NHibernateContextExtension(session);
-            s_Logger.Debug(@"Add NHibernateContextExtension" + nHibernateContextExtension);
             instanceContext.Extensions.Add(nHibernateContextExtension);
-            s_Logger.Debug(@"End NHibernateContextInitializer.Initialize");
         }
     }
 }

@@ -38,7 +38,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
             Contract.Requires(detail != null);
             Contract.Requires(Type.GetType(detail.Type) != null, "Make sure this assembly contains the definition of the custom exception.");
             Contract.Requires(Type.GetType(detail.Type).IsSubclassOf(typeof(Exception)), "FaultException<T> where T is a subclass of Exception.");
-            Contract.Requires(Type.GetType(detail.Type).GetConstructor(new Type[] { typeof(string), typeof(Exception), }) != null, "Exception type does not have suitable constructor.");
+            Contract.Requires(Type.GetType(detail.Type).GetConstructor(new[] { typeof(string), typeof(Exception), }) != null, "Exception type does not have suitable constructor.");
 
             Exception innerException;
             if (detail.InnerException != null)

@@ -22,8 +22,6 @@ using System.Reflection;
 using System.ServiceModel;
 using System.Text;
 
-using log4net;
-
 using NHibernate;
 
 #endregion
@@ -33,12 +31,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
     public class NHibernateContextExtension
         : IExtension<InstanceContext>
     {
-        #region Fields
-
-        private static readonly ILog s_Logger = LogManager.GetLogger(typeof(NHibernateContextInitializer));
-
-        #endregion
-
         #region Contructor
 
         public NHibernateContextExtension(ISession session)
@@ -58,15 +50,15 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         void IExtension<InstanceContext>.Attach(InstanceContext owner)
         {
-            s_Logger.Debug(@"Start NHibernateContextExtension.Attach");
         }
 
         void IExtension<InstanceContext>.Detach(InstanceContext owner)
         {
-            s_Logger.Debug(@"Start NHibernateContextExtension.Detach");
         }
 
         #endregion
+
+        #region Override Object methods
 
         public override string ToString()
         {
@@ -115,5 +107,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             }
             return sb.ToString();
         }
+
+        #endregion
     }
 }

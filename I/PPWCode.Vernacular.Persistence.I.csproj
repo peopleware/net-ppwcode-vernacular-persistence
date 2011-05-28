@@ -226,6 +226,8 @@
     <Compile Include="Dao\NHibernate\NHibernateContextExtension.cs" />
     <Compile Include="Dao\NHibernate\NHibernateContextInitializer.cs" />
     <Compile Include="Dao\NHibernate\NHibernateFlushSessionOperationInterceptor.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateSerializationContractBehaviorAttribute.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateSerializationOperationBehaviourAttribute.cs" />
     <Compile Include="Dao\NHibernate\NHibernateWcfCrudDao.cs" />
     <Compile Include="Dao\NHibernate\NHibernateSecurityStatelessCrudDao.cs" />
     <Compile Include="Dao\NHibernate\NHibernateSessionFactory.cs" />
@@ -265,7 +267,7 @@
     <Compile Include="Dao\Wcf\Helpers\Hosting\InProcFactory.cs" />
     <Compile Include="Dao\Wcf\Helpers\Bindings\QueuedServiceHelper.cs" />
     <Compile Include="Dao\Wcf\Helpers\Hosting\ServiceHost.cs" />
-    <Compile Include="Dao\Wcf\Helpers\NHibernateSerializationBehaviorAttribute.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateSerializationServiceBehaviorAttribute.cs" />
     <Compile Include="Dao\Wcf\IWcfCrudDao.cs" />
     <Compile Include="Dao\Wcf\Helpers\NetDataContractAttribute.cs" />
     <Compile Include="Dao\Wcf\WcfCrudDao.cs" />
