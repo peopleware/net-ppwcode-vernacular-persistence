@@ -19,8 +19,6 @@
 using System;
 using System.ServiceModel.Dispatcher;
 
-using log4net;
-
 using PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.GenericInterceptor;
 
 #endregion
@@ -30,13 +28,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
     public class NHibernateFlushSessionOperationInterceptor
         : GenericInvoker
     {
-        #region Fields
-
-        private static readonly ILog s_Logger = LogManager.GetLogger(typeof(NHibernateFlushSessionOperationInterceptor));
-
-        #endregion
-
-
         public NHibernateFlushSessionOperationInterceptor(IOperationInvoker oldInvoker)
             : base(oldInvoker)
         {
@@ -46,22 +37,20 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         protected override void PreInvoke(object instance, object[] inputs)
         {
-            s_Logger.Debug(@"Start PreInvoke");
-            s_Logger.Debug(@"End PreInvoke");
         }
 
         protected override void PostInvoke(object instance, object returnedValue, object[] outputs, Exception exception)
         {
-            s_Logger.Debug(@"Start PostInvoke");
             NHibernateContextExtension nHibernateContextExtension = NHibernateContext.Current;
             if (nHibernateContextExtension != null
                 && nHibernateContextExtension.Session != null)
             {
-                s_Logger.Debug(@"Flush+Dispose NHibernate-Session from InstanceContext");
-                nHibernateContextExtension.Session.Flush();
+                if (exception == null)
+                {
+                    nHibernateContextExtension.Session.Flush();
+                }
                 nHibernateContextExtension.Session.Dispose();
             }
-            s_Logger.Debug(@"End PostInvoke");
         }
 
         #endregion

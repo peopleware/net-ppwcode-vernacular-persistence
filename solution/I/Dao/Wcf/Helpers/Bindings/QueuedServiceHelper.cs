@@ -70,10 +70,10 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Bindings
                 NetMsmqBinding binding = endpoint.Binding as NetMsmqBinding;
                 if (binding.DeadLetterQueue == DeadLetterQueue.Custom)
                 {
-                    string DLQ = GetQueueFromUri(binding.CustomDeadLetterQueue);
-                    if (MessageQueue.Exists(DLQ) == false)
+                    string dlq = GetQueueFromUri(binding.CustomDeadLetterQueue);
+                    if (MessageQueue.Exists(dlq) == false)
                     {
-                        MessageQueue.Create(DLQ, true);
+                        MessageQueue.Create(dlq, true);
                     }
                 }
             }
@@ -85,7 +85,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Bindings
             {
                 string queueName = GetQueueFromUri(endpoint.Address.Uri);
 
-                if (MessageQueue.Exists(queueName) == true)
+                if (MessageQueue.Exists(queueName))
                 {
                     using (MessageQueue queue = new MessageQueue(queueName))
                     {
@@ -97,7 +97,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Bindings
 
         internal static string GetQueueFromUri(Uri uri)
         {
-            string queue = String.Empty;
+            string queue;
 
             if (uri.Segments[1] == @"private/")
             {

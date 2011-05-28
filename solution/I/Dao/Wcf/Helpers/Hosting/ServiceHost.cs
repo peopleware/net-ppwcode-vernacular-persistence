@@ -35,7 +35,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
             IServiceBehavior,
             IErrorHandler
         {
-            private IErrorHandler m_ErrorHandler;
+            private readonly IErrorHandler m_ErrorHandler;
             public ErrorHandlerBehavior(IErrorHandler errorHandler)
             {
                 m_ErrorHandler = errorHandler;
@@ -68,7 +68,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
             }
         }
 
-        private List<IServiceBehavior> m_ErrorHandlers = new List<IServiceBehavior>();
+        private readonly List<IServiceBehavior> m_ErrorHandlers = new List<IServiceBehavior>();
 
         /// <summary>
         /// Can only call before opening the host
@@ -117,12 +117,12 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
                 metadataBehavior = new ServiceMetadataBehavior();
                 Description.Behaviors.Add(metadataBehavior);
 
-                if (BaseAddresses.Any((uri) => uri.Scheme == "http"))
+                if (BaseAddresses.Any(uri => uri.Scheme == "http"))
                 {
                     metadataBehavior.HttpGetEnabled = enableHttpGet;
                 }
 
-                if (BaseAddresses.Any((uri) => uri.Scheme == "https"))
+                if (BaseAddresses.Any(uri => uri.Scheme == "https"))
                 {
                     metadataBehavior.HttpsGetEnabled = enableHttpGet;
                 }
@@ -255,10 +255,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
                     return securityAudit.MessageAuthenticationAuditLevel == AuditLevel.SuccessOrFailure &&
                            securityAudit.ServiceAuthorizationAuditLevel == AuditLevel.SuccessOrFailure;
                 }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
             set
             {
@@ -267,11 +264,13 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
                     throw new InvalidOperationException("Host is already opened");
                 }
                 ServiceSecurityAuditBehavior securityAudit = Description.Behaviors.Find<ServiceSecurityAuditBehavior>();
-                if (securityAudit == null && value == true)
+                if (securityAudit == null && value)
                 {
-                    securityAudit = new ServiceSecurityAuditBehavior();
-                    securityAudit.MessageAuthenticationAuditLevel = AuditLevel.SuccessOrFailure;
-                    securityAudit.ServiceAuthorizationAuditLevel = AuditLevel.SuccessOrFailure;
+                    securityAudit = new ServiceSecurityAuditBehavior
+                    {
+                        MessageAuthenticationAuditLevel = AuditLevel.SuccessOrFailure,
+                        ServiceAuthorizationAuditLevel = AuditLevel.SuccessOrFailure
+                    };
                     Description.Behaviors.Add(securityAudit);
                 }
             }
@@ -319,7 +318,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
             }
         }
 
-        private static Uri[] Convert(string[] baseAddresses)
+        private static Uri[] Convert(IEnumerable<string> baseAddresses)
         {
             return baseAddresses
                 .Select(address => new Uri(address))

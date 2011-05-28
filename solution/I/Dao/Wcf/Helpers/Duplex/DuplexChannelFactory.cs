@@ -88,7 +88,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Duplex
 
         public static T CreateChannel(InstanceContext<C> context, string endpointName)
         {
-            return DuplexChannelFactory<T>.CreateChannel(context.Context, endpointName);
+            return CreateChannel(context.Context, endpointName);
         }
 
         public static T CreateChannel(C callback, Binding binding, EndpointAddress endpointAddress)
@@ -98,7 +98,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Duplex
 
         public static T CreateChannel(InstanceContext<C> context, Binding binding, EndpointAddress endpointAddress)
         {
-            return DuplexChannelFactory<T>.CreateChannel(context.Context, binding, endpointAddress);
+            return CreateChannel(context.Context, binding, endpointAddress);
         }
     }
 }
