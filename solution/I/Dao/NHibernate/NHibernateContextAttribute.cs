@@ -30,6 +30,8 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         : ServiceInterceptorBehaviorAttribute,
           IContractBehavior
     {
+        public string SessionFactory { get; set; }
+
         #region IContractBehavior Members
 
         void IContractBehavior.AddBindingParameters(ContractDescription contractDescription, ServiceEndpoint endpoint, BindingParameterCollection bindingParameters)
@@ -42,7 +44,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         void IContractBehavior.ApplyDispatchBehavior(ContractDescription contractDescription, ServiceEndpoint endpoint, DispatchRuntime dispatchRuntime)
         {
-            dispatchRuntime.InstanceContextInitializers.Add(new NHibernateContextInitializer());
+            dispatchRuntime.InstanceContextInitializers.Add(new NHibernateContextInitializer(SessionFactory));
         }
 
         void IContractBehavior.Validate(ContractDescription contractDescription, ServiceEndpoint endpoint)
