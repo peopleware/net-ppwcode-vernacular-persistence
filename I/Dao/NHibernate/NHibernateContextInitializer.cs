@@ -35,11 +35,22 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
     public class NHibernateContextInitializer
         : IInstanceContextInitializer
     {
+        private readonly string m_SessionFactory;
+
+        public NHibernateContextInitializer()
+        {
+        }
+
+        public NHibernateContextInitializer(string sessionFactory)
+        {
+            m_SessionFactory = sessionFactory;
+        }
+
         public void Initialize(InstanceContext instanceContext, Message message)
         {
             ISessionFactory sessionFactory = ContextRegistry
                 .GetContext()
-                .GetObject<ISessionFactory>(@"NHibernateSessionFactory");
+                .GetObject<ISessionFactory>(m_SessionFactory ?? @"NHibernateSessionFactory");
             ISession session = sessionFactory != null
                                    ? sessionFactory.OpenSession()
                                    : null;
