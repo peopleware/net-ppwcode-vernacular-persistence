@@ -135,13 +135,20 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public static I CreateInstance<S, I>(Action<ChannelFactory<I>> action)
+        public static I CreateInstance<S, I>(Action<ServiceEndpoint> serviceEndPointAction, Action<ChannelFactory<I>> channelfactoryAction)
             where I : class
             where S : class, I
         {
-            HostRecord hostRecord = GetHostRecord<S, I>();
+            HostRecord hostRecord = GetHostRecord<S, I>(serviceEndPointAction);
             ChannelFactory<I> factory = new ChannelFactory<I>(s_Binding, hostRecord.m_Address);
-            action.Invoke(factory);
+            if (channelfactoryAction != null)
+            {
+                channelfactoryAction.Invoke(factory);
+            }
+            if (serviceEndPointAction != null)
+            {
+                serviceEndPointAction(factory.Endpoint);
+            }
             return factory.CreateChannel();
         }
 
@@ -164,7 +171,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
             return CreateInstance<S, I, C>(context);
         }
 
-        private static HostRecord GetHostRecord<S, I>()
+        private static HostRecord GetHostRecord<S, I>(Action<ServiceEndpoint> serviceEndPointAction)
             where I : class
             where S : class, I
         {
@@ -190,7 +197,11 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
 
                 hostRecord = new HostRecord(host, address);
                 s_Hosts.Add(typeof(S), hostRecord);
-                host.AddServiceEndpoint(typeof(I), s_Binding, address);
+                ServiceEndpoint serviceEndpoint = host.AddServiceEndpoint(typeof(I), s_Binding, address);
+                if (serviceEndPointAction != null)
+                {
+                    serviceEndPointAction(serviceEndpoint);
+                }
                 if (s_Throttles.ContainsKey(typeof(S)))
                 {
                     host.SetThrottle(s_Throttles[typeof(S)]);
@@ -198,6 +209,13 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
                 host.Open();
             }
             return hostRecord;
+        }
+
+        private static HostRecord GetHostRecord<S, I>()
+            where I : class
+            where S : class, I
+        {
+            return GetHostRecord<S,I>(null);
         }
 
         public static void CloseProxy<I>(I instance) where I : class
