@@ -189,14 +189,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
             base.OnOpening();
         }
 
-        protected override void OnClosing()
-        {
-            PurgeQueues();
-            base.OnClosing();
-        }
-
-        [Conditional("DEBUG")]
-        private void PurgeQueues()
+        protected void PurgeQueues()
         {
             foreach (ServiceEndpoint endpoint in Description.Endpoints)
             {
