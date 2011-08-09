@@ -38,7 +38,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         #region Private helpers
 
-        private static Configuration CreateConfiguration(HashSet<Assembly> assemblies)
+        public static Configuration CreateConfiguration(HashSet<Assembly> assemblies)
         {
             Configuration cfg = new Configuration();
 
@@ -76,17 +76,31 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             return cfg.Configure();
         }
 
-        private static ISessionFactory CreateSessionFactory(IEnumerable<KeyValuePair<string, string>> properties, HashSet<Assembly> assemblies)
+        #endregion
+
+        public static ISessionFactory CreateSessionFactory(IEnumerable<KeyValuePair<string, string>> properties, HashSet<Assembly> assemblies)
         {
             Configuration cfg = CreateConfiguration(assemblies);
-            foreach (var item in properties)
+            foreach (KeyValuePair<string, string> item in properties)
             {
-                cfg.Properties.Add(item);
+                if (cfg.Properties.ContainsKey(item.Key))
+                {
+                    if (string.IsNullOrEmpty(item.Value))
+                    {
+                        cfg.Properties.Remove(item.Key);
+                    }
+                    else
+                    {
+                        cfg.SetProperty(item.Key, item.Value);
+                    }
+                }
+                else
+                {
+                    cfg.Properties.Add(item);
+                }
             }
             return cfg.BuildSessionFactory();
         }
-
-        #endregion
 
         public static ISessionFactory CreateSessionFactory(string connectionStringName, IDictionary<string, string> properties, HashSet<Assembly> assemblies)
         {
