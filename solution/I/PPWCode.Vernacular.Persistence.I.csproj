@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D113DEEF-95FD-4A84-B0D4-DF92201592B3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PPWCode.Vernacular.Persistence.I</RootNamespace>
+    <AssemblyName>PPWCode.Vernacular.Persistence.I</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CONTRACTS_FULL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly>
+    </CodeContractsCustomRewriterAssembly>
+    <CodeContractsCustomRewriterClass>
+    </CodeContractsCustomRewriterClass>
+    <CodeContractsLibPaths>
+    </CodeContractsLibPaths>
+    <CodeContractsPlatformPath>
+    </CodeContractsPlatformPath>
+    <CodeContractsExtraAnalysisOptions>
+    </CodeContractsExtraAnalysisOptions>
+    <CodeContractsBaseLineFile>
+    </CodeContractsBaseLineFile>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+    <NoWarn>1591,1592,1573,1571,1570,1572</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>True</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly>
+    </CodeContractsCustomRewriterAssembly>
+    <CodeContractsCustomRewriterClass>
+    </CodeContractsCustomRewriterClass>
+    <CodeContractsLibPaths>
+    </CodeContractsLibPaths>
+    <CodeContractsPlatformPath>
+    </CodeContractsPlatformPath>
+    <CodeContractsExtraAnalysisOptions>
+    </CodeContractsExtraAnalysisOptions>
+    <CodeContractsBaseLineFile>
+    </CodeContractsBaseLineFile>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <NoWarn>1591,1592,1573,1571,1570,1572</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugServiceHosting|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugServiceHosting\</OutputPath>
+    <DefineConstants>CONTRACTS_FULL;TRACE;DEBUG</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1591,1592,1573,1571,1570,1572</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly>
+    </CodeContractsCustomRewriterAssembly>
+    <CodeContractsCustomRewriterClass>
+    </CodeContractsCustomRewriterClass>
+    <CodeContractsLibPaths>
+    </CodeContractsLibPaths>
+    <CodeContractsPlatformPath>
+    </CodeContractsPlatformPath>
+    <CodeContractsExtraAnalysisOptions>
+    </CodeContractsExtraAnalysisOptions>
+    <CodeContractsBaseLineFile>
+    </CodeContractsBaseLineFile>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+  </PropertyGroup>
+  <Choose>
+    <When Condition=" '$(Configuration)' == 'Release' ">
+      <ItemGroup>
+        <Reference Include="PPWCode.Vernacular.Exceptions.I, Version=1.0.4035.27672, Culture=neutral, processorArchitecture=MSIL">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>..\lib\PPWCode.Vernacular.Exceptions\I\Release\PPWCode.Vernacular.Exceptions.I.dll</HintPath>
+        </Reference>
+        <Reference Include="PPWCode.Util.OddsAndEnds.I, Version=1.1.4048.22837, Culture=neutral, processorArchitecture=MSIL">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>..\lib\PPWCode.Util.OddsAndEnds\I\Release\PPWCode.Util.OddsAndEnds.I.dll</HintPath>
+        </Reference>
+        <Reference Include="PPWCode.Vernacular.Semantics.I, Version=1.0.4048.23578, Culture=neutral, processorArchitecture=MSIL">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>..\lib\PPWCode.Vernacular.Semantics\I\Release\PPWCode.Vernacular.Semantics.I.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="PPWCode.Vernacular.Exceptions.I, Version=1.0.4035.27672, Culture=neutral, processorArchitecture=MSIL">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>..\lib\PPWCode.Vernacular.Exceptions\I\Debug\PPWCode.Vernacular.Exceptions.I.dll</HintPath>
+        </Reference>
+        <Reference Include="PPWCode.Util.OddsAndEnds.I, Version=1.1.4048.22837, Culture=neutral, processorArchitecture=MSIL">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>..\lib\PPWCode.Util.OddsAndEnds\I\Debug\PPWCode.Util.OddsAndEnds.I.dll</HintPath>
+        </Reference>
+        <Reference Include="PPWCode.Vernacular.Semantics.I, Version=1.0.4048.23578, Culture=neutral, processorArchitecture=MSIL">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>..\lib\PPWCode.Vernacular.Semantics\I\Debug\PPWCode.Vernacular.Semantics.I.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Reference Include="HibernatingRhinos.Profiler.Appender, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Temp\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Temp\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\log4net 2.0\release\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=736440c9b414ea16, processorArchitecture=MSIL" />
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Temp\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.3.1.20711, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Spring Core 2.0\release\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.WorkflowServices">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Solution Items\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="AbstractAuditableVersionedPersistentObject.cs" />
+    <Compile Include="AbstractPersistentObject.cs" />
+    <Compile Include="AbstractVersionedPersistentObject.cs" />
+    <Compile Include="AbstractAuditablePersistentObject.cs" />
+    <Compile Include="AbstractInsertAuditableVersionedPersistentObject.cs" />
+    <Compile Include="AbstractInsertAuditablePersistentObject.cs" />
+    <Compile Include="Dao\ClientCrudDao.cs" />
+    <Compile Include="Dao\ClientDao.cs" />
+    <Compile Include="Dao\DaoHelper.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateContext.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateContextAttribute.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateContextExtension.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateContextInitializer.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateFlushSessionOperationInterceptor.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateSerializationContractBehaviorAttribute.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateSerializationOperationBehaviourAttribute.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateWcfCrudDao.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateSecurityStatelessCrudDao.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateSessionFactory.cs" />
+    <Compile Include="Dao\NHibernate\UriUserType.cs" />
+    <Compile Include="Dao\PPWAuditLogAttribute.cs" />
+    <Compile Include="Dao\DaoSecurityException.cs" />
+    <Compile Include="Dao\IDao.cs" />
+    <Compile Include="Dao\IdNotFoundException.cs" />
+    <Compile Include="Dao\IPPWSecurity.cs" />
+    <Compile Include="Dao\IStatelessCrudDao.cs" />
+    <Compile Include="Dao\NHibernate\AbstractNHibernateDao.cs" />
+    <Compile Include="Dao\NHibernate\AuditEventListener.cs" />
+    <Compile Include="Dao\DaoSqlException.cs" />
+    <Compile Include="Dao\NHibernate\AuditLog.cs" />
+    <Compile Include="Dao\NHibernate\AuditLogEventListner.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateDataContractSurrogate.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateStatelessCrudDao.cs" />
+    <Compile Include="Dao\ObjectAlreadyChangedException.cs" />
+    <Compile Include="Dao\PPWAuditLogPropertyIgnoreAttribute.cs" />
+    <Compile Include="Dao\PPWSecurityPermissionAttribute.cs" />
+    <Compile Include="Dao\Wcf\Helpers\CommunicationProxyHelper.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Errors\ExceptionMarshallingBehaviorAttribute.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Errors\ExceptionMarshallingElement.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Errors\ExceptionMarshallingErrorHandler.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Errors\DebugHelper.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Duplex\DuplexChannelFactory.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Duplex\DuplexClientBase.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Duplex\InstanceContext.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Errors\ErrorLogBehaviorAttribute.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Errors\ErrorHandlerHelper.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Errors\ExceptionLogbookEntry.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Errors\ExceptionMarshallingMessageInspector.cs" />
+    <Compile Include="Dao\Wcf\Helpers\GenericInterceptor\GenericInvoker.cs" />
+    <Compile Include="Dao\Wcf\Helpers\GenericInterceptor\OperationInterceptorBehaviorAttribute.cs" />
+    <Compile Include="Dao\Wcf\Helpers\GenericInterceptor\ServiceInterceptorBehaviorAttribute.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Hosting\ServiceThrottleHelper.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Hosting\InProcFactory.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Bindings\QueuedServiceHelper.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Hosting\ServiceHost.cs" />
+    <Compile Include="Dao\NHibernate\NHibernateSerializationServiceBehaviorAttribute.cs" />
+    <Compile Include="Dao\Wcf\IWcfCrudDao.cs" />
+    <Compile Include="Dao\Wcf\Helpers\NetDataContractAttribute.cs" />
+    <Compile Include="Dao\Wcf\WcfCrudDao.cs" />
+    <Compile Include="IAuditableObject.cs" />
+    <Compile Include="IInsertAuditableObject.cs" />
+    <Compile Include="IPersistentObject.cs" />
+    <Compile Include="IVersionedPersistentObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dao\NHibernate\AuditLog.hbm.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\lib\Microsoft Stylecop\Microsoft.StyleCop.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
