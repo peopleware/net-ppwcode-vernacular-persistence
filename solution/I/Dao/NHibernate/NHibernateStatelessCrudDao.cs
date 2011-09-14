@@ -56,8 +56,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         /// <param name="aMessage">This message will be used in the loggin in the case aException = Error</param>
         public virtual void TriageException(Exception exception, string message)
         {
-            s_Logger.Fatal(message, exception);
-
+            s_Logger.Debug(message, exception);
             GenericADOException genericAdoException = exception as GenericADOException;
             if (genericAdoException != null)
             {
@@ -72,7 +71,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                 }
                 throw daoSqlException;
             }
-            throw new Error(message, exception);
+            throw new ExternalError(message, exception);
         }
 
         /// <summary>
@@ -110,7 +109,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         {
             if (Disposed)
             {
-                throw new ObjectDisposedException(GetType().FullName);
+                throw new ObjectAlreadyDisposedError(GetType().FullName);
             }
         }
 
@@ -152,8 +151,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             }
             catch (HibernateException he)
             {
-                string message = string.Format("Hibernate retrieve failed for class {0}, ID {1}", typeof(PersistentObjectType).Name, id ?? -1);
-                s_Logger.Fatal(message, he);
+                string message = string.Format("Hibernate retrieve failed for class {0}, ID={1}", typeof(PersistentObjectType).Name, id ?? -1);
                 TriageException(he, message);
             }
 
@@ -196,7 +194,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             catch (HibernateException he)
             {
                 string message = string.Format("RetrieveAll failed for class {0}", typeof(PersistentObjectType).Name);
-                s_Logger.Fatal(message, he);
                 TriageException(he, message);
             }
 
@@ -247,7 +244,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             catch (HibernateException he)
             {
                 string message = string.Format("Create failed for class {0}, object {1}", typeof(PersistentObjectType).Name, po);
-                s_Logger.Fatal(message, he);
                 TriageException(he, message);
             }
 
@@ -272,7 +268,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             CheckObjectAlreadyDisposed();
             CheckSecurity(po.GetType(), SecurityActionFlag.UPDATE);
 
-            // TODO validate concept
             if (s_Logger.IsDebugEnabled)
             {
                 s_Logger.Debug(string.Format("Update called for class {0}, {1}", typeof(PersistentObjectType).Name, po));
@@ -286,19 +281,19 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             }
             catch (InvalidCastException ice)
             {
-                string err = string.Format("Hibernate threw an InvalidCastException during update on class {0}, {1}", typeof(PersistentObjectType).Name, po);
-                s_Logger.Fatal(err, ice);
-                throw new Error(err, ice);
+                string errmsg = string.Format("Hibernate threw an InvalidCastException during update on class {0}, {1}", typeof(PersistentObjectType).Name, po);
+                s_Logger.Error(errmsg, ice);
+                throw new ProgrammingError(errmsg, ice);
             }
             catch (StaleObjectStateException sose)
             {
-                s_Logger.Fatal(string.Format("Object already changed, class {0}, {1}", typeof(PersistentObjectType).Name, po), sose);
+                string errmsg = string.Format("Object already changed, class {0}, {1}", typeof(PersistentObjectType).Name, po);
+                s_Logger.Debug(errmsg, sose);
                 throw new ObjectAlreadyChangedException(po);
             }
             catch (HibernateException he)
             {
                 string message = string.Format("Hibernate Update failed for class {0}, object {1}", typeof(PersistentObjectType).Name, po);
-                s_Logger.Fatal(message, he);
                 TriageException(he, message);
             }
 
@@ -331,16 +326,15 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             }
             catch (StaleObjectStateException sose)
             {
-                s_Logger.Fatal(string.Format("Object already changed, class {0}, {1}", typeof(PersistentObjectType).Name, po), sose);
+                string errmsg = string.Format(@"Object already changed, class {0}, {1}", typeof(PersistentObjectType).Name, po);
+                s_Logger.Debug(errmsg, sose);
                 throw new ObjectAlreadyChangedException(po);
             }
             catch (HibernateException he)
             {
-                string message = string.Format("Delete failed for class {0}, object {1}", typeof(PersistentObjectType).Name, po);
-                s_Logger.Fatal(message, he);
+                string message = string.Format(@"Delete failed for class {0}, object {1}", typeof(PersistentObjectType).Name, po);
                 TriageException(he, message);
             }
-
             po.PersistenceId = null;
 
             if (s_Logger.IsDebugEnabled)
@@ -384,7 +378,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             catch (HibernateException he)
             {
                 string message = string.Format("GetPropertyValue for property {2} failed for class {0}, object {1}", typeof(PersistentObjectType).Name, po, property);
-                s_Logger.Fatal(message, he);
                 TriageException(he, message);
             }
 
@@ -431,7 +424,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             catch (HibernateException he)
             {
                 string message = string.Format("GetChildren for property {2} failed for class {0}, object {1}", typeof(PersistentObjectType).Name, po, property);
-                s_Logger.Fatal(message, he);
                 TriageException(he, message);
             }
 

@@ -19,10 +19,12 @@ using System.Diagnostics.Contracts;
 using System.Runtime.Serialization;
 using System.ServiceModel.Security;
 
+using PPWCode.Vernacular.Exceptions.I;
+
 namespace PPWCode.Vernacular.Persistence.I.Dao
 {
     [Serializable]
-    public class DaoSecurityException : SecurityAccessDeniedException
+    public class DaoSecurityException : SemanticException
     {
         public DaoSecurityException()
             : base()

@@ -22,6 +22,8 @@ using System.ServiceModel.Channels;
 
 using log4net;
 
+using PPWCode.Vernacular.Exceptions.I;
+
 #endregion
 
 namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
@@ -38,7 +40,14 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
         public static void LogError(Exception error, MessageFault fault)
         {
             string message = CreateLogbookentry(error, fault).ToString();
-            s_Logger.Error(message, error);
+            if (error is SemanticException)
+            {
+                s_Logger.Debug(message, error);
+            }
+            else
+            {
+                s_Logger.Error(message, error);
+            }
         }
 
         private static ExceptionLogbookEntry CreateLogbookentry(Exception error, MessageFault fault)

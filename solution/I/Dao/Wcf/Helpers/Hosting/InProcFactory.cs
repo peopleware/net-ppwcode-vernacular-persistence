@@ -215,7 +215,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
             where I : class
             where S : class, I
         {
-            return GetHostRecord<S,I>(null);
+            return GetHostRecord<S, I>(null);
         }
 
         public static void CloseProxy<I>(I instance) where I : class

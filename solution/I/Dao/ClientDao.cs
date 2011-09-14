@@ -24,6 +24,7 @@ using System.ServiceModel;
 
 using log4net;
 
+using PPWCode.Vernacular.Exceptions.I;
 using PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers;
 
 #endregion
@@ -177,7 +178,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             }
             catch (Exception e)
             {
-                s_Logger.Error(MethodBase.GetCurrentMethod().Name, e);
+                s_Logger.Error(e);
             }
         }
 
@@ -203,7 +204,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
         {
             if (Disposed)
             {
-                throw new ObjectDisposedException(GetType().FullName);
+                throw new ObjectAlreadyDisposedError(GetType().FullName);
             }
         }
 
