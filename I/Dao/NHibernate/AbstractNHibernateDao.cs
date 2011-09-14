@@ -107,7 +107,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             }
             catch (Exception e)
             {
-                s_Logger.Warn(MethodBase.GetCurrentMethod().Name, e);
+                s_Logger.Error(e);
             }
         }
 

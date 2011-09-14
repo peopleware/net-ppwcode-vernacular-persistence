@@ -57,7 +57,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers
             }
             catch (Exception e)
             {
-                s_Logger.Fatal(co, e);
+                s_Logger.Error(co, e);
                 // ReSharper disable EmptyGeneralCatchClause
                 try
                 {

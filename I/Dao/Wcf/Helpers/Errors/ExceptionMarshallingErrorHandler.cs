@@ -65,12 +65,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
                 msg,
                 e.StackTrace);
 
-            CompoundSemanticException cse = e as CompoundSemanticException;
-            if (cse != null)
-            {
-                msg = string.Format("{1}{0}{0}CompoundException:{0}{2}", Environment.NewLine, msg, cse);
-            }
-
             Exception inner = e.InnerException;
             while (inner != null)
             {
@@ -82,7 +76,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
                     inner.StackTrace);
                 inner = inner.InnerException;
             }
-            return new Exception(msg);
+            return new ProgrammingError(msg);
         }
     }
 }
