@@ -42,7 +42,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
             string message = CreateLogbookentry(error, fault).ToString();
             if (error is SemanticException)
             {
-                s_Logger.Debug(message, error);
+                s_Logger.Info(message, error);
             }
             else
             {
