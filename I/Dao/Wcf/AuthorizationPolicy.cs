@@ -10,7 +10,7 @@ using PPWCode.Vernacular.Exceptions.I;
 
 #endregion
 
-namespace PensioB.Common.API_I.ServiceSecurity
+namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
 {
     public class AuthorizationPolicy :
         IAuthorizationPolicy
