@@ -1,0 +1,18 @@
+﻿name: PPWCode.Vernacular.Persistence
+build: msbuild;
+  project=src\I\PPWCode.Vernacular.Persistence.I.csproj;
+  profile=net35;
+build: files;
+  file=. -> LICENSE;
+  file=. -> NOTICE; 
+use-symlinks: false
+depends: openwrap = 2.0 anchored content
+depends: Microsoft.StyleCop-PPWStyle >= 1.0 < 2.0
+depends: Microsoft.Contracts >= 1.0 < 2.0
+depends: PPWCode.Vernacular.Exceptions >= 2.0 < 3.0
+depends: PPWCode.Vernacular.Semantics >= 2.0 < 3.0
+depends: Apache.Log4Net = 1.2.10
+depends: Spring.Core = 1.3.1
+depends: PPWCode.Util.OddsAndEnds >= 1.7 < 2.0
+depends: HibernatingRhinos.Profiler.Appender = 1.0.0
+depends: NHibernate = 3.1.0
