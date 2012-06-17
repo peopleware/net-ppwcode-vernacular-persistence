@@ -10,8 +10,8 @@ use-symlinks: false
 
 # default
 depends: openwrap = 2.0 anchored content
-depends: Microsoft.StyleCop-PPWStyle >= 1.0 < 2.0
-depends: Microsoft.Contracts >= 1.0 < 2.0
+depends: Microsoft.StyleCop-PPWStyle >= 1.0 and < 2.0
+depends: Microsoft.Contracts >= 1.0 and < 2.0
 
 # open source
 depends: Apache.Log4Net = 1.2.10
