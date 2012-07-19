@@ -67,6 +67,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
 
             m_Obj = obj;
             m_WindowsIdentity = windowsIdentity;
+            s_Logger.InfoFormat(@"WindowsIdentity set to {0}", m_WindowsIdentity != null ? m_WindowsIdentity.Name : "null");
         }
 
         protected ClientDao(object obj) : this(obj, null)
@@ -111,6 +112,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
 
                 CheckObjectAlreadyDisposed();
                 m_WindowsIdentity = value;
+                s_Logger.InfoFormat(@"WindowsIdentity set to {0}", m_WindowsIdentity != null ? m_WindowsIdentity.Name : "null");
             }
         }
 
