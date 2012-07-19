@@ -7,7 +7,7 @@ using System.Reflection;
 [assembly: AssemblyCulture("")]
 
 // assembly version: up only when not backwards compatible
-[assembly: AssemblyVersion("0.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.0")]
 
 // assembly file version, keep in sync with package version
-[assembly: AssemblyFileVersion("0.0.0.0")]
+[assembly: AssemblyFileVersion("1.4.1.0")]
