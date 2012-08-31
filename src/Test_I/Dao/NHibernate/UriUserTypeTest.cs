@@ -3,8 +3,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 using PPWCode.Vernacular.Persistence.I.Dao.NHibernate;
 
@@ -12,7 +11,7 @@ using PPWCode.Vernacular.Persistence.I.Dao.NHibernate;
 
 namespace PPWCode.Vernacular.Persistence.Test_I.Dao.NHibernate
 {
-    [TestClass]
+    [TestFixture]
     public class UriUserTypeTest
     {
         public TestContext TestContext { get; set; }
@@ -21,7 +20,7 @@ namespace PPWCode.Vernacular.Persistence.Test_I.Dao.NHibernate
 
         #endregion
 
-        [TestMethod]
+        [Test]
         public void NullSafeSetTest()
         {
             UriUserType target = new UriUserType();
@@ -43,7 +42,7 @@ namespace PPWCode.Vernacular.Persistence.Test_I.Dao.NHibernate
             }
         }
 
-        [TestMethod]
+        [Test]
         public void NullSafeSetTest2()
         {
             UriUserType target = new UriUserType();
@@ -67,7 +66,7 @@ namespace PPWCode.Vernacular.Persistence.Test_I.Dao.NHibernate
             }
         }
 
-        [TestMethod]
+        [Test]
         public void NullSafeSetTest3()
         {
             UriUserType target = new UriUserType();
@@ -96,7 +95,7 @@ namespace PPWCode.Vernacular.Persistence.Test_I.Dao.NHibernate
             null,
         };
 
-        [TestMethod]
+        [Test]
         public void NullSafeGetTest()
         {
             UriUserType target = new UriUserType();
@@ -119,7 +118,7 @@ namespace PPWCode.Vernacular.Persistence.Test_I.Dao.NHibernate
             }
         }
 
-        [TestMethod]
+        [Test]
         public void RoundtripTest()
         {
             // writer

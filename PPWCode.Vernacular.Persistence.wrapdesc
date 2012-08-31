@@ -25,3 +25,6 @@ depends: PPWCode.Util.OddsAndEnds >= 2.0 and < 3.0
 
 # nhibernate profiler
 depends: HibernatingRhinos.Profiler.Appender = 1.0.0
+
+# testen
+depends: NUnit >= 2.6 and < 3.0

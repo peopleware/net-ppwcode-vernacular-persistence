@@ -16,7 +16,7 @@
 
 #region Using
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 using PPWCode.Vernacular.Persistence.I;
 
@@ -24,7 +24,7 @@ using PPWCode.Vernacular.Persistence.I;
 
 namespace PPWCode.Vernacular.Persistence.Test_I
 {
-    [TestClass]
+    [TestFixture]
     public class AbstractPersistentObjectTest
     {
         private sealed class PersistentObject :
@@ -32,13 +32,13 @@ namespace PPWCode.Vernacular.Persistence.Test_I
         {
         }
 
-        [TestMethod, Description("AbstractPersistentObject Constructor")]
+        [Test, Description("AbstractPersistentObject Constructor")]
         public void TestAbstractPersistentObjectConstructor()
         {
             new PersistentObject();
         }
 
-        [TestMethod, Description("AbstractPersistentObject HasSamePersistenceId")]
+        [Test, Description("AbstractPersistentObject HasSamePersistenceId")]
         public void TestAbstractPersistentObjectHasSamePersistenceId()
         {
             PersistentObject po1 = new PersistentObject

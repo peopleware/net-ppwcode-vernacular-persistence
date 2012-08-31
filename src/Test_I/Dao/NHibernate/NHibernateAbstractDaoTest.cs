@@ -11,19 +11,18 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+ * limitations under the License.*/
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 using PPWCode.Vernacular.Persistence.I.Dao.NHibernate;
 
 namespace PPWCode.Vernacular.Persistence.Test_I.Dao.NHibernate
 {
-    [TestClass]
+    [TestFixture]
     public class NHibernateAbstractDaoTest
     {
-        [TestMethod, Description("AbstractNHibernateDao Constructor")]
+        [Test, Description("AbstractNHibernateDao Constructor")]
         public void TestAbstractNHibernateDaoConstructorTest()
         {
             new NHibernateDao();

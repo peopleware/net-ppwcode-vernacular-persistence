@@ -18,7 +18,7 @@
 
 using System.ComponentModel;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 using PPWCode.Vernacular.Persistence.I;
 
@@ -30,7 +30,7 @@ namespace PPWCode.Vernacular.Persistence.Test_I
     /// This is a test class for AbstractPersistentObjectTest and is intended
     /// to contain all AbstractPersistentObjectTest Unit Tests
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class AbstractVersionedPersistentObjectTest
     {
         private sealed class VersionedPersistentObject :
@@ -55,7 +55,7 @@ namespace PPWCode.Vernacular.Persistence.Test_I
             }
         }
 
-        [TestMethod, Microsoft.VisualStudio.TestTools.UnitTesting.Description("AbstractVersionedPersistentObject Constructor")]
+        [Test, NUnit.Framework.Description("AbstractVersionedPersistentObject Constructor")]
         public void TestAbstractVersionedPersistentObjectConstructor()
         {
             new VersionedPersistentObject();
@@ -65,7 +65,7 @@ namespace PPWCode.Vernacular.Persistence.Test_I
 
         private int m_NotifyPropertyChangedClass;
 
-        [TestMethod, Microsoft.VisualStudio.TestTools.UnitTesting.Description("AbstractVersionedPersistentObject NotifyPropertyChanged")]
+        [Test, NUnit.Framework.Description("AbstractVersionedPersistentObject NotifyPropertyChanged")]
         public void TestAbstractVersionedPersistentObjectNotifyPropertyChanged()
         {
             VersionedPersistentObject po = new VersionedPersistentObject();
