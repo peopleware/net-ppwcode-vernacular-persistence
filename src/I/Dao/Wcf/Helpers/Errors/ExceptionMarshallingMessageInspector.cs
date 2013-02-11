@@ -88,6 +88,11 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
                     // Serializer was unable to find assembly where exception is defined
                     return null;
                 }
+                catch (SerializationException)
+                {
+                    // Error during deserialization
+                    return null;
+                }
             }
         }
     }
