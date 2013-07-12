@@ -20,15 +20,20 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		DebugNoInvariants|Any CPU = DebugNoInvariants|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D113DEEF-95FD-4A84-B0D4-DF92201592B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D113DEEF-95FD-4A84-B0D4-DF92201592B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D113DEEF-95FD-4A84-B0D4-DF92201592B3}.DebugNoInvariants|Any CPU.ActiveCfg = DebugNoInvariants|Any CPU
+		{D113DEEF-95FD-4A84-B0D4-DF92201592B3}.DebugNoInvariants|Any CPU.Build.0 = DebugNoInvariants|Any CPU
 		{D113DEEF-95FD-4A84-B0D4-DF92201592B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D113DEEF-95FD-4A84-B0D4-DF92201592B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A4C3A11D-AF86-4972-9472-ABB01E6D279B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A4C3A11D-AF86-4972-9472-ABB01E6D279B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4C3A11D-AF86-4972-9472-ABB01E6D279B}.DebugNoInvariants|Any CPU.ActiveCfg = DebugNoInvariants|Any CPU
+		{A4C3A11D-AF86-4972-9472-ABB01E6D279B}.DebugNoInvariants|Any CPU.Build.0 = DebugNoInvariants|Any CPU
 		{A4C3A11D-AF86-4972-9472-ABB01E6D279B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4C3A11D-AF86-4972-9472-ABB01E6D279B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
