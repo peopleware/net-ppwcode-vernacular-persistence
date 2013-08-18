@@ -60,10 +60,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             : base(crudDao, windowsIdentity)
         {
             Contract.Requires(crudDao != null);
-            Contract.Requires(windowsIdentity == null
-                              || (windowsIdentity.IsAuthenticated
-                                  && (windowsIdentity.ImpersonationLevel == TokenImpersonationLevel.Impersonation
-                                      || windowsIdentity.ImpersonationLevel == TokenImpersonationLevel.Delegation)));
             Contract.Ensures(crudDao == CrudDao);
             Contract.Ensures(WindowsIdentity == windowsIdentity);
         }

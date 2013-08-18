@@ -167,9 +167,12 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
 
         ~WcfCrudDao()
         {
-            lock (m_Locker)
+            if (m_Locker != null)
             {
-                SafeCleanup();
+                lock (m_Locker)
+                {
+                    SafeCleanup();
+                }
             }
         }
 

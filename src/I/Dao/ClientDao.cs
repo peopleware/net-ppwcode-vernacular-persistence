@@ -58,12 +58,31 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
         protected ClientDao(object obj, WindowsIdentity windowsIdentity)
         {
             Contract.Requires(obj != null);
-            Contract.Requires(windowsIdentity == null
-                              || (windowsIdentity.IsAuthenticated
-                                  && (windowsIdentity.ImpersonationLevel == TokenImpersonationLevel.Impersonation
-                                      || windowsIdentity.ImpersonationLevel == TokenImpersonationLevel.Delegation)));
             Contract.Ensures(obj == Obj);
             Contract.Ensures(windowsIdentity == WindowsIdentity);
+
+            bool windowsIdentityOk =
+                windowsIdentity == null
+                 || (windowsIdentity.IsAuthenticated
+                     && (windowsIdentity.ImpersonationLevel == TokenImpersonationLevel.Impersonation
+                         || windowsIdentity.ImpersonationLevel == TokenImpersonationLevel.Delegation));
+            if (!windowsIdentityOk)
+            {
+                string msg;
+                if (!windowsIdentity.IsAuthenticated)
+                {
+                    msg = string.Format(@"WindowsIdentity {0} cannot be used because it is not authenticated.", windowsIdentity.Name);
+                }
+                else
+                {
+                    msg = string.Format(
+                            @"WindowsIdentity {0} cannot be used because it does not have the correct impersonation level ({1}).", 
+                            windowsIdentity.Name,
+                            windowsIdentity.ImpersonationLevel);
+                }
+                s_Logger.Error(msg);
+                throw new ProgrammingError(msg);
+            }
 
             m_Obj = obj;
             m_WindowsIdentity = windowsIdentity;
@@ -105,10 +124,28 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             }
             set
             {
-                Contract.Requires(value == null
-                                  || (value.IsAuthenticated
-                                      && (value.ImpersonationLevel == TokenImpersonationLevel.Impersonation
-                                          || value.ImpersonationLevel == TokenImpersonationLevel.Delegation)));
+                bool windowsIdentityOk =
+                    value == null
+                     || (value.IsAuthenticated
+                         && (value.ImpersonationLevel == TokenImpersonationLevel.Impersonation
+                             || value.ImpersonationLevel == TokenImpersonationLevel.Delegation));
+                if (!windowsIdentityOk)
+                {
+                    string msg;
+                    if (!value.IsAuthenticated)
+                    {
+                        msg = string.Format(@"WindowsIdentity {0} cannot be used because it is not authenticated.", value.Name);
+                    }
+                    else
+                    {
+                        msg = string.Format(
+                                @"WindowsIdentity {0} cannot be used because it does not have the correct impersonation level ({1}).",
+                                value.Name,
+                                value.ImpersonationLevel);
+                    }
+                    s_Logger.Error(msg);
+                    throw new ProgrammingError(msg);
+                }
 
                 CheckObjectAlreadyDisposed();
                 m_WindowsIdentity = value;
@@ -135,12 +172,15 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
 
         ~ClientDao()
         {
-            lock (m_Locker)
+            if (m_Locker != null)
             {
-                if (!m_Disposed)
+                lock (m_Locker)
                 {
-                    s_Logger.Warn("Code smell: Call dispose directly instead of relying on the finalizer.");
-                    SafeCleanup();
+                    if (!m_Disposed)
+                    {
+                        s_Logger.Warn("Code smell: Call dispose directly instead of relying on the finalizer.");
+                        SafeCleanup();
+                    }
                 }
             }
         }
