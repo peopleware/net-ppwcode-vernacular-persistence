@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TestRunConfiguration name="PPWCodePersistenceUnitTests" id="C240AA63-4124-4005-843C-F421351033B2" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
-  <NamingScheme baseName="PPWCodePersistenceUnitTests" useDefault="false" />
-  <TestTypeSpecific />
-</TestRunConfiguration>
