@@ -6,9 +6,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Solution Items\SolutionInfo.cs = Solution Items\SolutionInfo.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPWCode.Vernacular.Persistence.I", "I\PPWCode.Vernacular.Persistence.I.csproj", "{D113DEEF-95FD-4A84-B0D4-DF92201592B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPWCode.Vernacular.Persistence.II", "II\PPWCode.Vernacular.Persistence.I.csproj", "{D113DEEF-95FD-4A84-B0D4-DF92201592B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPWCode.Vernacular.Persistence.Test_I", "Test_I\PPWCode.Vernacular.Persistence.Test_I.csproj", "{A4C3A11D-AF86-4972-9472-ABB01E6D279B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPWCode.Vernacular.Persistence.Test.II", "Test.II\PPWCode.Vernacular.Persistence.Test_I.csproj", "{A4C3A11D-AF86-4972-9472-ABB01E6D279B}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
