@@ -9,7 +9,7 @@ using System.Threading;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf
 {
     public sealed class CustomPrincipal : IPrincipal
     {

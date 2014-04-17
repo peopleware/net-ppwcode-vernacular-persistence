@@ -16,7 +16,7 @@
 
 using System.ServiceModel;
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Duplex
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Duplex
 {
     public class InstanceContext<T>
     {

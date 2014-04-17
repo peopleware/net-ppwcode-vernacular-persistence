@@ -18,7 +18,7 @@ using System;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Duplex
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Duplex
 {
     public abstract class DuplexClientBase<T, C> : DuplexClientBase<T> where T : class
     {

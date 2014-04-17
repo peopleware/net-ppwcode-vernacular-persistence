@@ -18,7 +18,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Duplex
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Duplex
 {
     public class DuplexChannelFactory<T, C> : DuplexChannelFactory<T> where T : class
     {

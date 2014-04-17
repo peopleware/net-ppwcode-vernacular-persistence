@@ -20,7 +20,7 @@ using System.ServiceModel;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     public class NHibernateContext
     {

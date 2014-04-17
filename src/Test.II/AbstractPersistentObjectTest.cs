@@ -17,12 +17,11 @@
 #region Using
 
 using NUnit.Framework;
-
-using PPWCode.Vernacular.Persistence.I;
+using PPWCode.Vernacular.Persistence.II;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.Test_I
+namespace PPWCode.Vernacular.Persistence.Test.II
 {
     [TestFixture]
     public class AbstractPersistentObjectTest

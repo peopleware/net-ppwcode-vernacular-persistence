@@ -19,12 +19,11 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
-
-using PPWCode.Vernacular.Exceptions.I;
+using PPWCode.Vernacular.Exceptions.II;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I
+namespace PPWCode.Vernacular.Persistence.II
 {
     [ContractClass(typeof(IInsertAuditableObjectContract))]
     public interface IInsertAuditableObject :

@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao
+namespace PPWCode.Vernacular.Persistence.II.Dao
 {
     [Serializable, Flags, ComVisible(true)]
     public enum SecurityActionFlag : byte

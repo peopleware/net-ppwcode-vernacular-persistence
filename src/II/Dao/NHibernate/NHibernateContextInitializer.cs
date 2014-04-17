@@ -19,18 +19,14 @@
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Dispatcher;
-
 using NHibernate;
-
-using PPWCode.Util.OddsAndEnds.I.Extensions;
-
+using PPWCode.Util.OddsAndEnds.II.Extensions;
 using Spring.Context.Support;
-
 using ISession = NHibernate.ISession;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     public class NHibernateContextInitializer
         : IInstanceContextInitializer

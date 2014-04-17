@@ -23,20 +23,16 @@ using System.Data.SqlClient;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection;
-
+using Common.Logging;
 using Iesi.Collections.Generic;
-
-using log4net;
-
 using NHibernate;
 using NHibernate.Exceptions;
-
-using PPWCode.Util.OddsAndEnds.I.Extensions;
-using PPWCode.Vernacular.Exceptions.I;
+using PPWCode.Util.OddsAndEnds.II.Extensions;
+using PPWCode.Vernacular.Exceptions.II;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     public class NHibernateStatelessCrudDao :
         AbstractNHibernateDao,

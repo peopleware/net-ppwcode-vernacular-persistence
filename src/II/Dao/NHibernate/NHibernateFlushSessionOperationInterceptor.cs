@@ -18,12 +18,11 @@
 
 using System;
 using System.ServiceModel.Dispatcher;
-
-using PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.GenericInterceptor;
+using PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.GenericInterceptor;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     public class NHibernateFlushSessionOperationInterceptor
         : GenericInvoker

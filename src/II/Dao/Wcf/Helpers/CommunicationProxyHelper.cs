@@ -18,12 +18,11 @@
 
 using System;
 using System.ServiceModel;
-
-using log4net;
+using Common.Logging;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers
 {
     public static class CommunicationProxyHelper
     {

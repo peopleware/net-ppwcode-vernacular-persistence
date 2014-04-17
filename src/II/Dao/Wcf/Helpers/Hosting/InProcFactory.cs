@@ -22,12 +22,11 @@ using System.Runtime.CompilerServices;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
-
-using PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Duplex;
+using PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Duplex;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Hosting
 {
     public static class InProcFactory
     {

@@ -7,7 +7,7 @@ using System.ServiceModel.Dispatcher;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     [AttributeUsage(AttributeTargets.Method)]
     public class NHibernateSerializationOperationBehaviourAttribute

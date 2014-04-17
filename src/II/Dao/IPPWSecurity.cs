@@ -22,7 +22,7 @@ using System.Threading;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao
+namespace PPWCode.Vernacular.Persistence.II.Dao
 {
     [ContractClass(typeof(IPPWSecurityContract))]
     public interface IPPWSecurity

@@ -23,7 +23,7 @@ using System.ServiceModel.Dispatcher;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.GenericInterceptor
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.GenericInterceptor
 {
     [AttributeUsage(AttributeTargets.Method)]
     public abstract class OperationInterceptorBehaviorAttribute

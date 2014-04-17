@@ -17,11 +17,9 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.Serialization;
-using System.ServiceModel.Security;
+using PPWCode.Vernacular.Exceptions.II;
 
-using PPWCode.Vernacular.Exceptions.I;
-
-namespace PPWCode.Vernacular.Persistence.I.Dao
+namespace PPWCode.Vernacular.Persistence.II.Dao
 {
     [Serializable]
     public class DaoSecurityException : SemanticException

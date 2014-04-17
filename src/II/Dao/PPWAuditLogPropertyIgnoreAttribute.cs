@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao
+namespace PPWCode.Vernacular.Persistence.II.Dao
 {
     [Serializable, ComVisible(true), AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
     public class PPWAuditLogPropertyIgnoreAttribute : Attribute

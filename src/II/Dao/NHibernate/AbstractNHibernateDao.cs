@@ -18,15 +18,12 @@
 
 using System;
 using System.Diagnostics.Contracts;
-using System.Reflection;
-
-using log4net;
-
+using Common.Logging;
 using NHibernate;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     public abstract class AbstractNHibernateDao :
         IDao

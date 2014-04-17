@@ -20,15 +20,13 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Security.Principal;
-
 using Iesi.Collections.Generic;
-
-using PPWCode.Util.OddsAndEnds.I.Extensions;
-using PPWCode.Vernacular.Persistence.I.Dao.Wcf;
+using PPWCode.Util.OddsAndEnds.II.Extensions;
+using PPWCode.Vernacular.Persistence.II.Dao.Wcf;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao
+namespace PPWCode.Vernacular.Persistence.II.Dao
 {
     public abstract class ClientCrudDao :
         ClientDao

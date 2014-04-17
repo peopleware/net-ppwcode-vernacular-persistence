@@ -21,15 +21,13 @@ using System.CodeDom;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Runtime.Serialization;
-
 using Iesi.Collections.Generic;
-
 using NHibernate.Collection;
 using NHibernate.Proxy;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     public class NHibernateDataContractSurrogate :
         IDataContractSurrogate

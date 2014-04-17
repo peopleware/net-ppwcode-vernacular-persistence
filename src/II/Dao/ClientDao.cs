@@ -18,18 +18,15 @@
 
 using System;
 using System.Diagnostics.Contracts;
-using System.Reflection;
 using System.Security.Principal;
 using System.ServiceModel;
-
-using log4net;
-
-using PPWCode.Vernacular.Exceptions.I;
-using PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers;
+using Common.Logging;
+using PPWCode.Vernacular.Exceptions.II;
+using PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao
+namespace PPWCode.Vernacular.Persistence.II.Dao
 {
     public abstract class ClientDao :
         IDisposable

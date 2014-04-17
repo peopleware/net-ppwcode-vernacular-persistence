@@ -26,7 +26,7 @@ using System.ServiceModel.Description;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.GenericInterceptor
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.GenericInterceptor
 {
     [AttributeUsage(AttributeTargets.Class)]
     public abstract class ServiceInterceptorBehaviorAttribute

@@ -18,14 +18,13 @@
 
 using System;
 using System.Data;
-
 using NHibernate;
 using NHibernate.SqlTypes;
 using NHibernate.UserTypes;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     /// <summary>
     /// <see cref="IUserType"/> for <see cref="Uri"/> instances,

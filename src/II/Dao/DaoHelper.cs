@@ -20,14 +20,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-
 using Iesi.Collections.Generic;
-
-using PPWCode.Util.OddsAndEnds.I.Extensions;
+using PPWCode.Util.OddsAndEnds.II.Extensions;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao
+namespace PPWCode.Vernacular.Persistence.II.Dao
 {
     public static class DaoHelper
     {

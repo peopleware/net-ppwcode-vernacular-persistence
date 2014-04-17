@@ -23,7 +23,7 @@ using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 using System.Xml;
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers
 {
     [DebuggerStepThrough]
     public class NetDataContractAttribute : Attribute, IOperationBehavior

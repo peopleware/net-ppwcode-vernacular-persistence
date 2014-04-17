@@ -24,7 +24,7 @@ using System.ServiceModel.Description;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class NHibernateSerializationServiceBehaviorAttribute :

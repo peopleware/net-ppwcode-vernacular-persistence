@@ -17,7 +17,7 @@
 using System;
 using System.ServiceModel.Configuration;
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Errors
 {
     public class ExceptionMarshallingElement : BehaviorExtensionElement
     {

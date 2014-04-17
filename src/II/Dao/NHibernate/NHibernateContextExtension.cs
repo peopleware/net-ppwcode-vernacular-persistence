@@ -21,12 +21,11 @@ using System.Collections;
 using System.Reflection;
 using System.ServiceModel;
 using System.Text;
-
 using NHibernate;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     public class NHibernateContextExtension
         : IExtension<InstanceContext>

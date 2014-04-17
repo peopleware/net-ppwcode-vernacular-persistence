@@ -18,12 +18,11 @@
 
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
-
-using PPWCode.Vernacular.Exceptions.I;
+using PPWCode.Vernacular.Exceptions.II;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I
+namespace PPWCode.Vernacular.Persistence.II
 {
     /// <summary>
     /// <p> Persistency should always be implemented with versioning (optimistic locking). For that, the property

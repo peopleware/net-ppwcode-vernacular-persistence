@@ -4,8 +4,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using NUnit.Framework;
-
-using PPWCode.Vernacular.Persistence.I.Dao.NHibernate;
+using PPWCode.Vernacular.Persistence.II.Dao.NHibernate;
 
 #endregion
 

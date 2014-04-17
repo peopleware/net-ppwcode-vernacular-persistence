@@ -23,12 +23,11 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
-
-using log4net;
+using Common.Logging;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Errors
 {
     public class ExceptionMarshallingBehaviorAttribute :
         Attribute,

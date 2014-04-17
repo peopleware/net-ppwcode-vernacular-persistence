@@ -21,20 +21,16 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics.Contracts;
 using System.ServiceModel;
-
 using HibernatingRhinos.Profiler.Appender.NHibernate;
-
 using NHibernate;
-
-using PPWCode.Util.OddsAndEnds.I.Extensions;
-using PPWCode.Vernacular.Exceptions.I;
-using PPWCode.Vernacular.Persistence.I.Dao.Wcf;
-using PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers;
-using PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors;
+using PPWCode.Util.OddsAndEnds.II.Extensions;
+using PPWCode.Vernacular.Exceptions.II;
+using PPWCode.Vernacular.Persistence.II.Dao.Wcf;
+using PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Errors;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     [NHibernateSerializationServiceBehavior]
     [ErrorLogBehavior]

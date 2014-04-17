@@ -19,16 +19,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.ServiceModel;
-
-using log4net;
-
-using PPWCode.Vernacular.Exceptions.I;
+using Common.Logging;
+using PPWCode.Vernacular.Exceptions.II;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf
 {
     public abstract class WcfCrudDao :
         IWcfCrudDao

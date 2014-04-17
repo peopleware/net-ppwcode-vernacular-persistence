@@ -19,12 +19,11 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.Serialization;
-
-using PPWCode.Vernacular.Semantics.I;
+using PPWCode.Vernacular.Semantics.II;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I
+namespace PPWCode.Vernacular.Persistence.II
 {
     [Serializable, DataContract(IsReference = true)]
     public abstract class AbstractPersistentObject :

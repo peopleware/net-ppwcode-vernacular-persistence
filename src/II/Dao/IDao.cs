@@ -17,7 +17,7 @@
 using System;
 using System.Diagnostics.Contracts;
 
-namespace PPWCode.Vernacular.Persistence.I.Dao
+namespace PPWCode.Vernacular.Persistence.II.Dao
 {
     /// <summary>
     /// Data Access Object. This interface is mainly used for documentation purposes, to flag a type as a

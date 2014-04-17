@@ -18,7 +18,7 @@ using System;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Hosting
 {
     public static class ServiceThrottleHelper
     {

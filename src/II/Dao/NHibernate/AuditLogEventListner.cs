@@ -20,16 +20,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-
 using NHibernate;
 using NHibernate.Event;
-
-using PPWCode.Util.OddsAndEnds.I.Security;
-using PPWCode.Vernacular.Exceptions.I;
+using PPWCode.Util.OddsAndEnds.II.Security;
+using PPWCode.Vernacular.Exceptions.II;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     public class AuditLogEventListner :
         IPostUpdateEventListener,

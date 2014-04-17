@@ -22,7 +22,7 @@ using System.Diagnostics.Contracts;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao
+namespace PPWCode.Vernacular.Persistence.II.Dao
 {
     [ContractClass(typeof(IStatelessCrudDaoContract))]
     public interface IStatelessCrudDao :

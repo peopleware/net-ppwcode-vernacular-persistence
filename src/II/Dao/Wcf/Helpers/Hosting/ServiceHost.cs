@@ -17,17 +17,15 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
+using PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Bindings;
+using PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Errors;
 
-using PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Bindings;
-using PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors;
-
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Hosting
 {
     public class ServiceHost<T> : ServiceHost
     {

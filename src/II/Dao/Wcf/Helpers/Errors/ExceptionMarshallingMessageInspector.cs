@@ -22,7 +22,7 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Dispatcher;
 using System.Xml;
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Errors
 {
     public class ExceptionMarshallingMessageInspector :
         IClientMessageInspector

@@ -22,7 +22,7 @@ using System.Reflection;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Errors
 {
     public struct ExceptionLogbookEntry
     {

@@ -18,13 +18,12 @@
 
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
-
-using PPWCode.Vernacular.Exceptions.I;
-using PPWCode.Vernacular.Semantics.I;
+using PPWCode.Vernacular.Exceptions.II;
+using PPWCode.Vernacular.Semantics.II;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I
+namespace PPWCode.Vernacular.Persistence.II
 {
     /// <summary>
     /// <p> Persistent classes need a primary key. Persistent objects always represent real-world objects,

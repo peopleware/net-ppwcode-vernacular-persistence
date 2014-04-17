@@ -14,10 +14,9 @@
  * limitations under the License.*/
 
 using NUnit.Framework;
+using PPWCode.Vernacular.Persistence.II.Dao.NHibernate;
 
-using PPWCode.Vernacular.Persistence.I.Dao.NHibernate;
-
-namespace PPWCode.Vernacular.Persistence.Test_I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.Test.II.Dao.NHibernate
 {
     [TestFixture]
     public class NHibernateAbstractDaoTest

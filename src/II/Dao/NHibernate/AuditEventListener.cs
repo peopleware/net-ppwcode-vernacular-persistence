@@ -15,13 +15,11 @@
  */
 
 using System;
-
 using NHibernate.Event;
 using NHibernate.Persister.Entity;
+using PPWCode.Util.OddsAndEnds.II.Security;
 
-using PPWCode.Util.OddsAndEnds.I.Security;
-
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     public class AuditEventListener :
         IPreUpdateEventListener,

@@ -5,12 +5,11 @@ using System.Collections.Generic;
 using System.IdentityModel.Claims;
 using System.IdentityModel.Policy;
 using System.Security.Principal;
-
-using PPWCode.Vernacular.Exceptions.I;
+using PPWCode.Vernacular.Exceptions.II;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf
 {
     public class AuthorizationPolicy :
         IAuthorizationPolicy

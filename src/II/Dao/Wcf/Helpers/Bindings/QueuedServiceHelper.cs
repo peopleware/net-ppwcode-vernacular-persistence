@@ -21,7 +21,7 @@ using System.ServiceModel;
 using System.ServiceModel.Configuration;
 using System.ServiceModel.Description;
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Bindings
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Bindings
 {
     public static class QueuedServiceHelper
     {

@@ -24,7 +24,7 @@ using System.Transactions;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf
 {
     /// <summary>
     /// <p>

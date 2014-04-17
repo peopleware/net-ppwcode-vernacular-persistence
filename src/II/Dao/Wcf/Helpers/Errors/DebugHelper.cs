@@ -18,7 +18,7 @@ using System;
 using System.Diagnostics.Contracts;
 using System.ServiceModel;
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
+namespace PPWCode.Vernacular.Persistence.II.Dao.Wcf.Helpers.Errors
 {
     public static class DebugHelper
     {

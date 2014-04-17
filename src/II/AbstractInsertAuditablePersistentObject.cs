@@ -19,12 +19,11 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.Serialization;
-
-using PPWCode.Vernacular.Persistence.I.Dao;
+using PPWCode.Vernacular.Persistence.II.Dao;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I
+namespace PPWCode.Vernacular.Persistence.II
 {
     [Serializable, DataContract(IsReference = true)]
     public abstract class AbstractInsertAuditablePersistentObject :

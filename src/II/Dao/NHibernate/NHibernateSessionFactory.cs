@@ -18,14 +18,13 @@
 
 using System.Collections.Generic;
 using System.Reflection;
-
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Event;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.II.Dao.NHibernate
 {
     public static class NHibernateSessionFactory
     {

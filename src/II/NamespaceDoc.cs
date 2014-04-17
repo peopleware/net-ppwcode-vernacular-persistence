@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-namespace PPWCode.Vernacular.Persistence.I
+namespace PPWCode.Vernacular.Persistence.II
 {
     /// <summary>
     /// Library expressing the PPWCode Persistence Vernacular.

@@ -16,10 +16,9 @@
 
 using System;
 using System.Runtime.Serialization;
+using PPWCode.Vernacular.Exceptions.II;
 
-using PPWCode.Vernacular.Exceptions.I;
-
-namespace PPWCode.Vernacular.Persistence.I.Dao
+namespace PPWCode.Vernacular.Persistence.II.Dao
 {
     [Serializable]
     public class DaoSqlException :
