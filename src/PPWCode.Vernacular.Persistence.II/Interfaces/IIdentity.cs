@@ -12,6 +12,9 @@ namespace PPWCode.Vernacular.Persistence.II
 
         [Pure]
         bool IsTransient { get; }
+
+        [Pure]
+        bool IsSame(IIdentity<T> other);
     }
 
     // ReSharper disable once InconsistentNaming
@@ -30,5 +33,7 @@ namespace PPWCode.Vernacular.Persistence.II
                 return default(bool);
             }
         }
+
+        public abstract bool IsSame(IIdentity<T> other);
     }
 }
