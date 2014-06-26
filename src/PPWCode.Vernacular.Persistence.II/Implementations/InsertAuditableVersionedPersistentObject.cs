@@ -9,6 +9,12 @@ namespace PPWCode.Vernacular.Persistence.II
           IInsertAuditable
         where T : IEquatable<T>
     {
+        [DataMember]
+        private DateTime? m_CreatedAt;
+
+        [DataMember]
+        private string m_CreatedBy;
+
         protected InsertAuditableVersionedPersistentObject(T id, TVersion persistenceVersion)
             : base(id, persistenceVersion)
         {
@@ -23,10 +29,18 @@ namespace PPWCode.Vernacular.Persistence.II
         {
         }
 
-        [DataMember, AuditLogPropertyIgnore]
-        public virtual DateTime? CreatedAt { get; set; }
+        [AuditLogPropertyIgnore]
+        public virtual DateTime? CreatedAt
+        {
+            get { return m_CreatedAt; }
+            set { m_CreatedAt = value; }
+        }
 
-        [DataMember, AuditLogPropertyIgnore]
-        public virtual string CreatedBy { get; set; }
+        [AuditLogPropertyIgnore]
+        public virtual string CreatedBy
+        {
+            get { return m_CreatedBy; }
+            set { m_CreatedBy = value; }
+        }
     }
 }

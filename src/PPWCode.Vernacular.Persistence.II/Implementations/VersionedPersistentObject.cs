@@ -9,6 +9,9 @@ namespace PPWCode.Vernacular.Persistence.II
           IVersionedPersistentObject<T, TVersion>
         where T : IEquatable<T>
     {
+        [DataMember]
+        private TVersion m_PersistenceVersion;
+
         protected VersionedPersistentObject(T id, TVersion persistenceVersion)
             : base(id)
         {
@@ -24,7 +27,11 @@ namespace PPWCode.Vernacular.Persistence.II
         {
         }
 
-        [DataMember, AuditLogPropertyIgnore]
-        public virtual TVersion PersistenceVersion { get; private set; }
+        [AuditLogPropertyIgnore]
+        public virtual TVersion PersistenceVersion
+        {
+            get { return m_PersistenceVersion; }
+            private set { m_PersistenceVersion = value; }
+        }
     }
 }

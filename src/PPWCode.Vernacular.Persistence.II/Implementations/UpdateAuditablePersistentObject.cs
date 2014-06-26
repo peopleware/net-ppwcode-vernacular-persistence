@@ -9,6 +9,12 @@ namespace PPWCode.Vernacular.Persistence.II
         IUpdateAuditable
         where T : IEquatable<T>
     {
+        [DataMember]
+        private DateTime? m_LastModifiedAt;
+
+        [DataMember]
+        private string m_LastModifiedBy;
+
         protected UpdateAuditablePersistentObject(T id)
             : base(id)
         {
@@ -18,10 +24,18 @@ namespace PPWCode.Vernacular.Persistence.II
         {
         }
 
-        [DataMember, AuditLogPropertyIgnore]
-        public virtual DateTime? LastModifiedAt { get; set; }
+        [AuditLogPropertyIgnore]
+        public virtual DateTime? LastModifiedAt
+        {
+            get { return m_LastModifiedAt; }
+            set { m_LastModifiedAt = value; }
+        }
 
-        [DataMember, AuditLogPropertyIgnore]
-        public virtual string LastModifiedBy { get; set; }
+        [AuditLogPropertyIgnore]
+        public virtual string LastModifiedBy
+        {
+            get { return m_LastModifiedBy; }
+            set { m_LastModifiedBy = value; }
+        }
     }
 }

@@ -16,9 +16,12 @@ namespace PPWCode.Vernacular.Persistence.II
           ICivilizedObject
         where T : IEquatable<T>
     {
+        [DataMember]
+        private T m_Id;
+
         protected PersistentObject(T id)
         {
-            Id = id;
+            m_Id = id;
         }
 
         protected PersistentObject()
@@ -80,8 +83,11 @@ namespace PPWCode.Vernacular.Persistence.II
             }
         }
 
-        [DataMember]
-        public virtual T Id { get; private set; }
+        [Pure]
+        public virtual T Id
+        {
+            get { return m_Id; }
+        }
 
         [Pure]
         public virtual bool IsTransient

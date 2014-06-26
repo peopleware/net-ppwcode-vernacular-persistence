@@ -8,6 +8,30 @@ namespace PPWCode.Vernacular.Persistence.II
         : PersistentObject<T>
         where T : IEquatable<T>
     {
+        [DataMember]
+        private DateTime m_CreatedAt;
+
+        [DataMember]
+        private string m_CreatedBy;
+
+        [DataMember]
+        private string m_EntityId;
+
+        [DataMember]
+        private string m_EntityName;
+
+        [DataMember]
+        private string m_EntryType;
+
+        [DataMember]
+        private string m_NewValue;
+
+        [DataMember]
+        private string m_OldValue;
+
+        [DataMember]
+        private string m_PropertyName;
+
         protected AuditLog(T id)
             : base(id)
         {
@@ -18,28 +42,52 @@ namespace PPWCode.Vernacular.Persistence.II
         {
         }
 
-        [DataMember]
-        public virtual string EntryType { get; set; }
+        public virtual string EntryType
+        {
+            get { return m_EntryType; }
+            set { m_EntryType = value; }
+        }
 
-        [DataMember]
-        public virtual string EntityName { get; set; }
+        public virtual string EntityName
+        {
+            get { return m_EntityName; }
+            set { m_EntityName = value; }
+        }
 
-        [DataMember]
-        public virtual string EntityId { get; set; }
+        public virtual string EntityId
+        {
+            get { return m_EntityId; }
+            set { m_EntityId = value; }
+        }
 
-        [DataMember]
-        public virtual string PropertyName { get; set; }
+        public virtual string PropertyName
+        {
+            get { return m_PropertyName; }
+            set { m_PropertyName = value; }
+        }
 
-        [DataMember]
-        public virtual string OldValue { get; set; }
+        public virtual string OldValue
+        {
+            get { return m_OldValue; }
+            set { m_OldValue = value; }
+        }
 
-        [DataMember]
-        public virtual string NewValue { get; set; }
+        public virtual string NewValue
+        {
+            get { return m_NewValue; }
+            set { m_NewValue = value; }
+        }
 
-        [DataMember]
-        public virtual DateTime CreatedAt { get; set; }
+        public virtual DateTime CreatedAt
+        {
+            get { return m_CreatedAt; }
+            set { m_CreatedAt = value; }
+        }
 
-        [DataMember]
-        public virtual string CreatedBy { get; set; }
+        public virtual string CreatedBy
+        {
+            get { return m_CreatedBy; }
+            set { m_CreatedBy = value; }
+        }
     }
 }
