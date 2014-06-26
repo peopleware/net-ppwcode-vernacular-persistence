@@ -7,7 +7,7 @@ using PPWCode.Vernacular.Exceptions.II;
 namespace PPWCode.Vernacular.Persistence.II.Exceptions
 {
     [Serializable]
-    public class IdNotFoundException<T, TId> : SemanticException
+    public class IdNotFoundException<T, TId> : NotFoundException
         where T : class, IIdentity<TId>
         where TId : IEquatable<TId>
     {

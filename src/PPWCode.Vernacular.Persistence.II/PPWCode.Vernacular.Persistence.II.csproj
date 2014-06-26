@@ -132,6 +132,7 @@
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
     <Compile Include="Exceptions\IdNotFoundException.cs" />
+    <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Exceptions\ObjectAlreadyChangedException.cs" />
     <Compile Include="Exceptions\RepositorySqlException.cs" />
     <Compile Include="Implementations\AuditablePersistentObject.cs" />
