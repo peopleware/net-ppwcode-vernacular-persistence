@@ -38,11 +38,5 @@ namespace PPWCode.Vernacular.Persistence.II
             get { return m_CreatedBy; }
             set { m_CreatedBy = value; }
         }
-
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(CreatedBy != null);
-        }
     }
 }
