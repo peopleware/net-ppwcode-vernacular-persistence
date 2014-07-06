@@ -10,7 +10,7 @@
     <owners>PeopleWare n.v.</owners>
 
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
-    <projectUrl>https://github.com/peopleware/net-ppwcode-vernacular-exceptions</projectUrl>
+    <projectUrl>https://github.com/peopleware/net-ppwcode-vernacular-persistence</projectUrl>
     <iconUrl>http://www.ppwcode.org/img/logo.jpg</iconUrl>
 
     <description>$description$</description>
