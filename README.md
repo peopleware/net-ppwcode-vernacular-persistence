@@ -1,20 +1,20 @@
-# PPWCode.Vernacular.Semantics
+# PPWCode.Vernacular.Persistence
 
 This library is part of the PPWCode project and defines the semantic vernacular.
 
 
 ## Getting started
 
-### PPWCode.Vernacular.Semantics II
+### PPWCode.Vernacular.Persistence II
 
 This is version II of the library, which is designed to work with Microsoft .NET 4.5.
 
-The library is available as the [NuGet] package `PPWCode.Vernacular.Semantics.II`
+The library is available as the [NuGet] package `PPWCode.Vernacular.Persistence.II`
 in the [NuGet Gallery].  It can be installed using the Nuget package manager from 
 inside Visual Studio.
 
 
-### PPWCode.Vernacular.Semantics I
+### PPWCode.Vernacular.Persistence I
 
 Version I of the library is still available in maintenance mode, and is 
 compatible with Microsoft .NET 3.5.
@@ -24,7 +24,7 @@ in the [NuGet Gallery].  One can however build the package oneself and publish i
 on a local repository.
 
 We intend to make it available at some point in the future as the [NuGet] 
-package `PPWCode.Vernacular.Semantics.I`.  From then on, one will be able to install
+package `PPWCode.Vernacular.Persistence.I`.  From then on, one will be able to install
 it using the Nuget package manager from inside Visual Studio.
 
 
@@ -94,4 +94,4 @@ limitations under the License.
 
 [Microsoft Code Contracts]: http://research.microsoft.com/en-us/projects/contracts/
 
-[GitHub Contributors list]: https://github.com/peopleware/net-ppwcode-vernacular-semantics/graphs/contributors
+[GitHub Contributors list]: https://github.com/peopleware/net-ppwcode-vernacular-persistence/graphs/contributors
