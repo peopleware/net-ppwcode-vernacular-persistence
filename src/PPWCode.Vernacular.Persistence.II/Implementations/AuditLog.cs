@@ -22,28 +22,28 @@ namespace PPWCode.Vernacular.Persistence.II
         : PersistentObject<T>
         where T : IEquatable<T>
     {
-        [DataMember]
+        [DataMember(Name = "CreatedAt")]
         private DateTime m_CreatedAt;
 
-        [DataMember]
+        [DataMember(Name = "CreatedBy")]
         private string m_CreatedBy;
 
-        [DataMember]
+        [DataMember(Name = "EntityId")]
         private string m_EntityId;
 
-        [DataMember]
+        [DataMember(Name = "EntityName")]
         private string m_EntityName;
 
-        [DataMember]
+        [DataMember(Name = "EntryType")]
         private string m_EntryType;
 
-        [DataMember]
+        [DataMember(Name = "NewValue")]
         private string m_NewValue;
 
-        [DataMember]
+        [DataMember(Name = "OldValue")]
         private string m_OldValue;
 
-        [DataMember]
+        [DataMember(Name = "PropertyName")]
         private string m_PropertyName;
 
         protected AuditLog(T id)

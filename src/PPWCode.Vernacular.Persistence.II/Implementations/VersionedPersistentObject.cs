@@ -23,7 +23,7 @@ namespace PPWCode.Vernacular.Persistence.II
           IVersionedPersistentObject<T, TVersion>
         where T : IEquatable<T>
     {
-        [DataMember]
+        [DataMember(Name = "PersistenceVersion")]
         private TVersion m_PersistenceVersion;
 
         protected VersionedPersistentObject(T id, TVersion persistenceVersion)

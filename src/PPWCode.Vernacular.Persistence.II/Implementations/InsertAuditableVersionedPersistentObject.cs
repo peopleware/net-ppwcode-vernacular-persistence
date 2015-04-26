@@ -23,10 +23,10 @@ namespace PPWCode.Vernacular.Persistence.II
           IInsertAuditable
         where T : IEquatable<T>
     {
-        [DataMember]
+        [DataMember(Name = "CreatedAt")]
         private DateTime? m_CreatedAt;
 
-        [DataMember]
+        [DataMember(Name = "CreatedBy")]
         private string m_CreatedBy;
 
         protected InsertAuditableVersionedPersistentObject(T id, TVersion persistenceVersion)

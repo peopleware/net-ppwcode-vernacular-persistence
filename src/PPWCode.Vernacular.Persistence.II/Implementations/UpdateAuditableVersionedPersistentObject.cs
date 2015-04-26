@@ -23,10 +23,10 @@ namespace PPWCode.Vernacular.Persistence.II
           IUpdateAuditable
         where T : IEquatable<T>
     {
-        [DataMember]
+        [DataMember(Name = "LastModifiedAt")]
         private DateTime? m_LastModifiedAt;
 
-        [DataMember]
+        [DataMember(Name = "LastModifiedBy")]
         private string m_LastModifiedBy;
 
         protected UpdateAuditableVersionedPersistentObject(T id, TVersion persistenceVersion)

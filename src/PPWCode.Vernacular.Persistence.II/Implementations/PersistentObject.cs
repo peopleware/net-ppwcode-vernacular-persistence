@@ -30,7 +30,7 @@ namespace PPWCode.Vernacular.Persistence.II
           ICivilizedObject
         where T : IEquatable<T>
     {
-        [DataMember]
+        [DataMember(Name = "Id")]
         private T m_Id;
 
         protected PersistentObject(T id)
