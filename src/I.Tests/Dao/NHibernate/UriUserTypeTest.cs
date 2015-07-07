@@ -9,7 +9,7 @@ using PPWCode.Vernacular.Persistence.I.Dao.NHibernate;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.Test_I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.I.Tests.Dao.NHibernate
 {
     [TestFixture]
     public class UriUserTypeTest

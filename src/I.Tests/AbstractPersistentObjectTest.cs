@@ -22,7 +22,7 @@ using PPWCode.Vernacular.Persistence.I;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.Test_I
+namespace PPWCode.Vernacular.Persistence.I.Tests
 {
     [TestFixture]
     public class AbstractPersistentObjectTest

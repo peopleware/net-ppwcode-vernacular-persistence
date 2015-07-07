@@ -24,7 +24,7 @@ using PPWCode.Vernacular.Persistence.I;
 
 #endregion
 
-namespace PPWCode.Vernacular.Persistence.Test_I
+namespace PPWCode.Vernacular.Persistence.I.Tests
 {
     /// <summary>
     /// This is a test class for AbstractPersistentObjectTest and is intended
