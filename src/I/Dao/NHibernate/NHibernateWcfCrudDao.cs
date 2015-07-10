@@ -102,7 +102,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         private static void EndNHibernateProfiler()
         {
-            NHibernateProfiler.Stop();
+            NHibernateProfiler.Shutdown();
         }
 
         #endregion
