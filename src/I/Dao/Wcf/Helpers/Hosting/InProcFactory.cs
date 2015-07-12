@@ -1,20 +1,16 @@
-﻿/*
- * Copyright 2004 - $Date: 2008-11-15 23:58:07 +0100 (za, 15 nov 2008) $ by PeopleWare n.v..
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-#region Using
+﻿// Copyright 2010-2015 by PeopleWare n.v..
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Collections.Generic;
@@ -24,8 +20,6 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 
 using PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Duplex;
-
-#endregion
 
 namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
 {
@@ -64,6 +58,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
             {
                 binding = new NetNamedPipeBinding();
             }
+
             binding.TransactionFlow = true;
             s_Binding = binding;
             AppDomain.CurrentDomain.ProcessExit +=
@@ -77,10 +72,10 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
         }
 
         /// <summary>
-        /// Can only call SetThrottle() before creating any instance of the service
+        ///     Can only call SetThrottle() before creating any instance of the service.
         /// </summary>
-        /// <typeparam name="S">Service type</typeparam>
-        /// <param name="throttle">Throttle to use</param>
+        /// <typeparam name="S">Service type.</typeparam>
+        /// <param name="throttle">Throttle to use.</param>
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static void SetThrottle<S>(ServiceThrottlingBehavior throttle)
         {
@@ -95,22 +90,28 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
         }
 
         /// <summary>
-        /// Can only call SetThrottle() before creating any instance of the service
+        ///     Can only call SetThrottle() before creating any instance of the service.
         /// </summary>
+        /// <typeparam name="S">Service type.</typeparam>
+        /// <param name="maxCalls">The maximum number of concurrent calls.</param>
+        /// <param name="maxSessions">The maximum number of concurrent sessions.</param>
+        /// <param name="maxInstances">The maximum number of concurrent instances.</param>
         public static void SetThrottle<S>(int maxCalls, int maxSessions, int maxInstances)
         {
             ServiceThrottlingBehavior throttle = new ServiceThrottlingBehavior
-            {
-                MaxConcurrentCalls = maxCalls,
-                MaxConcurrentSessions = maxSessions,
-                MaxConcurrentInstances = maxInstances,
-            };
+                                                 {
+                                                     MaxConcurrentCalls = maxCalls,
+                                                     MaxConcurrentSessions = maxSessions,
+                                                     MaxConcurrentInstances = maxInstances,
+                                                 };
             SetThrottle<S>(throttle);
         }
 
         /// <summary>
-        /// Can only call SetSingleton() before creating any instance of the service
+        ///     Can only call SetSingleton() before creating any instance of the service.
         /// </summary>
+        /// <typeparam name="S">Service type.</typeparam>
+        /// <param name="singleton">The given singleton.</param>
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static void SetSingleton<S>(S singleton)
         {
@@ -145,10 +146,12 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
             {
                 channelfactoryAction.Invoke(factory);
             }
+
             if (serviceEndPointAction != null)
             {
                 serviceEndPointAction(factory.Endpoint);
             }
+
             return factory.CreateChannel();
         }
 
@@ -202,12 +205,15 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Hosting
                 {
                     serviceEndPointAction(serviceEndpoint);
                 }
+
                 if (s_Throttles.ContainsKey(typeof(S)))
                 {
                     host.SetThrottle(s_Throttles[typeof(S)]);
                 }
+
                 host.Open();
             }
+
             return hostRecord;
         }
 

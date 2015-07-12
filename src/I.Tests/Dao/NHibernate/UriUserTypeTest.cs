@@ -1,13 +1,24 @@
-﻿#region Using
+﻿// Copyright 2010-2015 by PeopleWare n.v..
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Data;
 using System.Data.SqlClient;
+
 using NUnit.Framework;
 
 using PPWCode.Vernacular.Persistence.I.Dao.NHibernate;
-
-#endregion
 
 namespace PPWCode.Vernacular.Persistence.I.Tests.Dao.NHibernate
 {
@@ -15,10 +26,6 @@ namespace PPWCode.Vernacular.Persistence.I.Tests.Dao.NHibernate
     public class UriUserTypeTest
     {
         public TestContext TestContext { get; set; }
-
-        #region Additional test attributes
-
-        #endregion
 
         [Test]
         public void NullSafeSetTest()
@@ -38,6 +45,7 @@ namespace PPWCode.Vernacular.Persistence.I.Tests.Dao.NHibernate
                 {
                     Assert.IsTrue(param.Value is DBNull);
                 }
+
                 Console.WriteLine("To DB: " + param.Value);
             }
         }
@@ -114,6 +122,7 @@ namespace PPWCode.Vernacular.Persistence.I.Tests.Dao.NHibernate
                 {
                     Assert.IsNull(actual);
                 }
+
                 Assert.AreEqual(uri, actual);
             }
         }
@@ -126,10 +135,12 @@ namespace PPWCode.Vernacular.Persistence.I.Tests.Dao.NHibernate
             IDbCommand cmd = new SqlCommand(@"SELECT * FROM TUUT WHERE a = @a");
             SqlParameter param = new SqlParameter(@"a", null);
             cmd.Parameters.Add(param);
+
             // reader
             DataReaderMock rs = new DataReaderMock();
             string[] names = { @"a" };
             object owner = new object();
+
             // test
             foreach (Uri subject in s_Subjects)
             {
@@ -148,16 +159,10 @@ namespace PPWCode.Vernacular.Persistence.I.Tests.Dao.NHibernate
         {
             public string VarChar { get; set; }
 
-            #region Implementation of IDisposable
-
             public void Dispose()
             {
                 throw new NotImplementedException();
             }
-
-            #endregion
-
-            #region Implementation of IDataRecord
 
             public string GetName(int i)
             {
@@ -271,31 +276,18 @@ namespace PPWCode.Vernacular.Persistence.I.Tests.Dao.NHibernate
 
             public int FieldCount
             {
-                get
-                {
-                    throw new NotImplementedException();
-                }
+                get { throw new NotImplementedException(); }
             }
 
             object IDataRecord.this[int i]
             {
-                get
-                {
-                    return VarChar;
-                }
+                get { return VarChar; }
             }
 
             object IDataRecord.this[string name]
             {
-                get
-                {
-                    return VarChar;
-                }
+                get { return VarChar; }
             }
-
-            #endregion
-
-            #region Implementation of IDataReader
 
             public void Close()
             {
@@ -319,29 +311,18 @@ namespace PPWCode.Vernacular.Persistence.I.Tests.Dao.NHibernate
 
             public int Depth
             {
-                get
-                {
-                    throw new NotImplementedException();
-                }
+                get { throw new NotImplementedException(); }
             }
 
             public bool IsClosed
             {
-                get
-                {
-                    throw new NotImplementedException();
-                }
+                get { throw new NotImplementedException(); }
             }
 
             public int RecordsAffected
             {
-                get
-                {
-                    throw new NotImplementedException();
-                }
+                get { throw new NotImplementedException(); }
             }
-
-            #endregion
         }
     }
 }

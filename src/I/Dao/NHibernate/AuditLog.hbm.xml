@@ -23,8 +23,8 @@
   default-lazy="false"
   default-access="nosetter.pascalcase-m-underscore">
 
-  <class name="AuditLog" dynamic-update="false" >
-    <id name="PersistenceId" column="AuditLogID" >
+  <class name="AuditLog" dynamic-update="false">
+    <id name="PersistenceId" column="AuditLogID">
       <generator class="native" />
     </id>
     <property name="EntryType" length="1" not-null="true" />
@@ -34,7 +34,7 @@
     <property name="OldValue" />
     <property name="NewValue" />
     <property name="CreatedAt" length="128" />
-    <property name="CreatedBy" length="64"/>
+    <property name="CreatedBy" length="64" />
   </class>
 
 </hibernate-mapping>

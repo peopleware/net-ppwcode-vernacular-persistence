@@ -1,20 +1,16 @@
-﻿/*
- * Copyright 2004 - $Date: 2008-11-15 23:58:07 +0100 (za, 15 nov 2008) $ by PeopleWare n.v..
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-#region Using
+﻿// Copyright 2010-2015 by PeopleWare n.v..
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Collections;
@@ -34,8 +30,6 @@ using NHibernate.Exceptions;
 using PPWCode.Util.OddsAndEnds.I.Extensions;
 using PPWCode.Vernacular.Exceptions.I;
 
-#endregion
-
 namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 {
     public class NHibernateStatelessCrudDao :
@@ -45,15 +39,15 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         private static readonly ILog s_Logger = LogManager.GetLogger(typeof(NHibernateStatelessCrudDao));
 
         /// <summary>
-        /// This method *has* to convert whatever NHibernate exception to a valid PPWCode exception
-        /// TODO Handle the exceptions
-        /// Some hibernate exceptions might be semantic, some might be errors
-        /// This may depend on the actual product.
-        /// This method translates semantic exceptions in PPWCode.Util.Exception.SemanticException and throws them
-        /// and all other exceptions in PPWCode.Util.Exception.Error and throws them
+        ///     This method *has* to convert whatever NHibernate exception to a valid PPWCode exception
+        ///     TODO Handle the exceptions
+        ///     Some hibernate exceptions might be semantic, some might be errors
+        ///     This may depend on the actual product.
+        ///     This method translates semantic exceptions in PPWCode.Util.Exception.SemanticException and throws them
+        ///     and all other exceptions in PPWCode.Util.Exception.Error and throws them.
         /// </summary>
-        /// <param name="aException">The hibernate exception we are triaging</param>
-        /// <param name="aMessage">This message will be used in the loggin in the case aException = Error</param>
+        /// <param name="exception">The hibernate exception we are triaging.</param>
+        /// <param name="message">This message will be used in the logging in the case aException = Error.</param>
         public virtual void TriageException(Exception exception, string message)
         {
             s_Logger.Debug(message, exception);
@@ -61,26 +55,39 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             if (genericAdoException != null)
             {
                 DaoSqlException daoSqlException = new DaoSqlException(message, genericAdoException.InnerException)
-                {
-                    SqlString = genericAdoException.SqlString,
-                };
+                                                  {
+                                                      SqlString = genericAdoException.SqlString,
+                                                  };
                 SqlException sqlException = genericAdoException.InnerException as SqlException;
                 if (sqlException != null)
                 {
                     daoSqlException.Constraint = sqlException.GetConstraint();
                 }
+
                 throw daoSqlException;
             }
+
             throw new ExternalError(message, exception);
         }
 
         /// <summary>
-        /// This method checks if the current thread has enough permission (role-based)
-        /// to execute the requested action A on type T.
+        ///     Check if the object(graph) is civilized.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="securityActionFlag"></param>
-        /// <returns></returns>
+        /// <typeparam name="PersistentObjectType">The type of the persistent object.</typeparam>
+        /// <param name="po">The persistent object.</param>
+        private static void ValidateObject<PersistentObjectType>(PersistentObjectType po)
+            where PersistentObjectType : class, IPersistentObject
+        {
+            po.ThrowIfNotCivilized();
+        }
+
+        /// <summary>
+        ///     This method checks if the current thread has enough permission (role-based)
+        ///     to execute the requested action A on type T.
+        /// </summary>
+        /// <param name="type">The given type.</param>
+        /// <param name="securityActionFlag">The intended action.</param>
+        /// <returns>A <see cref="bool"/> indicating true or false.</returns>
         private bool HasSufficientSecurity(Type type, SecurityActionFlag securityActionFlag)
         {
             IPPWSecurity sec = this as IPPWSecurity;
@@ -88,10 +95,11 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         }
 
         /// <summary>
-        /// This method checks if the current thread has enough permission (role-based)
-        /// to execute the requested action A on type T.
+        ///     This method checks if the current thread has enough permission (role-based)
+        ///     to execute the requested action A on type T.
         /// </summary>
-        /// <param name="securityPermission"></param>
+        /// <param name="type">The given type.</param>
+        /// <param name="securityActionFlag">The intended action.</param>
         private void CheckSecurity(Type type, SecurityActionFlag securityActionFlag)
         {
             IPPWSecurity sec = this as IPPWSecurity;
@@ -102,8 +110,8 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         }
 
         /// <summary>
-        /// Check if object is alerady disposed.
-        /// Method throws ObjectDisposedException if disposed.
+        ///     Check if object is already disposed.
+        ///     Method throws ObjectDisposedException if disposed.
         /// </summary>
         private void CheckObjectAlreadyDisposed()
         {
@@ -114,21 +122,16 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         }
 
         /// <summary>
-        /// Check if the object(graph) is civilized.
+        ///     Return a persistent object instance that represents the data of the record with key id of type
+        ///     PersistentObjectType in the persistent storage.
+        ///     Of particular note is the fact that returned objects need not necessarily need to be civilized
+        ///     This is strange, and probably a bad practice, but we have encountered situations where our code
+        ///     needs to be more stringent (in creates and updates) than legacy data existing already in the database.
         /// </summary>
-        private static void ValidateObject<PersistentObjectType>(PersistentObjectType po)
-            where PersistentObjectType : class, IPersistentObject
-        {
-            po.ThrowIfNotCivilized();
-        }
-
-        /// <summary>
-        /// Return a persistent object instance that represents the data of the record with key id of type
-        /// PersistentObjectType in the persistent storage.
-        /// Of particular note is the fact that returned objects need not necessarily need to be civilized
-        /// This is strange, and probably a bad practice, but we have encountered situations where our code
-        /// needs to be more stringent (in creates and updates) than legacy data existing already in the database.
-        /// </summary>
+        /// <typeparam name="PersistentObjectType">The type of the persistent object.</typeparam>
+        /// <param name="poType">The type of the persistent object, as a type.</param>
+        /// <param name="id">The given primary key.</param>
+        /// <returns>The persistent object.</returns>
         public PersistentObjectType Retrieve<PersistentObjectType>(Type poType, long? id)
             where PersistentObjectType : class, IPersistentObject
         {
@@ -172,8 +175,11 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         }
 
         /// <summary>
-        /// Returns a complete collection of entities
+        ///     Returns a complete collection of entities.
         /// </summary>
+        /// <typeparam name="PersistentObjectType">The type of the persistent object.</typeparam>
+        /// <param name="poType">The type of the persistent object as a type.</param>
+        /// <returns>A collection of persistent objects.</returns>
         public ICollection<PersistentObjectType> RetrieveAll<PersistentObjectType>(Type poType)
             where PersistentObjectType : class, IPersistentObject
         {
@@ -219,12 +225,19 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         }
 
         /// <summary>
-        ///  Create the object {@code pb} in persistent storage. Return that object with filled-out {@link PersistentObject.PersistenceId()}.
-        ///  Before commit, the {@link Rousseauobject#civilized() civility} is verified on {@code pb} and all of its upstream objects
-        ///  (to-one relationships), in their state such as they exist in the database. All upstream objects should exist in the database, and
-        ///  be unchanged. Otherwise, an {@link AlreadyChangedException} is thrown. No validation is done on downstream objects: there should
-        ///  be no downstream objects in {@code pb}. It is a programming error to submit a object with downstream associated objects.
+        ///     Create the object in persistent storage. Return that object with the primary key filled in.
+        ///     Before commit, the civility is verified and all of its upstream
+        ///     objects
+        ///     (to-one relationships), in their state such as they exist in the database. All upstream objects should exist in the
+        ///     database, and
+        ///     be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException"/> is thrown. No validation is done on downstream objects:
+        ///     there should
+        ///     be no downstream objects. It is a programming error to submit a object with downstream associated
+        ///     objects.
         /// </summary>
+        /// <typeparam name="PersistentObjectType">The type of the persistent object.</typeparam>
+        /// <param name="po">The persistent object.</param>
+        /// <returns>The created persistent object.</returns>
         public PersistentObjectType Create<PersistentObjectType>(PersistentObjectType po)
             where PersistentObjectType : class, IPersistentObject
         {
@@ -251,17 +264,20 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             {
                 s_Logger.Debug(string.Format("Create completed for class {0}, {1}", typeof(PersistentObjectType).Name, po));
             }
+
             return po;
         }
 
         /// <summary>
-        /// Update the object {@code pb} in persistent storage. Return that object. Before commit, the
-        /// {@link Rousseauobject#civilized() civility} is verified on {@code pb} and all of its upstream objects
-        /// (to-one relationships), in their state such as they exist in the database. All upstream objects
-        /// should exist in the database, and be unchanged. Otherwise, an {@link AlreadyChangedException}
-        /// is thrown. No validation is done on downstream objects: there should be no downstream objects in
-        /// {@code pb}.
+        ///     Update the object in persistent storage. Return that object. Before commit, the
+        ///     civility is verified and all of its upstream objects
+        ///     (to-one relationships), in their state such as they exist in the database. All upstream objects
+        ///     should exist in the database, and be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException"/>
+        ///     is thrown. No validation is done on downstream objects: there should be no downstream objects.
         /// </summary>
+        /// <typeparam name="PersistentObjectType">The type of the persistent object.</typeparam>
+        /// <param name="po">The persistent object.</param>
+        /// <returns>The updated persistent object.</returns>
         public PersistentObjectType Update<PersistentObjectType>(PersistentObjectType po)
             where PersistentObjectType : class, IPersistentObject
         {
@@ -306,9 +322,13 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         }
 
         /// <summary>
-        /// Delete the object {@code pb}, and associated objects, depending on cascade DELETE settings, from persistent storage.
-        /// The entire object is returned, for reasons of consistency with the other methods.
+        ///     Delete the object and associated objects, depending on cascade DELETE settings, from persistent
+        ///     storage.
+        ///     The entire object is returned, for reasons of consistency with the other methods.
         /// </summary>
+        /// <typeparam name="PersistentObjectType">The type of the persistent object.</typeparam>
+        /// <param name="po">The persistent object.</param>
+        /// <returns>The deleted persistent object.</returns>
         public PersistentObjectType Delete<PersistentObjectType>(PersistentObjectType po)
             where PersistentObjectType : class, IPersistentObject
         {
@@ -335,6 +355,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                 string message = string.Format(@"Delete failed for class {0}, object {1}", typeof(PersistentObjectType).Name, po);
                 TriageException(he, message);
             }
+
             po.PersistenceId = null;
 
             if (s_Logger.IsDebugEnabled)
@@ -446,8 +467,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             return result;
         }
 
-        #region IStatelessCrudDao Members
-
         public bool IsFlushable()
         {
             return true;
@@ -467,7 +486,5 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                 }
             }
         }
-
-        #endregion
     }
 }

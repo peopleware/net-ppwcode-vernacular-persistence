@@ -1,20 +1,16 @@
-﻿/*
- * Copyright 2004 - $Date: 2008-11-15 23:58:07 +0100 (za, 15 nov 2008) $ by PeopleWare n.v..
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-#region Using
+﻿// Copyright 2010-2015 by PeopleWare n.v..
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Diagnostics.Contracts;
@@ -22,16 +18,12 @@ using System.Runtime.Serialization;
 
 using PPWCode.Vernacular.Exceptions.I;
 
-#endregion
-
 namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 {
     [Serializable, DataContract(IsReference = true)]
     public class AuditLog :
         AbstractPersistentObject
     {
-        #region constructors
-
         public AuditLog()
         {
             // base contracts
@@ -49,19 +41,12 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             Contract.Ensures(CreatedBy == null);
         }
 
-        #endregion
-
-        #region Properties
-
         [DataMember]
         private string m_EntryType;
 
         public string EntryType
         {
-            get
-            {
-                return m_EntryType;
-            }
+            get { return m_EntryType; }
             set
             {
                 Contract.Ensures(EntryType == value);
@@ -79,10 +64,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         public string EntityName
         {
-            get
-            {
-                return m_EntityName;
-            }
+            get { return m_EntityName; }
             set
             {
                 Contract.Ensures(EntityName == value);
@@ -100,10 +82,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         public long? EntityId
         {
-            get
-            {
-                return m_EntityId;
-            }
+            get { return m_EntityId; }
             set
             {
                 Contract.Ensures(EntityId == value);
@@ -121,10 +100,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         public string PropertyName
         {
-            get
-            {
-                return m_PropertyName;
-            }
+            get { return m_PropertyName; }
             set
             {
                 Contract.Ensures(PropertyName == value);
@@ -142,10 +118,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         public string OldValue
         {
-            get
-            {
-                return m_OldValue;
-            }
+            get { return m_OldValue; }
             set
             {
                 Contract.Ensures(OldValue == value);
@@ -163,10 +136,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         public string NewValue
         {
-            get
-            {
-                return m_NewValue;
-            }
+            get { return m_NewValue; }
             set
             {
                 Contract.Ensures(NewValue == value);
@@ -184,10 +154,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         public DateTime? CreatedAt
         {
-            get
-            {
-                return m_CreatedAt;
-            }
+            get { return m_CreatedAt; }
             set
             {
                 Contract.Ensures(CreatedAt == value);
@@ -205,10 +172,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         public string CreatedBy
         {
-            get
-            {
-                return m_CreatedBy;
-            }
+            get { return m_CreatedBy; }
             set
             {
                 Contract.Ensures(CreatedBy == value);
@@ -220,10 +184,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                 }
             }
         }
-
-        #endregion
-
-        #region Civilized tests
 
         [Pure]
         public override CompoundSemanticException WildExceptions()
@@ -244,37 +204,43 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             {
                 cse.AddElement(new PropertyException(this, "EntryType", "MANDATORY", null));
             }
+
             if (string.IsNullOrEmpty(m_EntityName))
             {
                 cse.AddElement(new PropertyException(this, "EntityName", "MANDATORY", null));
             }
+
             if (!m_EntityId.HasValue)
             {
                 cse.AddElement(new PropertyException(this, "EntityId", "MANDATORY", null));
             }
+
             if (string.IsNullOrEmpty(m_PropertyName) && ((m_EntryType == "U") || (m_EntryType == "I")))
             {
                 cse.AddElement(new PropertyException(this, "AttributeName", "MANDATORY", null));
             }
+
             if (string.IsNullOrEmpty(m_OldValue))
             {
                 cse.AddElement(new PropertyException(this, "OldValue", "MANDATORY", null));
             }
+
             if (string.IsNullOrEmpty(m_NewValue))
             {
                 cse.AddElement(new PropertyException(this, "NewValue", "MANDATORY", null));
             }
+
             if (!m_CreatedAt.HasValue)
             {
                 cse.AddElement(new PropertyException(this, "CreatedAt", "MANDATORY", null));
             }
+
             if (string.IsNullOrEmpty(m_CreatedBy))
             {
                 cse.AddElement(new PropertyException(this, "CreatedBy", "MANDATORY", null));
             }
+
             return cse;
         }
-
-        #endregion
     }
 }

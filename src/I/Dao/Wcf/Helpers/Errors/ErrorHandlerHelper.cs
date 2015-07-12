@@ -1,20 +1,16 @@
-﻿/*
- * Copyright 2004 - $Date: 2008-11-15 23:58:07 +0100 (za, 15 nov 2008) $ by PeopleWare n.v..
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-#region Using
+﻿// Copyright 2010-2015 by PeopleWare n.v..
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Linq;
@@ -23,8 +19,6 @@ using System.ServiceModel.Channels;
 using log4net;
 
 using PPWCode.Vernacular.Exceptions.I;
-
-#endregion
 
 namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
 {
@@ -68,14 +62,15 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
             int lineNumber = GetLineNumber(error);
             string exceptionName = error.GetType().ToString();
             string exceptionMessage = error.Message;
-            string providedFault = String.Empty;
-            string providedMessage = String.Empty;
+            string providedFault = string.Empty;
+            string providedMessage = string.Empty;
 
             if (fault != null)
             {
                 providedFault = fault.Code.Name;
                 providedMessage = fault.Reason.Translations[0].Text;
             }
+
             return new ExceptionLogbookEntry(assemblyName, fileName, lineNumber, typeName, methodName, exceptionName, exceptionMessage, providedFault, providedMessage);
         }
 
@@ -85,11 +80,13 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
             {
                 return "Unavailable";
             }
+
             int originalLineIndex = error.StackTrace.IndexOf(":line");
             if (originalLineIndex == -1)
             {
                 return "Unavailable";
             }
+
             string originalLine = error.StackTrace.Substring(0, originalLineIndex);
             string[] sections = originalLine.Split('\\');
             return sections[sections.Length - 1];
@@ -101,12 +98,14 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.Errors
             {
                 return 0;
             }
+
             string[] sections = error.StackTrace.Split(' ');
             int index = sections.TakeWhile(section => !section.EndsWith(":line")).Count();
             if (index == sections.Length)
             {
                 return 0;
             }
+
             string lineNumber = sections[index + 1];
             int number;
             try

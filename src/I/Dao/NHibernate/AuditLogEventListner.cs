@@ -1,20 +1,16 @@
-﻿/*
- * Copyright 2004 - $Date: 2008-11-15 23:58:07 +0100 (za, 15 nov 2008) $ by PeopleWare n.v..
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-#region Using
+﻿// Copyright 2010-2015 by PeopleWare n.v..
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Collections.Generic;
@@ -27,8 +23,6 @@ using NHibernate.Event;
 using PPWCode.Util.OddsAndEnds.I.Security;
 using PPWCode.Vernacular.Exceptions.I;
 
-#endregion
-
 namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 {
     public class AuditLogEventListner :
@@ -39,6 +33,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         private class AuditLogItem
         {
             public PPWAuditLogActionEnum AuditLogAction { get; private set; }
+
             public Dictionary<string, PPWAuditLogActionEnum> Properties { get; private set; }
 
             private AuditLogItem()
@@ -68,6 +63,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                                     result.Properties.Add(pi.Name, auditLogPropertyIgnore != null ? auditLogPropertyIgnore.AuditLogAction : PPWAuditLogActionEnum.NONE);
                                 }
                             }
+
                             s_DomainTypes.Add(t, result);
                         }
                     }
@@ -75,6 +71,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                     {
                         result = new AuditLogItem();
                     }
+
                     return result;
                 }
             }
@@ -85,15 +82,18 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                 {
                     return false;
                 }
+
                 if (obj == this)
                 {
                     return true;
                 }
+
                 AuditLogItem dt = obj as AuditLogItem;
                 if (dt == null)
                 {
                     return false;
                 }
+
                 return AuditLogAction == dt.AuditLogAction
                        && Properties.SequenceEqual(dt.Properties);
             }
@@ -108,6 +108,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         }
 
         private static readonly Dictionary<Type, AuditLogItem> s_DomainTypes;
+
         private static readonly object s_DomainTypesSyncObj;
 
         static AuditLogEventListner()
@@ -122,8 +123,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             return value == null || value.ToString() == string.Empty ? "<null>" : value.ToString();
         }
 
-        #region IPostUpdateEventListener Members
-
         public void OnPostUpdate(PostUpdateEvent @event)
         {
             AuditLogItem ali = AuditLogItem.Find(@event.Entity.GetType());
@@ -136,7 +135,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                 if (@event.OldState == null)
                 {
                     throw new ProgrammingError(
-                        String.Format(
+                        string.Format(
                             "No old state available for entity type '{1}'.{0}Make sure you're loading it into Session before modifying and saving it.",
                             Environment.NewLine,
                             entityName));
@@ -158,20 +157,21 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                             if ((auditLogAction & PPWAuditLogActionEnum.UPDATE) == PPWAuditLogActionEnum.NONE)
                             {
                                 logs.Add(new AuditLog
-                                {
-                                    EntryType = "U",
-                                    EntityName = entityName,
-                                    EntityId = (long?)@event.Id,
-                                    PropertyName = propertyName,
-                                    OldValue = oldValue,
-                                    NewValue = newValue,
-                                    CreatedBy = identityName,
-                                    CreatedAt = now,
-                                });
+                                         {
+                                             EntryType = "U",
+                                             EntityName = entityName,
+                                             EntityId = (long?)@event.Id,
+                                             PropertyName = propertyName,
+                                             OldValue = oldValue,
+                                             NewValue = newValue,
+                                             CreatedBy = identityName,
+                                             CreatedAt = now,
+                                         });
                             }
                         }
                     }
                 }
+
                 if (logs.Count > 0)
                 {
                     using (ISession session = @event.Session.GetSession(EntityMode.Poco))
@@ -182,10 +182,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                 }
             }
         }
-
-        #endregion
-
-        #region IPostInsertEventListener Members
 
         public void OnPostInsert(PostInsertEvent @event)
         {
@@ -209,19 +205,20 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                         if ((auditLogAction & PPWAuditLogActionEnum.CREATE) == PPWAuditLogActionEnum.NONE)
                         {
                             logs.Add(new AuditLog
-                            {
-                                EntryType = "I",
-                                EntityName = entityName,
-                                EntityId = (long?)@event.Id,
-                                PropertyName = propertyName,
-                                OldValue = null,
-                                NewValue = newValue,
-                                CreatedBy = identityName,
-                                CreatedAt = now,
-                            });
+                                     {
+                                         EntryType = "I",
+                                         EntityName = entityName,
+                                         EntityId = (long?)@event.Id,
+                                         PropertyName = propertyName,
+                                         OldValue = null,
+                                         NewValue = newValue,
+                                         CreatedBy = identityName,
+                                         CreatedAt = now,
+                                     });
                         }
                     }
                 }
+
                 if (logs.Count > 0)
                 {
                     using (ISession session = @event.Session.GetSession(EntityMode.Poco))
@@ -232,10 +229,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                 }
             }
         }
-
-        #endregion
-
-        #region IPostDeleteEventListener Members
 
         public void OnPostDelete(PostDeleteEvent @event)
         {
@@ -249,18 +242,16 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                 using (ISession session = @event.Session.GetSession(EntityMode.Poco))
                 {
                     session.Save(new AuditLog
-                    {
-                        EntryType = "D",
-                        EntityName = entityName,
-                        EntityId = (long?)@event.Id,
-                        CreatedBy = identityName,
-                        CreatedAt = now,
-                    });
+                                 {
+                                     EntryType = "D",
+                                     EntityName = entityName,
+                                     EntityId = (long?)@event.Id,
+                                     CreatedBy = identityName,
+                                     CreatedAt = now,
+                                 });
                     session.Flush();
                 }
             }
         }
-
-        #endregion
     }
 }

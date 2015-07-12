@@ -1,20 +1,16 @@
-﻿/*
- * Copyright 2004 - $Date: 2008-11-15 23:58:07 +0100 (za, 15 nov 2008) $ by PeopleWare n.v..
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-#region Using
+﻿// Copyright 2010-2015 by PeopleWare n.v..
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -26,27 +22,16 @@ using Iesi.Collections.Generic;
 using PPWCode.Util.OddsAndEnds.I.Extensions;
 using PPWCode.Vernacular.Persistence.I.Dao.Wcf;
 
-#endregion
-
 namespace PPWCode.Vernacular.Persistence.I.Dao
 {
     public abstract class ClientCrudDao :
         ClientDao
     {
-        #region Invariant
-
         [ContractInvariantMethod]
-        // ReSharper disable UnusedMember.Local
         private void ObjectInvariant()
         {
             Contract.Invariant(CrudDao != null);
         }
-
-        // ReSharper restore UnusedMember.Local
-
-        #endregion
-
-        #region Constructors
 
         protected ClientCrudDao(IWcfCrudDao crudDao)
             : base(crudDao)
@@ -64,10 +49,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             Contract.Ensures(WindowsIdentity == windowsIdentity);
         }
 
-        #endregion
-
-        #region Properties
-
         [Pure]
         public IWcfCrudDao CrudDao
         {
@@ -77,10 +58,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
                 return (IWcfCrudDao)Obj;
             }
         }
-
-        #endregion
-
-        #region Methods
 
         public T Retrieve<T>(long? id)
             where T : class, IPersistentObject
@@ -99,6 +76,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
                     return CrudDao.Retrieve(persistenceObjectType, id);
                 }
             }
+
             return CrudDao.Retrieve(persistenceObjectType, id);
         }
 
@@ -118,11 +96,13 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             {
                 items = CrudDao.RetrieveAll(typeof(T).GetQualifiedName());
             }
+
             ICollection<T> result = new HashedSet<T>();
             foreach (IPersistentObject item in items)
             {
                 result.Add((T)item);
             }
+
             return result;
         }
 
@@ -137,6 +117,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
                     return (T)CrudDao.Create(po);
                 }
             }
+
             return (T)CrudDao.Create(po);
         }
 
@@ -151,6 +132,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
                     return (T)CrudDao.Update(po);
                 }
             }
+
             return (T)CrudDao.Update(po);
         }
 
@@ -165,6 +147,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
                     return CrudDao.UpdateAll(col.OfType<IPersistentObject>().ToList()).OfType<T>().ToList();
                 }
             }
+
             return CrudDao.UpdateAll(col.OfType<IPersistentObject>().ToList()).OfType<T>().ToList();
         }
 
@@ -186,6 +169,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
                     return (T)CrudDao.Delete(po);
                 }
             }
+
             return (T)CrudDao.Delete(po);
         }
 
@@ -200,6 +184,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
                     return (T)CrudDao.DeleteById(typeof(T).GetQualifiedName(), id);
                 }
             }
+
             return (T)CrudDao.DeleteById(typeof(T).GetQualifiedName(), id);
         }
 
@@ -214,6 +199,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
                     return (T)CrudDao.GetPropertyValue(po, propertyName);
                 }
             }
+
             return (T)CrudDao.GetPropertyValue(po, propertyName);
         }
 
@@ -233,11 +219,13 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             {
                 children = CrudDao.GetChildren(po, propertyName);
             }
+
             ICollection<T> result = new HashedSet<T>();
             foreach (IPersistentObject child in children)
             {
                 result.Add((T)child);
             }
+
             return result;
         }
 
@@ -255,6 +243,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
                         .ToList();
                 }
             }
+
             return CrudDao
                 .GetChildren(po, propertyName)
                 .Cast<T>()
@@ -272,9 +261,8 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
                     return;
                 }
             }
+
             CrudDao.FlushAllCaches();
         }
-
-        #endregion
     }
 }

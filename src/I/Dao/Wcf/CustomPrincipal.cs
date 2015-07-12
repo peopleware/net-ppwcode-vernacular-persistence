@@ -1,4 +1,16 @@
-﻿#region Using
+﻿// Copyright 2010-2015 by PeopleWare n.v..
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Collections.Generic;
@@ -7,47 +19,20 @@ using System.Linq;
 using System.Security.Principal;
 using System.Threading;
 
-#endregion
-
 namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
 {
     public sealed class CustomPrincipal : IPrincipal
     {
-        private readonly WindowsIdentity m_Identity;
-        private HashSet<string> m_HashedRoles;
         private static readonly bool s_UseSecurity;
         private static readonly IDictionary<string, HashSet<string>> s_RoleCache = new Dictionary<string, HashSet<string>>();
         private static readonly object s_Lock = new object();
+        private readonly WindowsIdentity m_Identity;
+        private HashSet<string> m_HashedRoles;
 
         static CustomPrincipal()
         {
             object valueFromConfig = ConfigurationManager.AppSettings["UseSecurity"];
             s_UseSecurity = valueFromConfig != null ? Convert.ToBoolean(valueFromConfig) : true;
-        }
-
-        public CustomPrincipal(IIdentity identity)
-        {
-            WindowsIdentity windowsIdentity = identity as WindowsIdentity;
-            if (windowsIdentity == null || !windowsIdentity.IsAuthenticated)
-            {
-                throw new ArgumentException(@"Only authenticated windows identities are supported.");
-            }
-            m_Identity = windowsIdentity;
-        }
-
-        // helper method for easy access (without casting)
-        public static CustomPrincipal Current
-        {
-            get { return Thread.CurrentPrincipal as CustomPrincipal; }
-        }
-
-        // cache roles for subsequent requests
-        private void EnsureRoles()
-        {
-            if (m_HashedRoles == null)
-            {
-                m_HashedRoles = GetHashedRoles(m_Identity);
-            }
         }
 
         private static HashSet<string> GetHashedRoles(WindowsIdentity id)
@@ -74,13 +59,39 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
                             }
                         }
                     }
+
                     s_RoleCache.Add(id.Name, result);
                 }
+
                 return result;
             }
         }
 
-        #region IPrincipal Members
+        public CustomPrincipal(IIdentity identity)
+        {
+            WindowsIdentity windowsIdentity = identity as WindowsIdentity;
+            if (windowsIdentity == null || !windowsIdentity.IsAuthenticated)
+            {
+                throw new ArgumentException(@"Only authenticated windows identities are supported.");
+            }
+
+            m_Identity = windowsIdentity;
+        }
+
+        // helper method for easy access (without casting)
+        public static CustomPrincipal Current
+        {
+            get { return Thread.CurrentPrincipal as CustomPrincipal; }
+        }
+
+        // cache roles for subsequent requests
+        private void EnsureRoles()
+        {
+            if (m_HashedRoles == null)
+            {
+                m_HashedRoles = GetHashedRoles(m_Identity);
+            }
+        }
 
         IIdentity IPrincipal.Identity
         {
@@ -95,9 +106,8 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
                 bool result = m_HashedRoles.Contains(role);
                 return result;
             }
+
             return true;
         }
-
-        #endregion
     }
 }
