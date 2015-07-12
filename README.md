@@ -1,6 +1,6 @@
 # PPWCode.Vernacular.Persistence
 
-This library is part of the PPWCode project and defines the semantic vernacular.
+This library is part of the PPWCode project and defines the persistence vernacular.
 
 
 ## Getting started
@@ -16,16 +16,17 @@ inside Visual Studio.
 
 ### PPWCode.Vernacular.Persistence I
 
-Version I of the library is still available in maintenance mode, and is 
-compatible with Microsoft .NET 3.5.
+Version I of the library is the original version of the library and is now in maintenance mode.
 
-This version is available on the git branch `stable/I`. It is currently not available
-in the [NuGet Gallery].  One can however build the package oneself and publish it
-on a local repository.
+#### Support for .NET 3.5
 
-We intend to make it available at some point in the future as the [NuGet] 
-package `PPWCode.Vernacular.Persistence.I`.  From then on, one will be able to install
-it using the Nuget package manager from inside Visual Studio.
+The code  was originally built against Microsoft .NET 3.5 and a version for .NET 3.5 is still available in the [NuGet Gallery].  It is the [NuGet] package `PPWCode.Vernacular.Persistence.I` version 1.x.x.  Every 1.x.x version will be a maintenance release built against .NET 3.5.
+
+Note that the 1.x.x versions depend on a [NuGet] package `Microsoft.Contracts`.  This is a package that cannot be published in the [NuGet Gallery], because it contains a proprietary dll from Microsoft.  It is really easy to create this package by yourself however.
+
+#### Support for .NET 4.5
+
+The more recent maintenance releases of `PPWCode.Vernacular.Persistence.I`  are built against .NET 4.5.  Every release from 2.x.x onwards will be built against .NET 4.5.  These versions can be found on the git branch `stable/I`.  They are also published in the [NuGet Gallery].
 
 
 ## Build your own
@@ -68,7 +69,7 @@ See the [GitHub Contributors list].
 
 ## PPWCode
 
-This package is part of the PPWCode project, developed by [PeopleWare n.v.].
+This package is part of the PPWCode project, developed by [PeopleWare NV].
 
 More information can be found in the following locations:
 * [PPWCode project website]
@@ -98,7 +99,7 @@ symbol servers.
 
 ## License and Copyright
 
-Copyright 2014 by [PeopleWare n.v.].
+Copyright 2014, 2015 by [PeopleWare NV].
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -117,7 +118,7 @@ limitations under the License.
 [PPWCode project website]: http://www.ppwcode.org
 [PPWCode Google Code website]: http://ppwcode.googlecode.com
 
-[PeopleWare n.v.]: http://www.peopleware.be/
+[PeopleWare NV]: http://www.peopleware.be/
 
 [NuGet]: https://www.nuget.org/
 [NuGet Gallery]: https://www.nuget.org/policies/About
