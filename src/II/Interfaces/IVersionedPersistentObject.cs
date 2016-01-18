@@ -16,8 +16,9 @@ using System;
 
 namespace PPWCode.Vernacular.Persistence.II
 {
-    public interface IVersionedPersistentObject<TId, TVersion> : IPersistentObject<TId>
+    public interface IVersionedPersistentObject<TId, out TVersion> : IPersistentObject<TId>
         where TId : IEquatable<TId>
+        where TVersion : IEquatable<TVersion>
     {
         TVersion PersistenceVersion { get; }
     }

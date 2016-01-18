@@ -165,8 +165,8 @@
     <Compile Include="Interfaces\ITimeProvider.cs" />
     <Compile Include="Interfaces\IUpdateAuditable.cs" />
     <Compile Include="Interfaces\IUpdateAuditableProperties.cs" />
-    <Compile Include="Interfaces\IVersionedPersistenceObject.cs" />
     <Compile Include="Interfaces\IWcfService.cs" />
+    <Compile Include="Interfaces\IVersionedPersistentObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
