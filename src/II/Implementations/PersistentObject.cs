@@ -1,4 +1,4 @@
-﻿// Copyright 2014 by PeopleWare n.v..
+﻿// Copyright 2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,12 +14,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Reflection;
 using System.Runtime.Serialization;
-using System.Text;
 
+using PPWCode.Util.OddsAndEnds.II.Extensions;
 using PPWCode.Vernacular.Exceptions.II;
 
 namespace PPWCode.Vernacular.Persistence.II
@@ -75,7 +74,17 @@ namespace PPWCode.Vernacular.Persistence.II
         [Pure]
         public virtual CompoundSemanticException WildExceptions()
         {
-            return new CompoundSemanticException();
+            CompoundSemanticException result = new CompoundSemanticException();
+            //ICollection<System.ComponentModel.DataAnnotations.ValidationResult> validationResults = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
+            //if (Validator.TryValidateObject(this, new ValidationContext(this), validationResults))
+            //{
+            //    foreach (System.ComponentModel.DataAnnotations.ValidationResult validationResult in validationResults)
+            //    {
+            //        result.AddElement(new ValidationResult(validationResult));
+            //    }
+            //}
+
+            return result;
         }
 
         /// <summary>
@@ -153,28 +162,7 @@ namespace PPWCode.Vernacular.Persistence.II
         /// </returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("Type = '{0}' Id = '{1}'; HashCode = '{2}'", GetType().Name, Id, GetHashCode());
-
-            IEnumerable<PropertyInfo> propertyInfos = GetType()
-                .GetProperties()
-                .Where(propertyInfo => propertyInfo.PropertyType.IsValueType);
-            foreach (PropertyInfo propertyInfo in propertyInfos)
-            {
-                object value;
-                try
-                {
-                    value = propertyInfo.GetValue(this, null);
-                }
-                catch (Exception e)
-                {
-                    value = e.GetBaseException().Message;
-                }
-
-                sb.AppendFormat("; {0} = '{1}'", propertyInfo.Name, value);
-            }
-
-            return sb.ToString();
+            return this.ToLogString();
         }
     }
 }

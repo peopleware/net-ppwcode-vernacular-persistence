@@ -125,6 +125,7 @@
       <HintPath>..\packages\PPWcode.Vernacular.Semantics.II.1.0.0\lib\net45\PPWcode.Vernacular.Semantics.II.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -141,6 +142,7 @@
     <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Exceptions\ObjectAlreadyChangedException.cs" />
     <Compile Include="Exceptions\RepositorySqlException.cs" />
+    <Compile Include="Exceptions\ValidationResult.cs" />
     <Compile Include="Implementations\AuditablePersistentObject.cs" />
     <Compile Include="Implementations\AuditableVersionedPersistentObject.cs" />
     <Compile Include="Implementations\AuditLog.cs" />
@@ -165,7 +167,6 @@
     <Compile Include="Interfaces\ITimeProvider.cs" />
     <Compile Include="Interfaces\IUpdateAuditable.cs" />
     <Compile Include="Interfaces\IUpdateAuditableProperties.cs" />
-    <Compile Include="Interfaces\IWcfService.cs" />
     <Compile Include="Interfaces\IVersionedPersistentObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

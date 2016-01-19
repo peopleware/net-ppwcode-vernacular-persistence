@@ -1,4 +1,4 @@
-﻿// Copyright 2014 by PeopleWare n.v..
+﻿// Copyright 2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,9 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace PPWCode.Vernacular.Persistence.II
+using System.ComponentModel.DataAnnotations;
+
+namespace PPWCode.Vernacular.Persistence.II.Tests.DataAnnotations
 {
-    public interface IWcfService
+    public class AnnotatedFoo : PersistentObject<int>
     {
+        public AnnotatedFoo(int id)
+            : base(id)
+        {
+        }
+
+        public AnnotatedFoo()
+        {
+        }
+
+        [Required, StringLength(10)]
+        public string Name { get; set; }
     }
 }
