@@ -75,14 +75,17 @@ namespace PPWCode.Vernacular.Persistence.II
         public virtual CompoundSemanticException WildExceptions()
         {
             CompoundSemanticException result = new CompoundSemanticException();
-            //ICollection<System.ComponentModel.DataAnnotations.ValidationResult> validationResults = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
-            //if (Validator.TryValidateObject(this, new ValidationContext(this), validationResults))
-            //{
-            //    foreach (System.ComponentModel.DataAnnotations.ValidationResult validationResult in validationResults)
-            //    {
-            //        result.AddElement(new ValidationResult(validationResult));
-            //    }
-            //}
+            ICollection<System.ComponentModel.DataAnnotations.ValidationResult> validationResults =
+                new List<System.ComponentModel.DataAnnotations.ValidationResult>();
+            if (Validator.TryValidateObject(this, new ValidationContext(this), validationResults, true))
+            {
+                return result;
+            }
+
+            foreach (System.ComponentModel.DataAnnotations.ValidationResult validationResult in validationResults)
+            {
+                result.AddElement(new ValidationResult(validationResult));
+            }
 
             return result;
         }

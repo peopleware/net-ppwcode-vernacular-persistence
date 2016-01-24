@@ -12,13 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
 using NUnit.Framework;
-
-using PPWCode.Vernacular.Exceptions.II;
 
 namespace PPWCode.Vernacular.Persistence.II.Tests.DataAnnotations
 {
@@ -28,26 +24,41 @@ namespace PPWCode.Vernacular.Persistence.II.Tests.DataAnnotations
         [Test]
         public void no_annotation_result_to_civilized()
         {
-            var x = new NotAnnotatedFoo(1);
+            NotAnnotatedFoo x = new NotAnnotatedFoo(1);
             Assert.That(x.IsCivilized, Is.True);
         }
 
         [Test]
-        public void required_annotation_not_fullfilled()
+        public void none_of_the_annotations_not_fullfilled()
         {
-            var x = new AnnotatedFoo(1);
-
-            CompoundSemanticException result = new CompoundSemanticException();
-            ICollection<System.ComponentModel.DataAnnotations.ValidationResult> validationResults = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
-            if (Validator.TryValidateObject(this, new ValidationContext(this), validationResults))
-            {
-                foreach (System.ComponentModel.DataAnnotations.ValidationResult validationResult in validationResults)
-                {
-                    result.AddElement(new ValidationResult(validationResult));
-                }
-            }
+            AnnotatedFoo x = new AnnotatedFoo(1);
 
             Assert.That(x.IsCivilized, Is.False);
+        }
+
+        [Test]
+        public void one_or_more_annotations_not_fullfilled()
+        {
+            AnnotatedFoo x =
+                new AnnotatedFoo(1)
+                {
+                    Name = "1234567890"
+                };
+
+            Assert.That(x.IsCivilized, Is.False);
+        }
+
+        [Test]
+        public void all_annotations_are_fullfilled()
+        {
+            AnnotatedFoo x =
+                new AnnotatedFoo(1)
+                {
+                    Name = "Name",
+                    Age = 0
+                };
+
+            Assert.That(x.IsCivilized, Is.True);
         }
     }
 }

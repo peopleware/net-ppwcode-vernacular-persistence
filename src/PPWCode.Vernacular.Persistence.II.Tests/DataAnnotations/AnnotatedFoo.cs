@@ -29,5 +29,8 @@ namespace PPWCode.Vernacular.Persistence.II.Tests.DataAnnotations
 
         [Required, StringLength(10)]
         public string Name { get; set; }
+
+        [Required, Range(0, 150)]
+        public int? Age { get; set; }
     }
 }
