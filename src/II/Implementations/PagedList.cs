@@ -81,7 +81,7 @@ namespace PPWCode.Vernacular.Persistence.II
         [DataMember(Order = 6)]
         public bool HasNextPage
         {
-            get { return PageIndex + 1 < TotalPages; }
+            get { return PageIndex < TotalPages; }
         }
 
         [DataMember(Order = 7)]
