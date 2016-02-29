@@ -1,4 +1,4 @@
-﻿// Copyright 2014 by PeopleWare n.v..
+﻿// Copyright 2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
 // limitations under the License.
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace PPWCode.Vernacular.Persistence.II
@@ -22,6 +23,7 @@ namespace PPWCode.Vernacular.Persistence.II
         : PersistentObject<T>,
           IVersionedPersistentObject<T, TVersion>
         where T : IEquatable<T>
+        where TVersion : IEquatable<TVersion>
     {
         [DataMember(Name = "PersistenceVersion")]
         private TVersion m_PersistenceVersion;
@@ -46,6 +48,32 @@ namespace PPWCode.Vernacular.Persistence.II
         {
             get { return m_PersistenceVersion; }
             private set { m_PersistenceVersion = value; }
+        }
+
+        public override bool IsSame(IIdentity<T> other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            IVersionedPersistentObject<T, TVersion> versionedOther = other as IVersionedPersistentObject<T, TVersion>;
+            if (versionedOther == null)
+            {
+                return base.IsSame(other);
+            }
+
+            EqualityComparer<TVersion> equalityComparer = EqualityComparer<TVersion>.Default;
+
+            return base.IsSame(other)
+                   && !equalityComparer.Equals(PersistenceVersion, default(TVersion))
+                   && !equalityComparer.Equals(versionedOther.PersistenceVersion, default(TVersion))
+                   && equalityComparer.Equals(PersistenceVersion, versionedOther.PersistenceVersion);
         }
     }
 }

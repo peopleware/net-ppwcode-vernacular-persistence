@@ -12,9 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System;
+
 namespace PPWCode.Vernacular.Persistence.II
 {
-    public interface IWcfService
+    public interface IVersionedPersistentObject<TId, out TVersion> : IPersistentObject<TId>
+        where TId : IEquatable<TId>
+        where TVersion : IEquatable<TVersion>
     {
+        TVersion PersistenceVersion { get; }
     }
 }

@@ -22,6 +22,7 @@ namespace PPWCode.Vernacular.Persistence.II
         : VersionedPersistentObject<T, TVersion>,
           IInsertAuditable
         where T : IEquatable<T>
+        where TVersion : IEquatable<TVersion>
     {
         [DataMember(Name = "CreatedAt")]
         private DateTime? m_CreatedAt;

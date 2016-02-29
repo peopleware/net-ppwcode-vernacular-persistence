@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPWCode.Vernacular.Persistence.II", "II\PPWCode.Vernacular.Persistence.II.csproj", "{12B4B648-D937-42F7-B7A3-B5B9D83941C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{1EB1E55E-198A-4D9B-887E-FA95DECE32DC}"
@@ -23,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "psake", "psake", "{6FCC0CCF
 		..\init-psake.ps1 = ..\init-psake.ps1
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPWCode.Vernacular.Persistence.II.Tests", "PPWCode.Vernacular.Persistence.II.Tests\PPWCode.Vernacular.Persistence.II.Tests.csproj", "{60F05DAC-9FE5-4B7B-8E5D-601E87F1EEC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,10 @@ Global
 		{12B4B648-D937-42F7-B7A3-B5B9D83941C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12B4B648-D937-42F7-B7A3-B5B9D83941C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12B4B648-D937-42F7-B7A3-B5B9D83941C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60F05DAC-9FE5-4B7B-8E5D-601E87F1EEC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60F05DAC-9FE5-4B7B-8E5D-601E87F1EEC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60F05DAC-9FE5-4B7B-8E5D-601E87F1EEC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60F05DAC-9FE5-4B7B-8E5D-601E87F1EEC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

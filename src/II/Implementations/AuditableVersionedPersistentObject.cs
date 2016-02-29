@@ -22,6 +22,7 @@ namespace PPWCode.Vernacular.Persistence.II
         : InsertAuditableVersionedPersistentObject<T, TVersion>,
           IAuditable
         where T : IEquatable<T>
+        where TVersion : IEquatable<TVersion>
     {
         [DataMember(Name = "LastModifiedAt")]
         private DateTime? m_LastModifiedAt;
