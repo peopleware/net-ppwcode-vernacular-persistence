@@ -16,9 +16,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Contracts;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
+using System.Text;
 
-using PPWCode.Util.OddsAndEnds.II.Extensions;
 using PPWCode.Vernacular.Exceptions.II;
 
 namespace PPWCode.Vernacular.Persistence.II
@@ -165,7 +167,30 @@ namespace PPWCode.Vernacular.Persistence.II
         /// </returns>
         public override string ToString()
         {
-            return this.ToLogString();
+            // REMARK: do not change this to ToLogString() !!
+            //  ToLogString() calls itself "obj.ToString()", which causes an infinite loop
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("Type = '{0}' Id = '{1}'; HashCode = '{2}'", GetType().Name, Id, GetHashCode());
+
+            IEnumerable<PropertyInfo> propertyInfos = GetType()
+                .GetProperties()
+                .Where(propertyInfo => propertyInfo.PropertyType.IsValueType);
+            foreach (PropertyInfo propertyInfo in propertyInfos)
+            {
+                object value;
+                try
+                {
+                    value = propertyInfo.GetValue(this, null);
+                }
+                catch (Exception e)
+                {
+                    value = e.GetBaseException().Message;
+                }
+
+                sb.AppendFormat("; {0} = '{1}'", propertyInfo.Name, value);
+            }
+
+            return sb.ToString();
         }
     }
 }
