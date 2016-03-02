@@ -19,12 +19,12 @@
 1.0.0 Initial release PPWCode.Vernacular.Persistence.II, built against .NET 4.5.
 1.0.1 Type fault.
 1.0.2 Fix Name on DataMemberAttribute.
-1.1.0 New functionality: Redirect use of DataAnnotations to WildExceptions.
-Improved: IsSame for VersionedPersistentObject
-Fix: PPWCODE-6, PagedList.hasNextPage
+2.0.0 New functionality: Redirect use of DataAnnotations to WildExceptions.
+      Improved: IsSame for VersionedPersistentObject
+      Fix: PPWCODE-6, PagedList.hasNextPage
     </releaseNotes>
 
-    <copyright>Copyright 2014 by PeopleWare n.v.</copyright>
+    <copyright>Copyright 2016 by PeopleWare n.v.</copyright>
 
     <tags>PPWCode PPWCode.Vernacular PPWCode.Vernacular.Persistence</tags>
 
