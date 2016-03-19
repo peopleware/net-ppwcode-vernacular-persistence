@@ -1,4 +1,4 @@
-// Copyright 2010-2015 by PeopleWare n.v..
+// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,12 +13,12 @@
 // limitations under the License.
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
+
+using log4net;
 
 namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.GenericInterceptor
 {
@@ -27,25 +27,31 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.GenericInterceptor
         : Attribute,
           IServiceBehavior
     {
+        private static readonly ILog s_Logger = LogManager.GetLogger(typeof(ServiceInterceptorBehaviorAttribute));
+
         protected abstract OperationInterceptorBehaviorAttribute CreateOperationInterceptor();
 
         public void ApplyDispatchBehavior(ServiceDescription serviceDescription, ServiceHostBase host)
         {
-            IEnumerable<OperationDescription> operations = serviceDescription
-                .Endpoints
-                .SelectMany(
-                    endpoint => endpoint.Contract.Operations,
-                    (endpoint, operation) =>
-                    new
-                    {
-                        endpoint,
-                        operation
-                    })
-                .Where(@t => @t.operation.Behaviors.Find<OperationInterceptorBehaviorAttribute>() == null)
-                .Select(@t => @t.operation);
-            foreach (OperationDescription operation in operations)
+            foreach (ServiceEndpoint endpoint in serviceDescription.Endpoints)
             {
-                operation.Behaviors.Add(CreateOperationInterceptor());
+                foreach (var operation in endpoint.Contract.Operations)
+                {
+                    IOperationBehavior operationBehavior = CreateOperationInterceptor();
+                    if (!operation.Behaviors.Contains(operationBehavior.GetType()))
+                    {
+                        operation.Behaviors.Add(operationBehavior);
+
+                        if (s_Logger.IsDebugEnabled)
+                        {
+                            s_Logger.DebugFormat(
+                                "Added operationbehavior of type '{0}' onto method '{1}.{2}'",
+                                operationBehavior.GetType().Name,
+                                operation.DeclaringContract.Name,
+                                operation.Name);
+                        }
+                    }
+                }
             }
         }
 

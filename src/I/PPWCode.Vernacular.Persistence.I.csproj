@@ -278,6 +278,9 @@
     <Compile Include="Dao\Wcf\AuthorizationPolicy.cs" />
     <Compile Include="Dao\Wcf\CustomPrincipal.cs" />
     <Compile Include="Dao\Wcf\Helpers\CommunicationProxyHelper.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Errors\AuditLogOperationInterceptor.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Errors\AuditLogOperationInterceptorAttribute.cs" />
+    <Compile Include="Dao\Wcf\Helpers\Errors\AuditLogServiceInterceptorBehaviorAttribute.cs" />
     <Compile Include="Dao\Wcf\Helpers\Errors\ExceptionMarshallingBehaviorAttribute.cs" />
     <Compile Include="Dao\Wcf\Helpers\Errors\ExceptionMarshallingElement.cs" />
     <Compile Include="Dao\Wcf\Helpers\Errors\ExceptionMarshallingErrorHandler.cs" />

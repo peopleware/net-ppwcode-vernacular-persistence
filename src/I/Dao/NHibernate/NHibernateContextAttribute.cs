@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 
+using log4net;
+
 using PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.GenericInterceptor;
 
 namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
@@ -24,6 +26,8 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         : ServiceInterceptorBehaviorAttribute,
           IContractBehavior
     {
+        private static readonly ILog s_Logger = LogManager.GetLogger(typeof(NHibernateContextAttribute));
+
         public string SessionFactory { get; set; }
 
         void IContractBehavior.AddBindingParameters(ContractDescription contractDescription, ServiceEndpoint endpoint, BindingParameterCollection bindingParameters)
@@ -45,6 +49,14 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
         protected override OperationInterceptorBehaviorAttribute CreateOperationInterceptor()
         {
+            if (s_Logger.IsDebugEnabled)
+            {
+                s_Logger.DebugFormat(
+                    "Requested to create an OperationInterceptor of type '{0}' with SessionFactory '{1}'.",
+                    typeof(NHibernateFlushSessionOperationInterceptor.NHibernateFlushSessionOperationAttribute).Name,
+                    SessionFactory);
+            }
+
             return new NHibernateFlushSessionOperationInterceptor.NHibernateFlushSessionOperationAttribute();
         }
     }
