@@ -21,6 +21,7 @@
 1.6.0 First release PPWCode.Vernacular.Persistence.I on nuget.org.
 2.0.0 Upgrade to .net 4.5.0
 2.0.1 Upgrading Common.Logging to 2.1.1
+2.0.2 Add AuditLogOperationInterceptorAttribute / AuditLogServiceInterceptorBehaviorAttribute
     </releaseNotes>
     
     <copyright>Copyright 2010-2015 by PeopleWare NV</copyright>
