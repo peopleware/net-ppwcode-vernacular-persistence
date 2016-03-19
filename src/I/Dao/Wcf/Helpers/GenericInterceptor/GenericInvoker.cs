@@ -46,7 +46,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf.Helpers.GenericInterceptor
         {
             PreInvoke(instance, inputs);
             object returnedValue = null;
-            object[] outputParams = new object[] { };
+            object[] outputParams = { };
             Exception exception = null;
             try
             {
