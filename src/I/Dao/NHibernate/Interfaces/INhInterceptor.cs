@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,23 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using NUnit.Framework;
+using NHibernate;
 
-using PPWCode.Vernacular.Persistence.I.Dao.NHibernate;
-
-namespace PPWCode.Vernacular.Persistence.I.Tests.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Interfaces
 {
-    [TestFixture]
-    public class NHibernateAbstractDaoTest
+    public interface INhInterceptor
     {
-        [Test, Description("AbstractNHibernateDao Constructor")]
-        public void TestAbstractNHibernateDaoConstructorTest()
-        {
-            new NHibernateTestDao();
-        }
-
-        private sealed class NHibernateTestDao : AbstractNHibernateDao
-        {
-        }
+        IInterceptor GetInterceptor();
     }
 }

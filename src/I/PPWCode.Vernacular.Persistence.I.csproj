@@ -176,10 +176,6 @@
       <HintPath>..\packages\Common.Logging.2.1.1\lib\net40\Common.Logging.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="HibernatingRhinos.Profiler.Appender, Version=3.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernateProfiler.Appender.3.0.3069.0\lib\HibernatingRhinos.Profiler.Appender.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\Iesi.Collections.3.1.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
       <Private>True</Private>
@@ -248,17 +244,31 @@
     <Compile Include="Dao\ClientCrudDao.cs" />
     <Compile Include="Dao\ClientDao.cs" />
     <Compile Include="Dao\DaoHelper.cs" />
-    <Compile Include="Dao\NHibernate\NHibernateContext.cs" />
-    <Compile Include="Dao\NHibernate\NHibernateContextAttribute.cs" />
-    <Compile Include="Dao\NHibernate\NHibernateContextExtension.cs" />
-    <Compile Include="Dao\NHibernate\NHibernateContextInitializer.cs" />
-    <Compile Include="Dao\NHibernate\NHibernateFlushSessionOperationInterceptor.cs" />
+    <Compile Include="Dao\NHibernate\Implementations\IdentityProvider.cs" />
+    <Compile Include="Dao\NHibernate\Implementations\ImmutableUserTypeBase.cs" />
+    <Compile Include="Dao\NHibernate\Implementations\NhConfiguration.cs" />
+    <Compile Include="Dao\NHibernate\Implementations\NhConfigurationBase.cs" />
+    <Compile Include="Dao\NHibernate\Implementations\NhProperties.cs" />
+    <Compile Include="Dao\NHibernate\Implementations\TimeProvider.cs" />
+    <Compile Include="Dao\NHibernate\Interfaces\IIdentityProvider.cs" />
+    <Compile Include="Dao\NHibernate\Interfaces\IMappingAssemblies.cs" />
+    <Compile Include="Dao\NHibernate\Interfaces\INhConfiguration.cs" />
+    <Compile Include="Dao\NHibernate\Interfaces\INHibernateSessionFactory.cs" />
+    <Compile Include="Dao\NHibernate\Interfaces\INhInterceptor.cs" />
+    <Compile Include="Dao\NHibernate\Interfaces\INhProperties.cs" />
+    <Compile Include="Dao\NHibernate\Interfaces\IRegisterEventListener.cs" />
+    <Compile Include="Dao\NHibernate\Interfaces\ITimeProvider.cs" />
     <Compile Include="Dao\NHibernate\NHibernateSerializationContractBehaviorAttribute.cs" />
     <Compile Include="Dao\NHibernate\NHibernateSerializationOperationBehaviourAttribute.cs" />
     <Compile Include="Dao\NHibernate\NHibernateWcfCrudDao.cs" />
     <Compile Include="Dao\NHibernate\NHibernateSecurityStatelessCrudDao.cs" />
-    <Compile Include="Dao\NHibernate\NHibernateSessionFactory.cs" />
+    <Compile Include="Dao\NHibernate\Semantics\AssociationContracts.cs" />
     <Compile Include="Dao\NHibernate\UriUserType.cs" />
+    <Compile Include="Dao\NHibernate\Utilities\AuditInterceptor.cs" />
+    <Compile Include="Dao\NHibernate\Utilities\AuditLogEventListener.cs" />
+    <Compile Include="Dao\NHibernate\Utilities\CivilizedEventListener.cs" />
+    <Compile Include="Dao\NHibernate\Utilities\NHibernateSessionFactory.cs" />
+    <Compile Include="Dao\NHibernate\Utilities\PPWDriverConnectionProvider.cs" />
     <Compile Include="Dao\PPWAuditLogAttribute.cs" />
     <Compile Include="Dao\DaoSecurityException.cs" />
     <Compile Include="Dao\IDao.cs" />
@@ -266,10 +276,8 @@
     <Compile Include="Dao\IPPWSecurity.cs" />
     <Compile Include="Dao\IStatelessCrudDao.cs" />
     <Compile Include="Dao\NHibernate\AbstractNHibernateDao.cs" />
-    <Compile Include="Dao\NHibernate\AuditEventListener.cs" />
     <Compile Include="Dao\DaoSqlException.cs" />
     <Compile Include="Dao\NHibernate\AuditLog.cs" />
-    <Compile Include="Dao\NHibernate\AuditLogEventListner.cs" />
     <Compile Include="Dao\NHibernate\NHibernateDataContractSurrogate.cs" />
     <Compile Include="Dao\NHibernate\NHibernateStatelessCrudDao.cs" />
     <Compile Include="Dao\ObjectAlreadyChangedException.cs" />
@@ -314,6 +322,7 @@
     <EmbeddedResource Include="Dao\NHibernate\AuditLog.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

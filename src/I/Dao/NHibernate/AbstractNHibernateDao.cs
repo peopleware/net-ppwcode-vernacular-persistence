@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,15 +27,17 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         private static readonly ILog s_Logger = LogManager.GetLogger(typeof(AbstractNHibernateDao));
 
         private readonly object m_Locker = new object();
-
-        private bool m_Disposed;
-
         private ISession m_Session;
+        private bool m_Disposed;
 
         public ISession Session
         {
             get { return m_Session; }
-            set { m_Session = value; }
+            set
+            {
+                Contract.Ensures(Session == value);
+                m_Session = value;
+            }
         }
 
         public bool IsOperational

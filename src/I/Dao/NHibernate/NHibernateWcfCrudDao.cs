@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,11 +14,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Diagnostics.Contracts;
 using System.ServiceModel;
-
-using HibernatingRhinos.Profiler.Appender.NHibernate;
 
 using NHibernate;
 
@@ -34,61 +31,30 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
     public abstract class NHibernateWcfCrudDao :
         WcfCrudDao
     {
-        static NHibernateWcfCrudDao()
+        private readonly ISessionFactory m_SessionFactory;
+
+        protected NHibernateWcfCrudDao(IStatelessCrudDao statelessCrudDao, ISessionFactory sessionFactory)
+            : base(statelessCrudDao)
         {
-            object valueFromConfig = ConfigurationManager.AppSettings["UseSecurity"];
-            UseSecurity = valueFromConfig != null ? Convert.ToBoolean(valueFromConfig) : true;
-            valueFromConfig = ConfigurationManager.AppSettings["UseProfiler"];
-            UseProfiler = valueFromConfig != null ? Convert.ToBoolean(valueFromConfig) : false;
-            if (UseProfiler)
-            {
-                StartNHibernateProfiler();
-                AppDomain.CurrentDomain.ProcessExit += (sender, e) => EndNHibernateProfiler();
-            }
+            Contract.Requires(statelessCrudDao != null);
+            Contract.Requires(sessionFactory != null);
+            Contract.Ensures(StatelessCrudDao == statelessCrudDao);
+            Contract.Ensures(SessionFactory == sessionFactory);
+
+            m_SessionFactory = sessionFactory;
         }
 
-        private static void StartNHibernateProfiler()
+        [ContractInvariantMethod]
+        private void Invariants()
         {
-            NHibernateProfiler.Initialize();
+            Contract.Invariant(StatelessCrudDao != null);
+            Contract.Invariant(SessionFactory != null);
         }
-
-        private static void EndNHibernateProfiler()
-        {
-            NHibernateProfiler.Shutdown();
-        }
-
-        protected NHibernateWcfCrudDao()
-        {
-            Contract.Assume(NHibernateContext.Current.Session != null);
-            Initialize(NHibernateContext.Current.Session);
-        }
-
-        protected NHibernateWcfCrudDao(ISession session)
-        {
-            Contract.Requires(session != null);
-            Initialize(session);
-        }
-
-        private void Initialize(ISession session)
-        {
-            NHibernateStatelessCrudDao nHibernateStatelessCrudDao = UseSecurity
-                                                                        ? new NHibernateSecurityStatelessCrudDao()
-                                                                        : new NHibernateStatelessCrudDao();
-            Session = session;
-            nHibernateStatelessCrudDao.Session = Session;
-            StatelessCrudDao = nHibernateStatelessCrudDao;
-        }
-
-        public ISession Session { get; set; }
 
         public ISessionFactory SessionFactory
         {
-            get { return Session != null ? Session.SessionFactory : null; }
+            get { return m_SessionFactory; }
         }
-
-        protected static bool UseSecurity { get; private set; }
-
-        protected static bool UseProfiler { get; private set; }
 
         /// <summary>
         ///     This method checks if the current thread has enough permission (role-based)
@@ -227,24 +193,24 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         }
 
         [OperationBehavior(
-            TransactionScopeRequired = true,
-            TransactionAutoComplete = true)]
+             TransactionScopeRequired = true,
+             TransactionAutoComplete = true)]
         public override IPersistentObject Create(IPersistentObject po)
         {
             return CUDGateway(po, Operation.CREATE, GetFactory());
         }
 
         [OperationBehavior(
-            TransactionScopeRequired = true,
-            TransactionAutoComplete = true)]
+             TransactionScopeRequired = true,
+             TransactionAutoComplete = true)]
         public override IPersistentObject Update(IPersistentObject po)
         {
             return CUDGateway(po, Operation.UPDATE, GetFactory());
         }
 
         [OperationBehavior(
-            TransactionScopeRequired = true,
-            TransactionAutoComplete = true)]
+             TransactionScopeRequired = true,
+             TransactionAutoComplete = true)]
         public override IPersistentObject Delete(IPersistentObject po)
         {
             return CUDGateway(po, Operation.DELETE, GetFactory());
