@@ -128,7 +128,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities
             s_DomainTypesSyncObj = new object();
         }
 
-        protected AuditLogEventListener(IIdentityProvider identityProvider, ITimeProvider timeProvider, bool useUtc)
+        public AuditLogEventListener(IIdentityProvider identityProvider, ITimeProvider timeProvider, bool useUtc)
         {
             Contract.Requires(identityProvider != null);
             Contract.Requires(timeProvider != null);
