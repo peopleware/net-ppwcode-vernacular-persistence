@@ -125,9 +125,16 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities
                 Set(entityType, propertyNames, currentState, CreatedAtPropertyName, time);
                 Set(entityType, propertyNames, currentState, CreatedByPropertyName, identityName);
 
-                Contract.Assert(insertAuditable != null);
-                insertAuditable.CreatedAt = time;
-                insertAuditable.CreatedBy = identityName;
+                if (insertAuditable != null)
+                {
+                    insertAuditable.CreatedAt = time;
+                    insertAuditable.CreatedBy = identityName;
+                }
+                else
+                {
+                    updateAuditable.CreatedAt = time;
+                    updateAuditable.CreatedBy = identityName;
+                }
             }
 
             if (updateAuditable != null)
