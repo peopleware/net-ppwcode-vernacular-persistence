@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 
 using NHibernate;
@@ -23,6 +24,8 @@ using PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Interfaces;
 
 namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities
 {
+    [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Castle Windsor usage")]
+    [Serializable]
     public class AuditInterceptor : EmptyInterceptor
     {
         private const string CreatedAtPropertyName = "CreatedAt";
@@ -103,7 +106,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities
 
             IInsertAuditableObject insertAuditable = entity as IInsertAuditableObject;
             IAuditableObject updateAuditable = entity as IAuditableObject;
-            if (insertAuditable == null && updateAuditable == null)
+            if ((insertAuditable == null) && (updateAuditable == null))
             {
                 return false;
             }

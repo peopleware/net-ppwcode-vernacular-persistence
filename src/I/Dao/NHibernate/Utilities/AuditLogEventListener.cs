@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection;
@@ -29,7 +30,9 @@ using Environment = System.Environment;
 
 namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities
 {
-    public abstract class AuditLogEventListener :
+    [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Castle Windsor usage")]
+    [Serializable]
+    public class AuditLogEventListener :
         IRegisterEventListener,
         IPostUpdateEventListener,
         IPostInsertEventListener,
