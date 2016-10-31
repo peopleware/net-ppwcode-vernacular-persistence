@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -68,8 +68,8 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
                 return securityList
                     .Exists(s =>
-                            (s.SecurityAction & securityActionFlag) == securityActionFlag
-                            && principal.IsInRole(s.Role));
+                                (s.SecurityAction & securityActionFlag) == securityActionFlag
+                                && principal.IsInRole(s.Role));
             }
         }
 

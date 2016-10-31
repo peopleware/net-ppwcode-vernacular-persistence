@@ -1,4 +1,4 @@
-// Copyright 2010-2015 by PeopleWare n.v..
+// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
 // limitations under the License.
 
 using System.Reflection;
-
 [assembly: AssemblyCompany("Peopleware NV")]
 [assembly: AssemblyProduct("PPWCode.Vernacular.Persistence.I")]
 [assembly: AssemblyCopyright("Copyright © PeopleWare NV 2010-2015")]
@@ -21,8 +20,10 @@ using System.Reflection;
 [assembly: AssemblyCulture("")]
 
 // assembly version: up only when not backwards compatible
+
 [assembly: AssemblyVersion("2.0.0.0")]
 
 // assembly file version, keep in sync with package version
+
 [assembly: AssemblyFileVersion("2.0.2.0")]
 [assembly: AssemblyInformationalVersion("2.0.2.0")]

@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -42,11 +42,11 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         ///     Of particular note is the fact that returned objects need not necessarily need to be civilized
         ///     This is strange, and probably a bad practice, but we have encountered situations where our code
         ///     needs to be more stringent (in creates and updates) than legacy data existing already in the database.
-        ///     If the aID is not found in the store a valid <see cref="IdNotFoundException"/> is thrown.
+        ///     If the aID is not found in the store a valid <see cref="IdNotFoundException" /> is thrown.
         /// </summary>
         /// <param name="persistentObjectType">
         ///     The name of the type of the object we are looking for. This must
-        ///     be a subtype of <see cref="IPersistentObject"/>.
+        ///     be a subtype of <see cref="IPersistentObject" />.
         /// </param>
         /// <param name="id">The primary key of the object we are looking for.</param>
         /// <returns>The persistent object.</returns>
@@ -59,7 +59,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         /// </summary>
         /// <param name="persistentObjectType">
         ///     The name of the type of the object we are looking for. This must
-        ///     be a subtype of <see cref="IPersistentObject"/>.
+        ///     be a subtype of <see cref="IPersistentObject" />.
         /// </param>
         /// <returns>A collection of persistent objects.</returns>
         [OperationContract]
@@ -71,7 +71,8 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         ///     Before commit, the civility is verified and all of its upstream objects
         ///     (to-one relationships), in their state such as they exist in the database. All upstream objects should exist in the
         ///     database, and
-        ///     be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException"/> is thrown. No validation is done on downstream objects:
+        ///     be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException" /> is thrown. No validation is done on
+        ///     downstream objects:
         ///     there should
         ///     be no downstream objects. It is a programming error to submit a object with downstream associated
         ///     objects.
@@ -84,9 +85,9 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
 
         /// <summary>
         ///     Update the object in persistent storage. Return that object. Before commit, the civility is verified
-        ///  and all of its upstream objects
+        ///     and all of its upstream objects
         ///     (to-one relationships), in their state such as they exist in the database. All upstream objects
-        ///     should exist in the database, and be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException"/>
+        ///     should exist in the database, and be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException" />
         ///     is thrown. No validation is done on downstream objects: there should be no downstream objects.
         /// </summary>
         /// <param name="po">The persistent object that must be update.</param>
@@ -99,7 +100,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         ///     Update all the objects in persistent storage. Return the objects. Before commit, the
         ///     civility is verified and all of its upstream objects
         ///     (to-one relationships), in their state such as they exist in the database. All upstream objects
-        ///     should exist in the database, and be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException"/>
+        ///     should exist in the database, and be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException" />
         ///     is thrown. No validation is done on downstream objects: there should be no downstream objects.
         /// </summary>
         /// <param name="col">The collection of persistent objects that must be updated.</param>
@@ -126,7 +127,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
         /// </summary>
         /// <param name="persistentObjectType">
         ///     The name of the type of the object we are looking for. This must
-        ///     be a subtype of <see cref="IPersistentObject"/>.
+        ///     be a subtype of <see cref="IPersistentObject" />.
         /// </param>
         /// <param name="id">The primary key of the object we are looking for.</param>
         /// <returns>The delete object.</returns>
@@ -164,7 +165,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
     }
 
     /// <exclude />
-    /// <summary>This is the contract class for <see cref="IWcfCrudDao"/>.</summary>
+    /// <summary>This is the contract class for <see cref="IWcfCrudDao" />.</summary>
     // ReSharper disable InconsistentNaming
     [ContractClassFor(typeof(IWcfCrudDao))]
     public abstract class WcfCrudDaoContract :
@@ -195,8 +196,8 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
             // Contract.Requires(IsOperational);
             Contract.Ensures(Contract.Result<ICollection<IPersistentObject>>() != null);
             Contract.Ensures(Contract.ForAll(
-                Contract.Result<ICollection<IPersistentObject>>(),
-                a => Type.GetType(PersistentObjectType).IsInstanceOfType(a)));
+                                 Contract.Result<ICollection<IPersistentObject>>(),
+                                 a => Type.GetType(PersistentObjectType).IsInstanceOfType(a)));
 
             // Contract.Ensures(Contract.ForAll<IPersistentObject>(
             //    Contract.Result<ICollection<IPersistentObject>>(),

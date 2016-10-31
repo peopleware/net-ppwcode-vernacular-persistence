@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -60,7 +60,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         /// </summary>
         /// <param name="x">The first given object.</param>
         /// <param name="y">The second given object.</param>
-        /// <returns>A <see cref="bool"/> indicating whether the given objects are equal.</returns>
+        /// <returns>A <see cref="bool" /> indicating whether the given objects are equal.</returns>
         public new bool Equals(object x, object y)
         {
             if (x == null)
@@ -76,7 +76,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         ///     so we use that.
         /// </summary>
         /// <param name="x">The given object.</param>
-        /// <returns>An <see cref="int"/> containing the hash code.</returns>
+        /// <returns>An <see cref="int" /> containing the hash code.</returns>
         public int GetHashCode(object x)
         {
             return x.GetHashCode();

@@ -13,7 +13,6 @@
 // limitations under the License.
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 using NHibernate.Cfg;
@@ -23,7 +22,6 @@ using PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Interfaces;
 
 namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities
 {
-    [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Castle Windsor usage")]
     [Serializable]
     public class CivilizedEventListener :
         IRegisterEventListener,

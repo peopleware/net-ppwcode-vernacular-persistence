@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
     }
 
     /// <exclude />
-    /// <summary>This is the contract class for <see cref="IDao"/>.</summary>
+    /// <summary>This is the contract class for <see cref="IDao" />.</summary>
     // ReSharper disable InconsistentNaming
     [ContractClassFor(typeof(IDao))]
     public abstract class IDaoContract :
