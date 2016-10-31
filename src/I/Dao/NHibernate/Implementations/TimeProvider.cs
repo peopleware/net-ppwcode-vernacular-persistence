@@ -21,10 +21,12 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Implementations
     public class TimeProvider : ITimeProvider
     {
         private readonly DateTime m_UtcCreationDateTime;
+        private readonly DateTime m_LocalCreationDateTime;
 
         public TimeProvider()
         {
             m_UtcCreationDateTime = DateTime.UtcNow;
+            m_LocalCreationDateTime = m_UtcCreationDateTime.ToLocalTime();
         }
 
         public DateTime UtcNow
@@ -44,7 +46,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Implementations
 
         public DateTime TransactionalLocalNow
         {
-            get { return TransactionalUtcNow.ToLocalTime(); }
+            get { return m_LocalCreationDateTime; }
         }
     }
 }
