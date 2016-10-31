@@ -267,6 +267,9 @@
     <Compile Include="Dao\NHibernate\Utilities\AuditInterceptor.cs" />
     <Compile Include="Dao\NHibernate\Utilities\AuditLogEventListener.cs" />
     <Compile Include="Dao\NHibernate\Utilities\CivilizedEventListener.cs" />
+    <Compile Include="Dao\NHibernate\Utilities\EventListenerFixes\DefaultAutoFlushEventListenerEx.cs" />
+    <Compile Include="Dao\NHibernate\Utilities\EventListenerFixes\DefaultDirtyCheckEventListenerEx.cs" />
+    <Compile Include="Dao\NHibernate\Utilities\EventListenerFixes\DefaultFlushEventListenerEx.cs" />
     <Compile Include="Dao\NHibernate\Utilities\NHibernateSessionFactory.cs" />
     <Compile Include="Dao\NHibernate\Utilities\PPWDriverConnectionProvider.cs" />
     <Compile Include="Dao\PPWAuditLogAttribute.cs" />
