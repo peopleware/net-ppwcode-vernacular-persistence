@@ -24,10 +24,10 @@ namespace PPWCode.Vernacular.Persistence.I.Tests.Dao.NHibernate
         [Test, Description("AbstractNHibernateDao Constructor")]
         public void TestAbstractNHibernateDaoConstructorTest()
         {
-            new NHibernateDao();
+            new NHibernateTestDao();
         }
 
-        private sealed class NHibernateDao : AbstractNHibernateDao
+        private sealed class NHibernateTestDao : AbstractNHibernateDao
         {
         }
     }

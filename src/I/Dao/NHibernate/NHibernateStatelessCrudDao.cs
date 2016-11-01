@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -87,7 +87,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         /// </summary>
         /// <param name="type">The given type.</param>
         /// <param name="securityActionFlag">The intended action.</param>
-        /// <returns>A <see cref="bool"/> indicating true or false.</returns>
+        /// <returns>A <see cref="bool" /> indicating true or false.</returns>
         private bool HasSufficientSecurity(Type type, SecurityActionFlag securityActionFlag)
         {
             IPPWSecurity sec = this as IPPWSecurity;
@@ -230,7 +230,8 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         ///     objects
         ///     (to-one relationships), in their state such as they exist in the database. All upstream objects should exist in the
         ///     database, and
-        ///     be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException"/> is thrown. No validation is done on downstream objects:
+        ///     be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException" /> is thrown. No validation is done on
+        ///     downstream objects:
         ///     there should
         ///     be no downstream objects. It is a programming error to submit a object with downstream associated
         ///     objects.
@@ -272,7 +273,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         ///     Update the object in persistent storage. Return that object. Before commit, the
         ///     civility is verified and all of its upstream objects
         ///     (to-one relationships), in their state such as they exist in the database. All upstream objects
-        ///     should exist in the database, and be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException"/>
+        ///     should exist in the database, and be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException" />
         ///     is thrown. No validation is done on downstream objects: there should be no downstream objects.
         /// </summary>
         /// <typeparam name="PersistentObjectType">The type of the persistent object.</typeparam>
@@ -376,10 +377,10 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             if (s_Logger.IsDebugEnabled)
             {
                 s_Logger.Debug(string.Format(
-                    "GetPropertyValue called for class {0} ({1}) and property {2}",
-                    typeof(PersistentObjectType).Name,
-                    po,
-                    property));
+                                   "GetPropertyValue called for class {0} ({1}) and property {2}",
+                                   typeof(PersistentObjectType).Name,
+                                   po,
+                                   property));
             }
 
             PropertyType result = null;
@@ -420,10 +421,10 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             if (s_Logger.IsDebugEnabled)
             {
                 s_Logger.Debug(string.Format(
-                    "GetChildren called for class {0} ({1}) and property {2}",
-                    typeof(PersistentObjectType).Name,
-                    po,
-                    property));
+                                   "GetChildren called for class {0} ({1}) and property {2}",
+                                   typeof(PersistentObjectType).Name,
+                                   po,
+                                   property));
             }
 
             Type poType = po.GetType();

@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -52,7 +52,8 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
         ///     objects
         ///     (to-one relationships), in their state such as they exist in the database. All upstream objects should exist in the
         ///     database, and
-        ///     be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException"/> is thrown. No validation is done on downstream objects:
+        ///     be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException" /> is thrown. No validation is done on
+        ///     downstream objects:
         ///     there should
         ///     be no downstream objects. It is a programming error to submit a object with downstream associated
         ///     objects.
@@ -67,7 +68,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
         ///     Update the object in persistent storage. Return that object. Before commit, the
         ///     civility is verified and all of its upstream objects
         ///     (to-one relationships), in their state such as they exist in the database. All upstream objects
-        ///     should exist in the database, and be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException"/>
+        ///     should exist in the database, and be unchanged. Otherwise, an <see cref="ObjectAlreadyChangedException" />
         ///     is thrown. No validation is done on downstream objects: there should be no downstream objects.
         /// </summary>
         /// <typeparam name="PersistentObjectType">The type of the persistent object.</typeparam>
@@ -114,7 +115,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
         /// <summary>
         ///     Indicates if the system must be flushed after use.
         /// </summary>
-        /// <returns>A <see cref="bool"/> indicating true or false.</returns>
+        /// <returns>A <see cref="bool" /> indicating true or false.</returns>
         bool IsFlushable();
 
         /// <summary>
@@ -136,7 +137,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
     }
 
     /// <exclude />
-    /// <summary>The contract class for <see cref="IStatelessCrudDao"/>.</summary>
+    /// <summary>The contract class for <see cref="IStatelessCrudDao" />.</summary>
     // ReSharper disable once InconsistentNaming
     [ContractClassFor(typeof(IStatelessCrudDao))]
     public abstract class IStatelessCrudDaoContract :

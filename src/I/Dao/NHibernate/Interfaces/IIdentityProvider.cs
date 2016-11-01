@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,22 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.ServiceModel;
-
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Interfaces
 {
-    public class NHibernateContext
+    public interface IIdentityProvider
     {
-        public static NHibernateContextExtension Current
-        {
-            get
-            {
-                return OperationContext
-                    .Current
-                    .InstanceContext
-                    .Extensions
-                    .Find<NHibernateContextExtension>();
-            }
-        }
+        string IdentityName { get; }
     }
 }

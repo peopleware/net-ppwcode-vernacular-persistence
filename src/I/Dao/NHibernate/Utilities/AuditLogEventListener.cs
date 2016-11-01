@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,18 +14,24 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection;
 
 using NHibernate;
+using NHibernate.Cfg;
 using NHibernate.Event;
 
-using PPWCode.Util.OddsAndEnds.I.Security;
 using PPWCode.Vernacular.Exceptions.I;
+using PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Interfaces;
 
-namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
+using Environment = System.Environment;
+
+namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities
 {
-    public class AuditLogEventListner :
+    [Serializable]
+    public class AuditLogEventListener :
+        IRegisterEventListener,
         IPostUpdateEventListener,
         IPostInsertEventListener,
         IPostDeleteEventListener
@@ -107,14 +113,74 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             }
         }
 
+        private static readonly object s_DomainTypesSyncObj;
         private static readonly Dictionary<Type, AuditLogItem> s_DomainTypes;
 
-        private static readonly object s_DomainTypesSyncObj;
+        private readonly IIdentityProvider m_IdentityProvider;
+        private readonly ITimeProvider m_TimeProvider;
+        private readonly bool m_UseUtc;
 
-        static AuditLogEventListner()
+        static AuditLogEventListener()
         {
             s_DomainTypes = new Dictionary<Type, AuditLogItem>();
             s_DomainTypesSyncObj = new object();
+        }
+
+        public AuditLogEventListener(IIdentityProvider identityProvider, ITimeProvider timeProvider, bool useUtc)
+        {
+            Contract.Requires(identityProvider != null);
+            Contract.Requires(timeProvider != null);
+            Contract.Ensures(IdentityProvider == identityProvider);
+            Contract.Ensures(TimeProvider == timeProvider);
+
+            m_IdentityProvider = identityProvider;
+            m_TimeProvider = timeProvider;
+            m_UseUtc = useUtc;
+        }
+
+        [ContractInvariantMethod]
+        private void ObjectInvariant()
+        {
+            Contract.Invariant(IdentityProvider != null);
+            Contract.Invariant(TimeProvider != null);
+        }
+
+        protected IIdentityProvider IdentityProvider
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<IIdentityProvider>() != null);
+
+                return m_IdentityProvider;
+            }
+        }
+
+        protected ITimeProvider TimeProvider
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<ITimeProvider>() != null);
+
+                return m_TimeProvider;
+            }
+        }
+
+        public bool UseUtc
+        {
+            get { return m_UseUtc; }
+        }
+
+        public void Register(Configuration cfg)
+        {
+            cfg.EventListeners.PostUpdateEventListeners = new IPostUpdateEventListener[] { this }
+                .Concat(cfg.EventListeners.PostUpdateEventListeners)
+                .ToArray();
+            cfg.EventListeners.PostInsertEventListeners = new IPostInsertEventListener[] { this }
+                .Concat(cfg.EventListeners.PostInsertEventListeners)
+                .ToArray();
+            cfg.EventListeners.PostDeleteEventListeners = new IPostDeleteEventListener[] { this }
+                .Concat(cfg.EventListeners.PostDeleteEventListeners)
+                .ToArray();
         }
 
         private static string GetStringValueFromStateArray(object[] stateArray, int position)
@@ -128,17 +194,22 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             AuditLogItem ali = AuditLogItem.Find(@event.Entity.GetType());
             if ((ali.AuditLogAction & PPWAuditLogActionEnum.UPDATE) == PPWAuditLogActionEnum.UPDATE)
             {
-                string identityName = IdentityNameHelper.GetIdentityName();
-                DateTime now = DateTime.Now;
+                DateTime now = UseUtc ? TimeProvider.UtcNow : TimeProvider.LocalNow;
+                string identityName = IdentityProvider.IdentityName;
+                if (identityName == null)
+                {
+                    throw new InvalidOperationException("Unknown IdentityName");
+                }
+
                 string entityName = @event.Entity.GetType().Name;
 
                 if (@event.OldState == null)
                 {
                     throw new ProgrammingError(
-                        string.Format(
-                            "No old state available for entity type '{1}'.{0}Make sure you're loading it into Session before modifying and saving it.",
-                            Environment.NewLine,
-                            entityName));
+                              string.Format(
+                                  "No old state available for entity type '{1}'.{0}Make sure you're loading it into Session before modifying and saving it.",
+                                  Environment.NewLine,
+                                  entityName));
                 }
 
                 List<AuditLog> logs = new List<AuditLog>();
@@ -156,17 +227,18 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                         {
                             if ((auditLogAction & PPWAuditLogActionEnum.UPDATE) == PPWAuditLogActionEnum.NONE)
                             {
-                                logs.Add(new AuditLog
-                                         {
-                                             EntryType = "U",
-                                             EntityName = entityName,
-                                             EntityId = (long?)@event.Id,
-                                             PropertyName = propertyName,
-                                             OldValue = oldValue,
-                                             NewValue = newValue,
-                                             CreatedBy = identityName,
-                                             CreatedAt = now,
-                                         });
+                                logs.Add(
+                                    new AuditLog
+                                    {
+                                        EntryType = "U",
+                                        EntityName = entityName,
+                                        EntityId = (long?)@event.Id,
+                                        PropertyName = propertyName,
+                                        OldValue = oldValue,
+                                        NewValue = newValue,
+                                        CreatedBy = identityName,
+                                        CreatedAt = now,
+                                    });
                             }
                         }
                     }
@@ -188,8 +260,13 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             AuditLogItem ali = AuditLogItem.Find(@event.Entity.GetType());
             if ((ali.AuditLogAction & PPWAuditLogActionEnum.CREATE) == PPWAuditLogActionEnum.CREATE)
             {
-                string identityName = IdentityNameHelper.GetIdentityName();
-                DateTime now = DateTime.Now;
+                DateTime now = UseUtc ? TimeProvider.UtcNow : TimeProvider.LocalNow;
+                string identityName = IdentityProvider.IdentityName;
+                if (identityName == null)
+                {
+                    throw new InvalidOperationException("Unknown IdentityName");
+                }
+
                 string entityName = @event.Entity.GetType().Name;
 
                 List<AuditLog> logs = new List<AuditLog>();
@@ -204,17 +281,18 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
                     {
                         if ((auditLogAction & PPWAuditLogActionEnum.CREATE) == PPWAuditLogActionEnum.NONE)
                         {
-                            logs.Add(new AuditLog
-                                     {
-                                         EntryType = "I",
-                                         EntityName = entityName,
-                                         EntityId = (long?)@event.Id,
-                                         PropertyName = propertyName,
-                                         OldValue = null,
-                                         NewValue = newValue,
-                                         CreatedBy = identityName,
-                                         CreatedAt = now,
-                                     });
+                            logs.Add(
+                                new AuditLog
+                                {
+                                    EntryType = "I",
+                                    EntityName = entityName,
+                                    EntityId = (long?)@event.Id,
+                                    PropertyName = propertyName,
+                                    OldValue = null,
+                                    NewValue = newValue,
+                                    CreatedBy = identityName,
+                                    CreatedAt = now,
+                                });
                         }
                     }
                 }
@@ -235,20 +313,26 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
             AuditLogItem ali = AuditLogItem.Find(@event.Entity.GetType());
             if ((ali.AuditLogAction & PPWAuditLogActionEnum.DELETE) == PPWAuditLogActionEnum.DELETE)
             {
-                string identityName = IdentityNameHelper.GetIdentityName();
-                DateTime now = DateTime.Now;
+                DateTime now = UseUtc ? TimeProvider.UtcNow : TimeProvider.LocalNow;
+                string identityName = IdentityProvider.IdentityName;
+                if (identityName == null)
+                {
+                    throw new InvalidOperationException("Unknown IdentityName");
+                }
+
                 string entityName = @event.Entity.GetType().Name;
 
                 using (ISession session = @event.Session.GetSession(EntityMode.Poco))
                 {
-                    session.Save(new AuditLog
-                                 {
-                                     EntryType = "D",
-                                     EntityName = entityName,
-                                     EntityId = (long?)@event.Id,
-                                     CreatedBy = identityName,
-                                     CreatedAt = now,
-                                 });
+                    session.Save(
+                        new AuditLog
+                        {
+                            EntryType = "D",
+                            EntityName = entityName,
+                            EntityId = (long?)@event.Id,
+                            CreatedBy = identityName,
+                            CreatedAt = now,
+                        });
                     session.Flush();
                 }
             }

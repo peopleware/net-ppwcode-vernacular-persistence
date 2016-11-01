@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -50,7 +50,7 @@ namespace PPWCode.Vernacular.Persistence.I
         IRousseauObject
     {
         /// <summary>
-        /// Indicated the primary key of the object. This is a surrogate key.
+        ///     Indicated the primary key of the object. This is a surrogate key.
         /// </summary>
         /// <returns>The primary key of the object if known, and else null.</returns>
         long? PersistenceId { get; set; }
@@ -58,20 +58,20 @@ namespace PPWCode.Vernacular.Persistence.I
         /// <summary>
         ///     Indicates that the object was not persisted yet.
         /// </summary>
-        /// <returns>A <see cref="bool"/> indicating true of false.</returns>
+        /// <returns>A <see cref="bool" /> indicating true of false.</returns>
         bool IsTransient { get; }
 
         /// <summary>
         ///     In SQL databases null doesn't equals to null, but here it will be.
         /// </summary>
         /// <param name="persistentObject">The given object.</param>
-        /// <returns>A <see cref="bool"/> indicating true of false.</returns>
+        /// <returns>A <see cref="bool" /> indicating true of false.</returns>
         [Pure]
         bool HasSamePersistenceId(IPersistentObject persistentObject);
     }
 
     /// <exclude />
-    /// <summary>This is a contract class for <see cref="IPersistentObject"/>.</summary>
+    /// <summary>This is a contract class for <see cref="IPersistentObject" />.</summary>
     [ContractClassFor(typeof(IPersistentObject))]
     public abstract class IPersistentObjectContract :
         IPersistentObject
@@ -98,8 +98,8 @@ namespace PPWCode.Vernacular.Persistence.I
                              (other == null
                                   ? false
                                   : !other.PersistenceId.HasValue || !PersistenceId.HasValue
-                                        ? false
-                                        : PersistenceId.Value == other.PersistenceId.Value));
+                                      ? false
+                                      : PersistenceId.Value == other.PersistenceId.Value));
 
             return default(bool);
         }
@@ -125,7 +125,7 @@ namespace PPWCode.Vernacular.Persistence.I
         public abstract bool IsCivilized();
 
         public abstract CompoundSemanticException WildExceptions();
-        
+
         public abstract void ThrowIfNotCivilized();
     }
 }

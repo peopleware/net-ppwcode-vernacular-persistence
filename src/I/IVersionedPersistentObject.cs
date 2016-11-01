@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ namespace PPWCode.Vernacular.Persistence.I
     /// <summary>
     ///     <p>
     ///         Persistency should always be implemented with versioning (optimistic locking). For that, the property
-    ///         <see cref="PersistenceVersion"/> is added to this interface. There are several different possible
+    ///         <see cref="PersistenceVersion" /> is added to this interface. There are several different possible
     ///         types of versioning, using an integer, date, or even a GUID. For that reason, the type of the property
     ///         is generic. We advise however to use Integer as version type. The property is kept generic to allow
     ///         for legacy systems.
@@ -39,7 +39,7 @@ namespace PPWCode.Vernacular.Persistence.I
     }
 
     /// <exclude />
-    /// <summary>This is the contract class for <see cref="IVersionedPersistentObject"/>.</summary>
+    /// <summary>This is the contract class for <see cref="IVersionedPersistentObject" />.</summary>
     // ReSharper disable InconsistentNaming
     [ContractClassFor(typeof(IVersionedPersistentObject))]
     public abstract class IVersionedPersistentObjectContract :
@@ -68,8 +68,8 @@ namespace PPWCode.Vernacular.Persistence.I
                              (other == null
                                   ? false
                                   : !other.PersistenceVersion.HasValue || !PersistenceVersion.HasValue
-                                        ? false
-                                        : PersistenceVersion.Value == other.PersistenceVersion.Value));
+                                      ? false
+                                      : PersistenceVersion.Value == other.PersistenceVersion.Value));
 
             return default(bool);
         }
@@ -99,7 +99,7 @@ namespace PPWCode.Vernacular.Persistence.I
 #pragma warning restore
 
         public abstract bool IsCivilized();
-        
+
         public abstract CompoundSemanticException WildExceptions();
 
         public abstract void ThrowIfNotCivilized();

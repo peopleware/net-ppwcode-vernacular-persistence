@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.ServiceModel;
 
@@ -28,7 +29,26 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
     {
         private static readonly ILog s_Logger = LogManager.GetLogger(typeof(WcfCrudDao));
 
-        public IStatelessCrudDao StatelessCrudDao { get; protected set; }
+        private readonly IStatelessCrudDao m_StatelessCrudDao;
+
+        protected WcfCrudDao(IStatelessCrudDao statelessCrudDao)
+        {
+            Contract.Requires(statelessCrudDao != null);
+            Contract.Ensures(StatelessCrudDao == statelessCrudDao);
+
+            m_StatelessCrudDao = statelessCrudDao;
+        }
+
+        [ContractInvariantMethod]
+        private void Invariants()
+        {
+            Contract.Invariant(StatelessCrudDao != null);
+        }
+
+        public IStatelessCrudDao StatelessCrudDao
+        {
+            get { return m_StatelessCrudDao; }
+        }
 
         [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public IPersistentObject Retrieve(string persistentObjectType, long? id)
@@ -130,11 +150,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
 
         public bool IsOperational
         {
-            get
-            {
-                return StatelessCrudDao != null
-                       && StatelessCrudDao.IsOperational;
-            }
+            get { return StatelessCrudDao != null && StatelessCrudDao.IsOperational; }
         }
 
         private readonly object m_Locker = new object();
@@ -189,11 +205,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.Wcf
 
         protected virtual void Cleanup()
         {
-            if (IsOperational)
-            {
-                StatelessCrudDao.Dispose();
-                StatelessCrudDao = null;
-            }
         }
 
         protected void CheckObjectAlreadyDisposed()

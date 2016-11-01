@@ -1,4 +1,4 @@
-﻿// Copyright 2010-2015 by PeopleWare n.v..
+﻿// Copyright 2010-2016 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,12 +26,12 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
         /// </summary>
         /// <param name="type">The given type.</param>
         /// <param name="securityActionFlag">The intended action.</param>
-        /// <returns>A <see cref="bool"/> indicating whether the current user has enough rights.</returns>
+        /// <returns>A <see cref="bool" /> indicating whether the current user has enough rights.</returns>
         bool HasSufficientSecurity(Type type, SecurityActionFlag securityActionFlag);
 
         /// <summary>
         ///     Checks if the CurrentPrincipal has enough security for Action "securityActionFlag" on Type "type".
-        ///     If not it will throw an exception of type <see cref="DaoSecurityException"/>.
+        ///     If not it will throw an exception of type <see cref="DaoSecurityException" />.
         /// </summary>
         /// <param name="type">The given type.</param>
         /// <param name="securityActionFlag">The intended action.</param>
@@ -39,7 +39,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
     }
 
     /// <exclude />
-    /// <summary>The contract class for <see cref="IPPWSecurity"/>.</summary>
+    /// <summary>The contract class for <see cref="IPPWSecurity" />.</summary>
     [ContractClassFor(typeof(IPPWSecurity))]
     public abstract class IPPWSecurityContract :
         IPPWSecurity
