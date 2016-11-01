@@ -100,7 +100,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities
                     return false;
                 }
 
-                return AuditLogAction == dt.AuditLogAction
+                return (AuditLogAction == dt.AuditLogAction)
                        && Properties.SequenceEqual(dt.Properties);
             }
 
@@ -183,10 +183,10 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities
                 .ToArray();
         }
 
-        private static string GetStringValueFromStateArray(object[] stateArray, int position)
+        private string GetStringValueFromStateArray(object[] stateArray, int position)
         {
-            var value = stateArray[position];
-            return value == null || value.ToString() == string.Empty ? "<null>" : value.ToString();
+            object value = stateArray[position];
+            return (value == null) || (value.ToString() == string.Empty) ? "<null>" : value.ToString();
         }
 
         public void OnPostUpdate(PostUpdateEvent @event)
@@ -237,7 +237,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities
                                         OldValue = oldValue,
                                         NewValue = newValue,
                                         CreatedBy = identityName,
-                                        CreatedAt = now,
+                                        CreatedAt = now
                                     });
                             }
                         }
@@ -291,7 +291,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities
                                     OldValue = null,
                                     NewValue = newValue,
                                     CreatedBy = identityName,
-                                    CreatedAt = now,
+                                    CreatedAt = now
                                 });
                         }
                     }
@@ -331,7 +331,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities
                             EntityName = entityName,
                             EntityId = (long?)@event.Id,
                             CreatedBy = identityName,
-                            CreatedAt = now,
+                            CreatedAt = now
                         });
                     session.Flush();
                 }

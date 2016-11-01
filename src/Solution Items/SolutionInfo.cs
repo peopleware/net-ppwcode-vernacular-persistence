@@ -13,17 +13,21 @@
 // limitations under the License.
 
 using System.Reflection;
+
 [assembly: AssemblyCompany("Peopleware NV")]
+
 [assembly: AssemblyProduct("PPWCode.Vernacular.Persistence.I")]
+
 [assembly: AssemblyCopyright("Copyright © PeopleWare NV 2010-2015")]
+
 [assembly: AssemblyTrademark("")]
+
 [assembly: AssemblyCulture("")]
 
 // assembly version: up only when not backwards compatible
-
 [assembly: AssemblyVersion("3.0.0.0")]
 
 // assembly file version, keep in sync with package version
-
 [assembly: AssemblyFileVersion("3.0.0")]
+
 [assembly: AssemblyInformationalVersion("3.0.0")]

@@ -21,13 +21,16 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Interfaces
     public interface ITimeProvider
     {
         DateTime UtcNow { get; }
+
         DateTime LocalNow { get; }
+
         DateTime TransactionalUtcNow { get; }
+
         DateTime TransactionalLocalNow { get; }
     }
 
     [ContractClassFor(typeof(ITimeProvider))]
-    public class ITimeProviderContract : ITimeProvider
+    public abstract class ITimeProviderContract : ITimeProvider
     {
         public DateTime UtcNow
         {

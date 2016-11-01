@@ -40,11 +40,13 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities.EventListene
             try
             {
                 session.ConnectionManager.FlushBeginning();
+
                 // IMPL NOTE : here we alter the flushing flag of the persistence context to allow
-                //		during-flush callbacks more leniency in regards to initializing proxies and
-                //		lazy collections during their processing.
+                // during-flush callbacks more leniency in regards to initializing proxies and
+                // lazy collections during their processing.
                 // For more information, see HHH-2763 / NH-1882
                 session.PersistenceContext.Flushing = true;
+
                 // we need to lock the collection caches before
                 // executing entity inserts/updates in order to
                 // account for bidi associations
@@ -57,6 +59,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate.Utilities.EventListene
                 {
                     s_Log.Error("Could not synchronize database state with session", he);
                 }
+
                 throw;
             }
             finally
