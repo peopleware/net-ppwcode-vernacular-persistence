@@ -77,7 +77,58 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         {
             if (!((IPPWSecurity)this).HasSufficientSecurity(type, securityActionFlag))
             {
-                throw new DaoSecurityException(type, securityActionFlag);
+                string groups = string.Empty;
+                IPrincipal principal = null;
+                string principalName = string.Empty;
+                if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
+                {
+                    principal = Thread.CurrentPrincipal;
+                    principalName = principal.Identity.Name;
+                    WindowsIdentity windowsIdentity = principal.Identity as WindowsIdentity;
+                    if (windowsIdentity != null && windowsIdentity.IsAuthenticated)
+                    {
+                        var groupList = from sid in windowsIdentity.Groups select sid.Value;
+                        foreach (string sid in groupList)
+                        {
+                            try
+                            {
+                                string groupName = new SecurityIdentifier(sid).Translate(typeof(NTAccount)).ToString();
+                                groups += ";" + groupName;
+                            }
+                            catch (IdentityNotMappedException)
+                            {
+                                //do nothing
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    WindowsIdentity windowsIdentity = WindowsIdentity.GetCurrent();
+                    if (windowsIdentity.IsAuthenticated)
+                    {
+                        var groupList = from sid in windowsIdentity.Groups select sid.Value;
+                        foreach (string sid in groupList)
+                        {
+                            try
+                            {
+                                string groupName = new SecurityIdentifier(sid).Translate(typeof(NTAccount)).ToString();
+                                groups += ";" + groupName;
+                            }
+                            catch (IdentityNotMappedException)
+                            {
+                                //do nothing
+                            }
+                        }
+                        principal = new WindowsPrincipal(windowsIdentity);
+                        principalName = principal.Identity.Name;
+                    }
+                    
+                }
+
+                
+                bool paymentManagerRole = principal != null && principal.IsInRole("PensioB-Payments-Manager");
+                throw new DaoSecurityException(type, securityActionFlag, principalName, groups, paymentManagerRole);
             }
         }
     }

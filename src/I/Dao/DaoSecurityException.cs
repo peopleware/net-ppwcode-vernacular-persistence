@@ -54,6 +54,17 @@ namespace PPWCode.Vernacular.Persistence.I.Dao
             RequestedSecurityAction = requestedSecurityAction;
         }
 
+        public DaoSecurityException(Type checkedType, SecurityActionFlag requestedSecurityAction, string principalName, string groups, bool paymentManagerRole)
+            : base(string.Format("Access denied for action '{0}' on type '{1}' for user {2} in groups {3} and has paymentManagerRole {4}", requestedSecurityAction, checkedType.Name, principalName,groups, paymentManagerRole))
+        {
+            Contract.Requires(checkedType != null);
+            Contract.Ensures(checkedType == CheckedType);
+            Contract.Ensures(requestedSecurityAction == RequestedSecurityAction);
+
+            CheckedType = checkedType;
+            RequestedSecurityAction = requestedSecurityAction;
+        }
+
         public Type CheckedType
         {
             get { return (Type)Data["CheckedType"]; }
