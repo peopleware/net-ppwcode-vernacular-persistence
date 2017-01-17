@@ -188,17 +188,6 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
         [Pure]
         public override CompoundSemanticException WildExceptions()
         {
-#if EXTRA_CONTRACTS
-            Contract.Ensures(string.IsNullOrEmpty(EntryType) == Contract.Result<CompoundSemanticException>().ContainsElement(new PropertyException(this, "EntryType", "MANDATORY", null)));
-            Contract.Ensures(string.IsNullOrEmpty(EntityName) == Contract.Result<CompoundSemanticException>().ContainsElement(new PropertyException(this, "EntityName", "MANDATORY", null)));
-            Contract.Ensures(!EntityId.HasValue == Contract.Result<CompoundSemanticException>().ContainsElement(new PropertyException(this, "EntityId", "MANDATORY", null)));
-            Contract.Ensures(string.IsNullOrEmpty(PropertyName) == Contract.Result<CompoundSemanticException>().ContainsElement(new PropertyException(this, "PropertyName", "MANDATORY", null)));
-            Contract.Ensures(string.IsNullOrEmpty(OldValue) == Contract.Result<CompoundSemanticException>().ContainsElement(new PropertyException(this, "OldValue", "MANDATORY", null)));
-            Contract.Ensures(string.IsNullOrEmpty(NewValue) == Contract.Result<CompoundSemanticException>().ContainsElement(new PropertyException(this, "NewValue", "MANDATORY", null)));
-            Contract.Ensures(!CreatedAt.HasValue == Contract.Result<CompoundSemanticException>().ContainsElement(new PropertyException(this, "CreatedAt", "MANDATORY", null)));
-            Contract.Ensures(string.IsNullOrEmpty(CreatedBy) == Contract.Result<CompoundSemanticException>().ContainsElement(new PropertyException(this, "CreatedBy", "MANDATORY", null)));
-#endif
-
             CompoundSemanticException cse = base.WildExceptions();
             if (string.IsNullOrEmpty(m_EntryType))
             {
@@ -217,17 +206,7 @@ namespace PPWCode.Vernacular.Persistence.I.Dao.NHibernate
 
             if (string.IsNullOrEmpty(m_PropertyName) && ((m_EntryType == "U") || (m_EntryType == "I")))
             {
-                cse.AddElement(new PropertyException(this, "AttributeName", "MANDATORY", null));
-            }
-
-            if (string.IsNullOrEmpty(m_OldValue))
-            {
-                cse.AddElement(new PropertyException(this, "OldValue", "MANDATORY", null));
-            }
-
-            if (string.IsNullOrEmpty(m_NewValue))
-            {
-                cse.AddElement(new PropertyException(this, "NewValue", "MANDATORY", null));
+                cse.AddElement(new PropertyException(this, "PropertyName", "MANDATORY", null));
             }
 
             if (!m_CreatedAt.HasValue)
