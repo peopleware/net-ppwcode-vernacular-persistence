@@ -22,9 +22,11 @@
 2.0.0 New functionality: Redirect use of DataAnnotations to WildExceptions.
       Improved: IsSame for VersionedPersistentObject
       Fix: PPWCODE-6, PagedList.hasNextPage
+3.0.0 Add new member on ITimeProvider: UtcNow
+      Add contract class for ITimeProvider
     </releaseNotes>
 
-    <copyright>Copyright 2016 by PeopleWare n.v.</copyright>
+    <copyright>Copyright 2017 by PeopleWare n.v.</copyright>
 
     <tags>PPWCode PPWCode.Vernacular PPWCode.Vernacular.Persistence</tags>
 
