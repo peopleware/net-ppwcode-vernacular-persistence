@@ -105,7 +105,7 @@ namespace PPWCode.Vernacular.Persistence.II
         {
             get
             {
-                Contract.Ensures(Contract.Result<bool>() == (PageIndex + 1 < TotalPages));
+                Contract.Ensures(Contract.Result<bool>() == (PageIndex < TotalPages));
 
                 return default(bool);
             }
