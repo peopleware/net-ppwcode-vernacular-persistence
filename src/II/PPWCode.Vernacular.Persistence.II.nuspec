@@ -24,6 +24,7 @@
       Fix: PPWCODE-6, PagedList.hasNextPage
 3.0.0 Add new member on ITimeProvider: UtcNow
       Add contract class for ITimeProvider
+      Fix contract IPagedList
     </releaseNotes>
 
     <copyright>Copyright 2017 by PeopleWare n.v.</copyright>
