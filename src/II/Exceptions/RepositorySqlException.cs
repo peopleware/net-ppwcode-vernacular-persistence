@@ -22,18 +22,17 @@ namespace PPWCode.Vernacular.Persistence.II
     [Serializable]
     public class RepositorySqlException : SemanticException
     {
-        public RepositorySqlException()
+        private const string SqlKey = "RepositorySqlException.Sql";
+
+        public RepositorySqlException(string message, string sql)
+            : this(message, sql, null)
         {
         }
 
-        public RepositorySqlException(string message)
-            : base(message)
-        {
-        }
-
-        public RepositorySqlException(string message, Exception innerException)
+        public RepositorySqlException(string message, string sql, Exception innerException)
             : base(message, innerException)
         {
+            Sql = sql;
         }
 
         protected RepositorySqlException(SerializationInfo info, StreamingContext context)
@@ -41,16 +40,10 @@ namespace PPWCode.Vernacular.Persistence.II
         {
         }
 
-        public string SqlString
+        public string Sql
         {
-            get { return (string)Data["SqlString"]; }
-            set { Data["SqlString"] = value; }
-        }
-
-        public string Constraint
-        {
-            get { return (string)Data["Constraint"]; }
-            set { Data["Constraint"] = value; }
+            get { return (string)Data[SqlKey]; }
+            private set { Data[SqlKey] = value; }
         }
 
         public override bool Like(SemanticException other)
@@ -60,13 +53,12 @@ namespace PPWCode.Vernacular.Persistence.II
             RepositorySqlException otherRepositorySqlException = other as RepositorySqlException;
             return result
                    && otherRepositorySqlException != null
-                   && string.Equals(SqlString, otherRepositorySqlException.SqlString, StringComparison.Ordinal)
-                   && string.Equals(Constraint, otherRepositorySqlException.Constraint, StringComparison.Ordinal);
+                   && string.Equals(Sql, otherRepositorySqlException.Sql, StringComparison.InvariantCulture);
         }
 
         public override string ToString()
         {
-            return string.Format(@"Type: {0}; SqlString={1}; Constraint={2}", GetType().Name, SqlString, Constraint);
+            return string.Format(@"Type: {0}; SqlString={1}", GetType().Name, Sql);
         }
     }
 }

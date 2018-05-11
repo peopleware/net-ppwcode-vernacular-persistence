@@ -138,6 +138,13 @@
     <Compile Include="..\Solution Items\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="Exceptions\DbCheckConstraintException.cs" />
+    <Compile Include="Exceptions\DbConstraintException.cs" />
+    <Compile Include="Exceptions\DbConstraintTypeEnum.cs" />
+    <Compile Include="Exceptions\DbForeignKeyConstraintException.cs" />
+    <Compile Include="Exceptions\DbNotNullConstraintException.cs" />
+    <Compile Include="Exceptions\DbPrimaryKeyConstraintException.cs" />
+    <Compile Include="Exceptions\DbUniqueConstraintException.cs" />
     <Compile Include="Exceptions\IdNotFoundException.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Exceptions\ObjectAlreadyChangedException.cs" />
