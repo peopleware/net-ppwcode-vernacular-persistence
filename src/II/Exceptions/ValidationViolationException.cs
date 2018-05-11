@@ -22,21 +22,21 @@ using PPWCode.Vernacular.Exceptions.II;
 namespace PPWCode.Vernacular.Persistence.II
 {
     [Serializable]
-    public class ValidationResult : SemanticException
+    public class ValidationViolationException : SemanticException
     {
         private const string Membernameskey = "MemberNamesKey";
 
-        protected ValidationResult(SerializationInfo info, StreamingContext context)
+        protected ValidationViolationException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
 
-        public ValidationResult(System.ComponentModel.DataAnnotations.ValidationResult validationResult)
+        public ValidationViolationException(System.ComponentModel.DataAnnotations.ValidationResult validationResult)
             : this(validationResult != null ? validationResult.ErrorMessage : null, validationResult != null ? validationResult.MemberNames : Enumerable.Empty<string>())
         {
         }
 
-        public ValidationResult(string errorMessage, IEnumerable<string> memberNames)
+        public ValidationViolationException(string errorMessage, IEnumerable<string> memberNames)
             : base(errorMessage)
         {
             MemberNames = memberNames;
@@ -52,7 +52,7 @@ namespace PPWCode.Vernacular.Persistence.II
         {
             bool result = base.Like(other);
 
-            var otherVar = other as ValidationResult;
+            var otherVar = other as ValidationViolationException;
             return result
                    && otherVar != null
                    && MemberNames.SequenceEqual(otherVar.MemberNames);

@@ -86,7 +86,7 @@ namespace PPWCode.Vernacular.Persistence.II
 
             foreach (System.ComponentModel.DataAnnotations.ValidationResult validationResult in validationResults)
             {
-                result.AddElement(new ValidationResult(validationResult));
+                result.AddElement(new ValidationViolationException(validationResult));
             }
 
             return result;
