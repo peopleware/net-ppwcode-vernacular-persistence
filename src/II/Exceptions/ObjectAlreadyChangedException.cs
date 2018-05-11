@@ -22,10 +22,6 @@ namespace PPWCode.Vernacular.Persistence.II
     [Serializable]
     public class ObjectAlreadyChangedException : SemanticException
     {
-        public ObjectAlreadyChangedException()
-        {
-        }
-
         public ObjectAlreadyChangedException(string message, string entityName, object identifier)
             : this(message, entityName, identifier, null)
         {
