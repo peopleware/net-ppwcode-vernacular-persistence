@@ -26,20 +26,16 @@ namespace PPWCode.Vernacular.Persistence.II
         {
         }
 
-        public ObjectAlreadyChangedException(string message)
-            : base(message)
+        public ObjectAlreadyChangedException(string message, string entityName, object identifier)
+            : this(message, entityName, identifier, null)
         {
         }
 
-        public ObjectAlreadyChangedException(string message, Exception innerException)
+        public ObjectAlreadyChangedException(string message, string entityName, object identifier, Exception innerException)
             : base(message, innerException)
         {
-        }
-
-        public ObjectAlreadyChangedException(object sender)
-            : base(null, null)
-        {
-            Sender = sender;
+            EntityName = entityName;
+            Identifier = identifier;
         }
 
         protected ObjectAlreadyChangedException(SerializationInfo info, StreamingContext context)
@@ -47,10 +43,16 @@ namespace PPWCode.Vernacular.Persistence.II
         {
         }
 
-        public object Sender
+        public object EntityName
         {
-            get { return Data["Sender"]; }
-            private set { Data["Sender"] = value; }
+            get { return Data["EntityName"]; }
+            private set { Data["EntityName"] = value; }
+        }
+
+        public object Identifier
+        {
+            get { return Data["Identifier"]; }
+            private set { Data["Identifier"] = value; }
         }
 
         public override bool Like(SemanticException other)
@@ -60,12 +62,13 @@ namespace PPWCode.Vernacular.Persistence.II
             ObjectAlreadyChangedException otherObjectAlreadyChangedException = other as ObjectAlreadyChangedException;
             return result
                    && otherObjectAlreadyChangedException != null
-                   && Sender == otherObjectAlreadyChangedException.Sender;
+                   && EntityName == otherObjectAlreadyChangedException.EntityName
+                   && Identifier == otherObjectAlreadyChangedException.Identifier;
         }
 
         public override string ToString()
         {
-            return string.Format(@"Type: {0}; Sender={1}", GetType().Name, Sender);
+            return string.Format(@"Type: {0}; Sender={1}", GetType().Name, Identifier);
         }
     }
 }
