@@ -138,11 +138,18 @@
     <Compile Include="..\Solution Items\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="Exceptions\DbCheckConstraintException.cs" />
+    <Compile Include="Exceptions\DbConstraintException.cs" />
+    <Compile Include="Exceptions\DbConstraintTypeEnum.cs" />
+    <Compile Include="Exceptions\DbForeignKeyConstraintException.cs" />
+    <Compile Include="Exceptions\DbNotNullConstraintException.cs" />
+    <Compile Include="Exceptions\DbPrimaryKeyConstraintException.cs" />
+    <Compile Include="Exceptions\DbUniqueConstraintException.cs" />
     <Compile Include="Exceptions\IdNotFoundException.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Exceptions\ObjectAlreadyChangedException.cs" />
     <Compile Include="Exceptions\RepositorySqlException.cs" />
-    <Compile Include="Exceptions\ValidationResult.cs" />
+    <Compile Include="Exceptions\ValidationViolationException.cs" />
     <Compile Include="Implementations\AuditablePersistentObject.cs" />
     <Compile Include="Implementations\AuditableVersionedPersistentObject.cs" />
     <Compile Include="Implementations\AuditLog.cs" />

@@ -25,24 +25,15 @@ namespace PPWCode.Vernacular.Persistence.II
         where T : class, IIdentity<TId>
         where TId : IEquatable<TId>
     {
-        public IdNotFoundException()
-        {
-        }
-
-        public IdNotFoundException(string message)
-            : base(message)
-        {
-        }
-
-        public IdNotFoundException(string message, Exception innerException)
-            : base(message, innerException)
-        {
-        }
-
         public IdNotFoundException(TId id)
-            : base(null, null)
+            : this(id, null)
         {
-            PersistentObjectType = GetType();
+        }
+
+        public IdNotFoundException(TId id, Exception innerException)
+            : base(null, innerException)
+        {
+            PersistentObjectType = typeof(T);
             Id = id;
         }
 

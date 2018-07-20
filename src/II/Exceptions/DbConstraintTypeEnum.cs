@@ -1,4 +1,4 @@
-// Copyright 2016 by PeopleWare n.v..
+ï»¿// Copyright 2018 by PeopleWare n.v..
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,13 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.Reflection;
+using System;
+using System.Runtime.Serialization;
 
-[assembly: AssemblyCompany("Peopleware n.v.")]
-[assembly: AssemblyProduct("PPWCode Vernacular Persistence II")]
-[assembly: AssemblyCopyright("Copyright © PeopleWare n.v. 2016")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("3.0.0")]
-[assembly: AssemblyFileVersion("3.0.1")]
-[assembly: AssemblyInformationalVersion("3.0.1")]
+namespace PPWCode.Vernacular.Persistence.II
+{
+    [Serializable]
+    public enum DbConstraintTypeEnum
+    {
+        [EnumMember]
+        UNKNOWN = 0,
+
+        [EnumMember]
+        PRIMARY_KEY,
+
+        [EnumMember]
+        UNIQUE,
+
+        [EnumMember]
+        FOREIGN_KEY,
+
+        [EnumMember]
+        CHECK,
+
+        [EnumMember]
+        NOT_NULL,
+
+        [EnumMember]
+        DEFAULT
+    }
+}
