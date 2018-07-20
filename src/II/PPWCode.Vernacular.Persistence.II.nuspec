@@ -25,9 +25,12 @@
 3.0.0 Add new member on ITimeProvider: UtcNow
       Add contract class for ITimeProvider
       Fix contract IPagedList
+4.0.0 Refactor ObjectAlreadyChangedException
+      Refactor ValidationResult to ValidationViolationException
+      Adding database constraint specific exceptions
     </releaseNotes>
 
-    <copyright>Copyright 2017 by PeopleWare n.v.</copyright>
+    <copyright>Copyright 2017-2018 by PeopleWare n.v.</copyright>
 
     <tags>PPWCode PPWCode.Vernacular PPWCode.Vernacular.Persistence</tags>
 

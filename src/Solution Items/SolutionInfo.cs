@@ -16,9 +16,9 @@ using System.Reflection;
 
 [assembly: AssemblyCompany("Peopleware n.v.")]
 [assembly: AssemblyProduct("PPWCode Vernacular Persistence II")]
-[assembly: AssemblyCopyright("Copyright © PeopleWare n.v. 2016")]
+[assembly: AssemblyCopyright("Copyright © PeopleWare n.v. 2016-2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("3.0.0")]
-[assembly: AssemblyFileVersion("3.0.1")]
-[assembly: AssemblyInformationalVersion("3.0.1")]
+[assembly: AssemblyVersion("4.0.0")]
+[assembly: AssemblyFileVersion("4.0.0")]
+[assembly: AssemblyInformationalVersion("4.0.0")]
