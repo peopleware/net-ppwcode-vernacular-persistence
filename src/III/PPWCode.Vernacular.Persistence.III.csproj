@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- target frameworks -->
+    <TargetFrameworks>net45;netstandard20</TargetFrameworks>
+
+    <!-- nuget package -->
+    <IsPackable>true</IsPackable>
+
+    <!-- Stylecop -->
+    <CodeAnalysisRuleSet>..\StyleCop.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\NOTICE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="[2018.2.1,)" />
+    <PackageReference Include="PPWCode.Vernacular.Exceptions.III" Version="[1, 2)" />
+    <PackageReference Include="PPWCode.Vernacular.Semantics.III" Version="[1, 2)" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta008">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+
+  <Choose>
+    <When Condition=" '$(TargetFramework)' == 'netstandard20' ">
+      <ItemGroup>
+        <PackageReference Include="System.ComponentModel.Annotations" Version="[4.5.0,5)" />
+      </ItemGroup>
+    </When>
+    <When Condition=" '$(TargetFramework)' == 'net45' ">
+      <ItemGroup>
+        <Reference Include="System.ComponentModel.DataAnnotations" />
+      </ItemGroup>
+    </When>
+  </Choose>
+
+</Project>
