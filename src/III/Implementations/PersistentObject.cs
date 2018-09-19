@@ -11,21 +11,18 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
-
-using PPWCode.Vernacular.Exceptions.III;
 
 namespace PPWCode.Vernacular.Persistence.III
 {
     [Serializable]
     [DataContract(IsReference = true)]
     public abstract class PersistentObject<T>
-        : IPersistentObject<T>,
-          ICivilizedObject
+        : CivilizedObject,
+          IPersistentObject<T>
         where T : IEquatable<T>
     {
         [DataMember(Name = "Id")]
@@ -39,76 +36,6 @@ namespace PPWCode.Vernacular.Persistence.III
         protected PersistentObject()
             : this(default(T))
         {
-        }
-
-        /// <summary>
-        ///     A call to <see cref="ICivilizedObject.WildExceptions" />
-        ///     returns an <see cref="CompoundSemanticException.IsEmpty" />
-        ///     exception.
-        /// </summary>
-        public virtual bool IsCivilized
-            => WildExceptions().IsEmpty;
-
-        /// <summary>
-        ///     Build a set of <see cref="CompoundSemanticException" /> instances
-        ///     that tell what is wrong with this instance, with respect to
-        ///     <em>being civilized</em>.
-        /// </summary>
-        /// <returns>
-        ///     <para>
-        ///         The result comes in the form of an <strong>unclosed</strong>
-        ///         <see cref="CompoundSemanticException" />, of
-        ///         which the set of element exceptions might be empty.
-        ///     </para>
-        ///     <para>This method should work in any state of the object.</para>
-        ///     <para>
-        ///         This method is public instead of
-        ///         protected to make it more easy to describe to users what the business
-        ///         rules for this type are.
-        ///     </para>
-        /// </returns>
-        public virtual CompoundSemanticException WildExceptions()
-        {
-            CompoundSemanticException result = new CompoundSemanticException();
-            ICollection<ValidationResult> validationResults =
-                new List<ValidationResult>();
-            if (Validator.TryValidateObject(this, new ValidationContext(this), validationResults, true))
-            {
-                return result;
-            }
-
-            foreach (ValidationResult validationResult in validationResults)
-            {
-                result.AddElement(new ValidationViolationException(validationResult));
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        ///     Call <see cref="ICivilizedObject.WildExceptions" />, and if the result
-        ///     is not <see cref="CompoundSemanticException.IsEmpty" />,
-        ///     close the exception and throw it.
-        /// </summary>
-        /// <remarks>
-        ///     <para>
-        ///         This method has no effects. If it ends nominally,
-        ///         and if it throws an exception, no state is changed.
-        ///     </para>
-        ///     <para>
-        ///         It is not <c>[Pure]</c> however, since it changes
-        ///         the state of the exception to
-        ///         <see cref="CompoundSemanticException.Closed" />.
-        ///     </para>
-        /// </remarks>
-        public virtual void ThrowIfNotCivilized()
-        {
-            CompoundSemanticException cse = WildExceptions();
-            if (!cse.IsEmpty)
-            {
-                cse.Closed = true;
-                throw cse;
-            }
         }
 
         public virtual T Id
