@@ -3,6 +3,7 @@
   <PropertyGroup>
     <!-- target frameworks -->
     <TargetFrameworks>net45</TargetFrameworks>
+    <TargetFrameworks Condition="'$(BuildDotNetCoreOnly)'=='true'">netcoreapp2.0</TargetFrameworks>
 
     <!-- nuget package -->
     <IsPackable>false</IsPackable>
@@ -15,7 +16,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="NUnit" Version="3.9.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02">
+    <PackageReference Condition="'$(BuildDotNetCoreOnly)'!='true'" Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta008">
@@ -28,6 +29,11 @@
   </ItemGroup>
 
   <Choose>
+    <When Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+      <ItemGroup>
+        <PackageReference Include="System.ComponentModel.Annotations" Version="[4.5.0,5)" />
+      </ItemGroup>
+    </When>
     <When Condition=" '$(TargetFramework)' == 'net45' ">
       <ItemGroup>
         <Reference Include="System.ComponentModel.DataAnnotations" />

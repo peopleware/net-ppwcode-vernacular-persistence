@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <!-- target frameworks -->
-    <TargetFrameworks>net45;netstandard20</TargetFrameworks>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(BuildDotNetCoreOnly)'=='true'">netstandard2.0</TargetFrameworks>
 
     <!-- nuget package -->
     <IsPackable>true</IsPackable>
@@ -28,9 +29,9 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="[2018.2.1,)" />
-    <PackageReference Include="PPWCode.Vernacular.Exceptions.III" Version="[1, 2)" />
-    <PackageReference Include="PPWCode.Vernacular.Semantics.III" Version="[1, 2)" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02">
+    <PackageReference Include="PPWCode.Vernacular.Exceptions.III" Version="[1.0.1, 2)" />
+    <PackageReference Include="PPWCode.Vernacular.Semantics.III" Version="[1.0.1, 2)" />
+    <PackageReference Condition="'$(BuildDotNetCoreOnly)'!='true'" Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta008">
@@ -42,7 +43,7 @@
   </ItemGroup>
 
   <Choose>
-    <When Condition=" '$(TargetFramework)' == 'netstandard20' ">
+    <When Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
       <ItemGroup>
         <PackageReference Include="System.ComponentModel.Annotations" Version="[4.5.0,5)" />
       </ItemGroup>
