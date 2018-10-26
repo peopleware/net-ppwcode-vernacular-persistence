@@ -13,6 +13,7 @@
 // limitations under the License.
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Runtime.Serialization;
 
@@ -52,6 +53,15 @@ namespace PPWCode.Vernacular.Persistence.I
                        : other.PersistenceId == null || PersistenceId == null
                              ? false
                              : PersistenceId.Value == other.PersistenceId.Value;
+        }
+
+        public override IDictionary<string, string> ReportingProperties()
+        {
+            IDictionary<string, string> reportingProperties = base.ReportingProperties();
+
+            reportingProperties.Add("PersistenceId", PersistenceId != null ? PersistenceId.ToString() : "[null]");
+
+            return reportingProperties;
         }
     }
 }

@@ -13,6 +13,7 @@
 // limitations under the License.
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Runtime.Serialization;
 
@@ -101,6 +102,18 @@ namespace PPWCode.Vernacular.Persistence.I
                     OnPropertyChanged("LastModifiedBy");
                 }
             }
+        }
+
+        public override IDictionary<string, string> ReportingProperties()
+        {
+            IDictionary<string, string> reportingProperties = base.ReportingProperties();
+
+            reportingProperties.Add("CreatedAt", CreatedAt != null ? CreatedAt.ToString() : "[null]");
+            reportingProperties.Add("CreatedBy", CreatedBy);
+            reportingProperties.Add("LastModifiedAt", LastModifiedAt != null ? LastModifiedAt.ToString() : "[null]");
+            reportingProperties.Add("LastModifiedBy", LastModifiedBy);
+
+            return reportingProperties;
         }
     }
 }
