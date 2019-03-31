@@ -2,11 +2,6 @@
 
   <!-- https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build -->
 
-  <!-- Build only using .net core -->
-  <PropertyGroup>
-    <BuildDotNetCoreOnly Condition="'$(BuildDotNetCoreOnly)'=='' AND '$(OS)'!='Windows_NT'">true</BuildDotNetCoreOnly>
-  </PropertyGroup>
-
   <!-- version number -->
   <Import Project="version.props" />
 
@@ -34,25 +29,24 @@
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 
     <!-- nuget package -->
-    <Description>The PPWCode Vernacular Persistence library version III.</Description>
+    <Description>The PPWCode Vernacular Persistence library version IV.</Description>
     <Product>PPWCode</Product>
     <Authors>dvdwouwe;rvdginste</Authors>
     <Company>Peopleware NV</Company>
-    <Copyright>Copyright © Peopleware NV 2014-2018</Copyright>
+    <Copyright>Copyright © Peopleware NV 2014-2019</Copyright>
 
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/peopleware/net-ppwcode-vernacular-persistence.git</RepositoryUrl>
+    <RepositoryUrl>https://bitbucket.org/ppwcode/dotnet-vernacular-persistence.git</RepositoryUrl>
 
     <PackageTags>ppwcode vernacular persistence</PackageTags>
-    <PackageProjectUrl>https://github.com/peopleware/net-ppwcode-vernacular-persistence</PackageProjectUrl>
+    <PackageProjectUrl>https://bitbucket.org/ppwcode/dotnet-vernacular-persistence</PackageProjectUrl>
     <PackageIconUrl>http://peopleware.github.io/net-ppwcode-util-oddsandends/ppwcode_logo.jpg</PackageIconUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageLicenseUrl>http://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 
     <PackageReleaseNotes>
       <![CDATA[
 1.0.0 Initial release
-1.0.1 Added missing class CivilizedObject
       ]]>
     </PackageReleaseNotes>
 

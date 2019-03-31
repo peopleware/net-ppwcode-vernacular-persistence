@@ -12,7 +12,7 @@
 using System;
 using System.Runtime.Serialization;
 
-using PPWCode.Vernacular.Exceptions.III;
+using PPWCode.Vernacular.Exceptions.IV;
 
 namespace PPWCode.Vernacular.Persistence.III
 {
