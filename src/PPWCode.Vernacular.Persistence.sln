@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "psake", "psake", "{90949B3E
 		..\psakefile.ps1 = ..\psakefile.ps1
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PPWCode.Vernacular.Persistence.III", "III\PPWCode.Vernacular.Persistence.III.csproj", "{12B4B648-D937-42F7-B7A3-B5B9D83941C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PPWCode.Vernacular.Persistence.IV", "IV\PPWCode.Vernacular.Persistence.IV.csproj", "{12B4B648-D937-42F7-B7A3-B5B9D83941C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PPWCode.Vernacular.Persistence.III.Tests", "III.Tests\PPWCode.Vernacular.Persistence.III.Tests.csproj", "{60F05DAC-9FE5-4B7B-8E5D-601E87F1EEC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PPWCode.Vernacular.Persistence.IV.Tests", "IV.Tests\PPWCode.Vernacular.Persistence.IV.Tests.csproj", "{60F05DAC-9FE5-4B7B-8E5D-601E87F1EEC4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stylecop", "Stylecop", "{F84A859D-801C-4983-A412-9D3C3B4DF6D5}"
 	ProjectSection(SolutionItems) = preProject
