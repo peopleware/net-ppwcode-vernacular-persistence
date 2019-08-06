@@ -33,7 +33,7 @@
     <Product>PPWCode</Product>
     <Authors>dvdwouwe;rvdginste</Authors>
     <Company>Peopleware NV</Company>
-    <Copyright>Copyright © Peopleware NV 2014-2018</Copyright>
+    <Copyright>Copyright © Peopleware NV 2014-2019</Copyright>
 
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/peopleware/net-ppwcode-vernacular-persistence.git</RepositoryUrl>
@@ -48,6 +48,7 @@
       <![CDATA[
 1.0.0 Initial release
 1.0.1 Added missing class CivilizedObject
+1.1.0 Add EmptyResultException class
       ]]>
     </PackageReleaseNotes>
 
