@@ -12,26 +12,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-    </None>
-    <None Include="..\..\NOTICE">
-      <Pack>True</Pack>
-    </None>
-    <None Include="..\..\README.md">
-      <Pack>True</Pack>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="System.ComponentModel.Annotations" Version="[4.5.0,5)" />
-    <PackageReference Include="JetBrains.Annotations" Version="[2018.2.1,)" />
-    <PackageReference Include="PPWCode.Vernacular.Exceptions.IV" Version="[1.0.0, 2)" />
-    <PackageReference Include="PPWCode.Vernacular.Semantics.IV" Version="[1.0.0, 2)" />
-    <PackageReference Include="Microsoft.SourceLink.Bitbucket.Git" Version="1.0.0-beta2-18618-05" PrivateAssets="All" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta008">
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="PPWCode.Vernacular.Exceptions.IV" Version="[1.0.0-rc010002, 2)" />
+    <PackageReference Include="PPWCode.Vernacular.Semantics.IV" Version="[1.0.0-rc010000, 2)" />
+
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>

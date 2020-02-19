@@ -87,4 +87,7 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="[2019.1.3, 2020)" PrivateAssets="All" />
+  </ItemGroup>
 </Project>
