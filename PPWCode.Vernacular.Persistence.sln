@@ -5,24 +5,24 @@ VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{788185DD-7404-47DF-AFF3-698298A6F934}"
 	ProjectSection(SolutionItems) = preProject
-		Directory.Build.props = Directory.Build.props
-		version.props = version.props
+		Directory.Build.props = src\Directory.Build.props
+		version.props = src\version.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "psake", "psake", "{90949B3E-8AD7-4771-856E-47D86A5FAD33}"
 	ProjectSection(SolutionItems) = preProject
-		..\init-psake.ps1 = ..\init-psake.ps1
-		..\psakefile.ps1 = ..\psakefile.ps1
+		init-psake.ps1 = init-psake.ps1
+		psakefile.ps1 = psakefile.ps1
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PPWCode.Vernacular.Persistence.IV", "IV\PPWCode.Vernacular.Persistence.IV.csproj", "{12B4B648-D937-42F7-B7A3-B5B9D83941C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PPWCode.Vernacular.Persistence.IV", "src\IV\PPWCode.Vernacular.Persistence.IV.csproj", "{12B4B648-D937-42F7-B7A3-B5B9D83941C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PPWCode.Vernacular.Persistence.IV.Tests", "IV.Tests\PPWCode.Vernacular.Persistence.IV.Tests.csproj", "{60F05DAC-9FE5-4B7B-8E5D-601E87F1EEC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PPWCode.Vernacular.Persistence.IV.Tests", "src\IV.Tests\PPWCode.Vernacular.Persistence.IV.Tests.csproj", "{60F05DAC-9FE5-4B7B-8E5D-601E87F1EEC4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stylecop", "Stylecop", "{F84A859D-801C-4983-A412-9D3C3B4DF6D5}"
 	ProjectSection(SolutionItems) = preProject
-		StyleCop-Tests.ruleset = StyleCop-Tests.ruleset
-		StyleCop.ruleset = StyleCop.ruleset
+		StyleCop-Tests.ruleset = src\StyleCop-Tests.ruleset
+		StyleCop.ruleset = src\StyleCop.ruleset
 	EndProjectSection
 EndProject
 Global
