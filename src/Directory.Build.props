@@ -49,6 +49,7 @@
 1.0.0 Initial release
 1.0.1 Added missing class CivilizedObject
 1.1.0 Add EmptyResultException class
+2.0.0 IPersistentObject should implement ICivilizedObject
       ]]>
     </PackageReleaseNotes>
 
