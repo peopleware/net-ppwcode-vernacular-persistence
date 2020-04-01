@@ -14,7 +14,8 @@ using System;
 namespace PPWCode.Vernacular.Persistence.III
 {
     public interface IPersistentObject<T>
-        : IIdentity<T>
+        : IIdentity<T>,
+          ICivilizedObject
         where T : IEquatable<T>
     {
     }
