@@ -17,7 +17,7 @@ using System.Runtime.Serialization;
 namespace PPWCode.Vernacular.Persistence.IV
 {
     [Serializable]
-    [DataContract(IsReference = true)]
+    [DataContract]
     public class PagedList<T> : IPagedList<T>
     {
         public PagedList(IEnumerable<T> source, int pageIndex, int pageSize, int totalCount)
