@@ -90,7 +90,7 @@ namespace PPWCode.Vernacular.Persistence.IV
                    && (EntityId == e.EntityId)
                    && (ConstraintType == e.ConstraintType)
                    && string.Equals(EntityName, e.EntityName, StringComparison.InvariantCulture)
-                   && string.Equals(EntityName, e.EntityName, StringComparison.InvariantCulture)
+                   && string.Equals(ConstraintName, e.ConstraintName, StringComparison.InvariantCulture)
                    && string.Equals(ExtraInfo, e.ExtraInfo, StringComparison.InvariantCulture);
         }
 
