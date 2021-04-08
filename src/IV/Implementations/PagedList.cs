@@ -20,7 +20,7 @@ namespace PPWCode.Vernacular.Persistence.IV
     [DataContract]
     public class PagedList<T> : IPagedList<T>
     {
-        public PagedList(IEnumerable<T> source, int pageIndex, int pageSize, int totalCount)
+        public PagedList(IEnumerable<T> items, int pageIndex, int pageSize, int totalCount)
         {
             PageIndex = pageIndex;
             PageSize = pageSize;
@@ -31,7 +31,7 @@ namespace PPWCode.Vernacular.Persistence.IV
                 TotalPages++;
             }
 
-            Items = source.ToList();
+            Items = items.ToList();
         }
 
         [DataMember(Order = 1)]
