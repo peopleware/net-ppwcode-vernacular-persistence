@@ -83,7 +83,7 @@
 1.0.0 Initial release
 1.0.1 PagedList: change constructor parameter name to enable deserialisation
 1.0.2 Relax restriction on upper limit for dependency version of System.ComponentModel.Annotations
-1.1.0 Upgrading dependencies
+1.1.0 Upgrading dependencies. Target .net core 3.1, .net 5.0, .net 6.0.
       ]]>
     </PackageReleaseNotes>
 
