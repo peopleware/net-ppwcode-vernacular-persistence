@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-    <PackageReference Include="PPWCode.Vernacular.Exceptions.IV" Version="[1.1.0, 2)" />
-    <PackageReference Include="PPWCode.Vernacular.Semantics.IV" Version="[1.1.0, 2)" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="PPWCode.Vernacular.Exceptions.IV" Version="1.2.0-rc010014" />
+    <PackageReference Include="PPWCode.Vernacular.Semantics.IV" Version="1.2.0-rc010014" />
   </ItemGroup>
 
 </Project>
