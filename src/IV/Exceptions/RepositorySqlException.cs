@@ -10,13 +10,17 @@
 // limitations under the License.
 
 using System;
+#if NETSTANDARD2_0
 using System.Runtime.Serialization;
+#endif
 
 using PPWCode.Vernacular.Exceptions.IV;
 
 namespace PPWCode.Vernacular.Persistence.IV
 {
+#if NETSTANDARD2_0
     [Serializable]
+#endif
     public class RepositorySqlException : SemanticException
     {
         private const string SqlKey = "RepositorySqlException.Sql";
@@ -32,10 +36,12 @@ namespace PPWCode.Vernacular.Persistence.IV
             Sql = sql;
         }
 
+#if NETSTANDARD2_0
         protected RepositorySqlException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
+#endif
 
         public string Sql
         {

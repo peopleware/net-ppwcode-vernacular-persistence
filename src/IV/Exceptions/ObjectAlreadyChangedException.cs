@@ -10,13 +10,17 @@
 // limitations under the License.
 
 using System;
+#if NETSTANDARD2_0
 using System.Runtime.Serialization;
+#endif
 
 using PPWCode.Vernacular.Exceptions.IV;
 
 namespace PPWCode.Vernacular.Persistence.IV
 {
+#if NETSTANDARD2_0
     [Serializable]
+#endif
     public class ObjectAlreadyChangedException : SemanticException
     {
         public ObjectAlreadyChangedException(string message, string entityName, object identifier)
@@ -31,10 +35,12 @@ namespace PPWCode.Vernacular.Persistence.IV
             Identifier = identifier;
         }
 
+#if NETSTANDARD2_0
         protected ObjectAlreadyChangedException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
+#endif
 
         public object EntityName
         {

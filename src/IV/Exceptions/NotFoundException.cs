@@ -10,13 +10,17 @@
 // limitations under the License.
 
 using System;
+#if NETSTANDARD2_0
 using System.Runtime.Serialization;
+#endif
 
 using PPWCode.Vernacular.Exceptions.IV;
 
 namespace PPWCode.Vernacular.Persistence.IV
 {
+#if NETSTANDARD2_0
     [Serializable]
+#endif
     public class NotFoundException : SemanticException
     {
         public NotFoundException()
@@ -33,9 +37,11 @@ namespace PPWCode.Vernacular.Persistence.IV
         {
         }
 
+#if NETSTANDARD2_0
         protected NotFoundException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
+#endif
     }
 }

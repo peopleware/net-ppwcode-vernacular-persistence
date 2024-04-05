@@ -9,25 +9,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+#if NETSTANDARD2_0
+using System;
 using System.Runtime.Serialization;
+#endif
 
 using PPWCode.Vernacular.Exceptions.IV;
 
 namespace PPWCode.Vernacular.Persistence.IV
 {
+#if NETSTANDARD2_0
     [Serializable]
+#endif
     public class ValidationViolationException : SemanticException
     {
         private const string Membernameskey = "MemberNamesKey";
 
+#if NETSTANDARD2_0
         protected ValidationViolationException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
+#endif
 
         public ValidationViolationException(ValidationResult validationResult)
             : this(validationResult?.ErrorMessage, validationResult != null ? validationResult.MemberNames : Enumerable.Empty<string>())

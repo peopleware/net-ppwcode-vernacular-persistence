@@ -11,13 +11,17 @@
 
 using System;
 using System.Collections.Generic;
+#if NETSTANDARD2_0
 using System.Runtime.Serialization;
+#endif
 
 using PPWCode.Vernacular.Exceptions.IV;
 
 namespace PPWCode.Vernacular.Persistence.IV
 {
+#if NETSTANDARD2_0
     [Serializable]
+#endif
     public class IdNotFoundException<T, TId> : NotFoundException
         where T : class, IIdentity<TId>
         where TId : IEquatable<TId>
@@ -34,11 +38,12 @@ namespace PPWCode.Vernacular.Persistence.IV
             Id = id;
         }
 
+#if NETSTANDARD2_0
         protected IdNotFoundException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
-
+#endif
         public Type PersistentObjectType
         {
             get => (Type)Data["PersistentObjectType"];
