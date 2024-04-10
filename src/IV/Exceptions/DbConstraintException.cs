@@ -10,15 +10,19 @@
 // limitations under the License.
 
 using System;
+#if NETSTANDARD2_0
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
+#endif
 using System.Text;
 
 using PPWCode.Vernacular.Exceptions.IV;
 
 namespace PPWCode.Vernacular.Persistence.IV
 {
+#if NETSTANDARD2_0
     [Serializable]
+#endif
     public abstract class DbConstraintException : RepositorySqlException
     {
         private const string EntityIdKey = "DbConstraintException.EntityId";
@@ -45,12 +49,13 @@ namespace PPWCode.Vernacular.Persistence.IV
             ExtraInfo = extraInfo;
         }
 
+#if NETSTANDARD2_0
         [ExcludeFromCodeCoverage]
         protected DbConstraintException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
-
+#endif
         public object EntityId
         {
             get => Data[EntityIdKey];

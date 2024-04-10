@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <!-- target frameworks -->
-    <TargetFrameworks>netstandard2.0;netcoreapp3.1;net50;net60</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net60;net80</TargetFrameworks>
 
     <!-- nuget package -->
     <IsPackable>true</IsPackable>
@@ -12,12 +12,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-    <PackageReference Include="PPWCode.Vernacular.Exceptions.IV" Version="[1.1.0, 2)" />
-    <PackageReference Include="PPWCode.Vernacular.Semantics.IV" Version="[1.1.0, 2)" />
-
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="All" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="PPWCode.Vernacular.Exceptions.IV" Version="1.*" />
+    <PackageReference Include="PPWCode.Vernacular.Semantics.IV" Version="1.*" />
   </ItemGroup>
 
 </Project>

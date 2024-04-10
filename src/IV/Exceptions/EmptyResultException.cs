@@ -10,14 +10,18 @@
 // limitations under the License.
 
 using System;
+#if NETSTANDARD2_0
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
+#endif
 
 using PPWCode.Vernacular.Exceptions.IV;
 
 namespace PPWCode.Vernacular.Persistence.IV
 {
+#if NETSTANDARD2_0
     [Serializable]
+#endif
     public class EmptyResultException : SemanticException
     {
         /// <inheritdoc cref="SemanticException" />
@@ -37,11 +41,13 @@ namespace PPWCode.Vernacular.Persistence.IV
         {
         }
 
+#if NETSTANDARD2_0
         /// <inheritdoc cref="SemanticException" />
         [ExcludeFromCodeCoverage]
         protected EmptyResultException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
+#endif
     }
 }

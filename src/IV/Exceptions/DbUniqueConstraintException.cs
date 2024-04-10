@@ -10,12 +10,16 @@
 // limitations under the License.
 
 using System;
+#if NETSTANDARD2_0
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
+#endif
 
 namespace PPWCode.Vernacular.Persistence.IV
 {
+#if NETSTANDARD2_0
     [Serializable]
+#endif
     public class DbUniqueConstraintException : DbConstraintException
     {
         public DbUniqueConstraintException(string message, object entityId, string entityName, string sql, string constraintName, string extraInfo)
@@ -28,10 +32,12 @@ namespace PPWCode.Vernacular.Persistence.IV
         {
         }
 
+#if NETSTANDARD2_0
         [ExcludeFromCodeCoverage]
         protected DbUniqueConstraintException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
+#endif
     }
 }
