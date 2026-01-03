@@ -1,0 +1,5 @@
+name: ppwcode-vernacular-persistence-iv
+version: ~
+title: PPWCode.Vernacular.Persistence.IV
+nav:
+  - modules/ROOT/nav.adoc
