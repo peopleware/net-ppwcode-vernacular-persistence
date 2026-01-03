@@ -1,4 +1,4 @@
-# PPWCode.Vernacular.Exceptions
+# PPWCode.Vernacular.Persistence
 
 This library is part of the .NET PPWCode project and encapsulates the vernacular on persistence.
 
