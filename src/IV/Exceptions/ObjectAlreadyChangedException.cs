@@ -1,4 +1,4 @@
-﻿// Copyright 2018 by PeopleWare n.v..
+﻿// Copyright 2026 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -10,15 +10,15 @@
 // limitations under the License.
 
 using System;
-#if NETSTANDARD2_0
+
+using PPWCode.Vernacular.Exceptions.IV;
+#if NETSTANDARD2_0 || NET462_OR_GREATER
 using System.Runtime.Serialization;
 #endif
 
-using PPWCode.Vernacular.Exceptions.IV;
-
 namespace PPWCode.Vernacular.Persistence.IV
 {
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0 || NET462_OR_GREATER
     [Serializable]
 #endif
     public class ObjectAlreadyChangedException : SemanticException
@@ -35,7 +35,7 @@ namespace PPWCode.Vernacular.Persistence.IV
             Identifier = identifier;
         }
 
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0 || NET462_OR_GREATER
         protected ObjectAlreadyChangedException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {

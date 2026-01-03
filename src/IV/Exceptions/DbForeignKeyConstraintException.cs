@@ -1,4 +1,4 @@
-﻿// Copyright 2018 by PeopleWare n.v..
+﻿// Copyright 2026 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -10,14 +10,14 @@
 // limitations under the License.
 
 using System;
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0 || NET462_OR_GREATER
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 #endif
 
 namespace PPWCode.Vernacular.Persistence.IV
 {
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0 || NET462_OR_GREATER
     [Serializable]
 #endif
     public class DbForeignKeyConstraintException : DbConstraintException
@@ -32,7 +32,7 @@ namespace PPWCode.Vernacular.Persistence.IV
         {
         }
 
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0 || NET462_OR_GREATER
         [ExcludeFromCodeCoverage]
         protected DbForeignKeyConstraintException(SerializationInfo info, StreamingContext context)
             : base(info, context)
