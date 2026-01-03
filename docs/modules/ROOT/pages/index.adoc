@@ -1,22 +1,22 @@
 = About
 
-The library `PPWCode.Vernacular.Exceptions.IV` is part of the .NET PPWCode project and encapsulates the _vernacular_ on exceptions.
+The library `PPWCode.Vernacular.Persistence.IV` is part of the .NET PPWCode project and encapsulates the _vernacular_ on persistence.
 
-`PPWCode.Vernacular.Exceptions.IV` is a helper library that defines a number of base `Exception` classes.  This is generation `IV` of the `PPWCode.Vernacular.Exceptions` library.
+`PPWCode.Vernacular.Persistence.IV` is a helper library that defines base classes and interfaces related to persistence.  Persistence in this context refers to storage in a relational database.  The persistence library is database independent.  This is generation `IV` of the `PPWCode.Vernacular.Persistence` library.
 
 The library supports both different versions of .NET full framework and more recent (supported) .NET SDKs.
 
 
 == Development
 
-Development of the PPWCode is done on https://github.com/peopleware/net-ppwcode-vernacular-exceptions/tree/IV/next[GitHub].
+Development of the PPWCode is done on https://github.com/peopleware/net-ppwcode-vernacular-persistence/tree/IV/next[GitHub].
 
-Releases (both stable and pre-release) are published on https://www.nuget.org/packages/PPWCode.Vernacular.Exceptions.IV/[NuGet] by https://www.nuget.org/profiles/PeopleWare[PeopleWare].
+Releases (both stable and pre-release) are published on https://www.nuget.org/packages/PPWCode.Vernacular.Persistence.IV/[NuGet] by https://www.nuget.org/profiles/PeopleWare[PeopleWare].
 
 
 == License and Copyright
 
-Copyright 2022–2025 by xref:ppwcode-net:ROOT:peopleware.adoc[PeopleWare].
+Copyright 2022–2026 by xref:ppwcode-net:ROOT:peopleware.adoc[PeopleWare].
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
