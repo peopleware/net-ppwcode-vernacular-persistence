@@ -1,0 +1,2 @@
+=== Fixes
+* Relax restriction on upper limit for dependency version of `System.ComponentModel.Annotations`

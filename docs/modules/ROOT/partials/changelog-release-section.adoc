@@ -1,0 +1,4 @@
+=== Release
+
+* link:{github}{release}[GitHub]
+* link:{nuget}{release}[NuGet]

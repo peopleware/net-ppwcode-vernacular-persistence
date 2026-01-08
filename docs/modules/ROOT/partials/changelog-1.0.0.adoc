@@ -1,0 +1,3 @@
+=== Changes
+* Initial release of mark IV
+* Supported target: `.NET standard 2.0`

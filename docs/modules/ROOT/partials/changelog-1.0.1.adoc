@@ -1,0 +1,2 @@
+=== Fixes
+* `PagedList`: change constructor parameter name to enable deserialisation with `Newtonsof.Json`
