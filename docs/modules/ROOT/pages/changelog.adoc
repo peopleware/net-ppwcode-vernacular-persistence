@@ -8,7 +8,7 @@ the link to the GitHub tag is only added once we are ready to release.
 ////
 
 // some helper attributes for the release links
-:github: https://github.com/peopleware/net-ppwcode-vernacular-persistence/tree/IV/
+:github: https://github.com/peopleware/net-ppwcode-vernacular-persistence/releases/tag/IV%2F
 :nuget: https://www.nuget.org/packages/PPWCode.Vernacular.Persistence.IV/
 :ppwcode-docs: https://peopleware.github.io/net-ppwcode-docs/ppwcode-vernacular-persistence-iv/
 
