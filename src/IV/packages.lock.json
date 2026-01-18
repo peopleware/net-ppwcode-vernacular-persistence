@@ -24,17 +24,17 @@
       "PPWCode.Vernacular.Exceptions.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.2.0",
-        "contentHash": "3bsFmCmXr/xrrSOeEUwksj1eo3p3GwBLAK98KuyAxC4b1grQTTLM+ZeIoOcyThnQ7PrMX6th5A2KUPzTED6Pwg=="
+        "resolved": "2.2.1",
+        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "PPWCode.Vernacular.Semantics.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.1.0",
-        "contentHash": "vBqLlkeNnIFVUPMD0qi7peh0DwOFW298RJVFbUcfUzHiI1oyIxYPYWvOS9ivOHzRX8tlofwf4mlWqcZrSlYUdA==",
+        "resolved": "2.1.1",
+        "contentHash": "FinUam8SELSWvp2Oo27CFRvUk6J0O5mnac7qJkoJirU1Z2iRTt2i1/4De9y1lV3j5JCogdR2H2HrJ3TOQEy2ew==",
         "dependencies": {
           "JetBrains.Annotations": "2025.2.4",
-          "PPWCode.Vernacular.Exceptions.IV": "2.0.1"
+          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
         }
       },
       "StyleCop.Analyzers": {
@@ -97,17 +97,17 @@
       "PPWCode.Vernacular.Exceptions.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.2.0",
-        "contentHash": "3bsFmCmXr/xrrSOeEUwksj1eo3p3GwBLAK98KuyAxC4b1grQTTLM+ZeIoOcyThnQ7PrMX6th5A2KUPzTED6Pwg=="
+        "resolved": "2.2.1",
+        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "PPWCode.Vernacular.Semantics.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.1.0",
-        "contentHash": "vBqLlkeNnIFVUPMD0qi7peh0DwOFW298RJVFbUcfUzHiI1oyIxYPYWvOS9ivOHzRX8tlofwf4mlWqcZrSlYUdA==",
+        "resolved": "2.1.1",
+        "contentHash": "FinUam8SELSWvp2Oo27CFRvUk6J0O5mnac7qJkoJirU1Z2iRTt2i1/4De9y1lV3j5JCogdR2H2HrJ3TOQEy2ew==",
         "dependencies": {
           "JetBrains.Annotations": "2025.2.4",
-          "PPWCode.Vernacular.Exceptions.IV": "2.0.1"
+          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
         }
       },
       "StyleCop.Analyzers": {
@@ -170,17 +170,17 @@
       "PPWCode.Vernacular.Exceptions.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.2.0",
-        "contentHash": "3bsFmCmXr/xrrSOeEUwksj1eo3p3GwBLAK98KuyAxC4b1grQTTLM+ZeIoOcyThnQ7PrMX6th5A2KUPzTED6Pwg=="
+        "resolved": "2.2.1",
+        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "PPWCode.Vernacular.Semantics.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.1.0",
-        "contentHash": "vBqLlkeNnIFVUPMD0qi7peh0DwOFW298RJVFbUcfUzHiI1oyIxYPYWvOS9ivOHzRX8tlofwf4mlWqcZrSlYUdA==",
+        "resolved": "2.1.1",
+        "contentHash": "FinUam8SELSWvp2Oo27CFRvUk6J0O5mnac7qJkoJirU1Z2iRTt2i1/4De9y1lV3j5JCogdR2H2HrJ3TOQEy2ew==",
         "dependencies": {
           "JetBrains.Annotations": "2025.2.4",
-          "PPWCode.Vernacular.Exceptions.IV": "2.0.1"
+          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
         }
       },
       "StyleCop.Analyzers": {
@@ -243,17 +243,17 @@
       "PPWCode.Vernacular.Exceptions.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.2.0",
-        "contentHash": "3bsFmCmXr/xrrSOeEUwksj1eo3p3GwBLAK98KuyAxC4b1grQTTLM+ZeIoOcyThnQ7PrMX6th5A2KUPzTED6Pwg=="
+        "resolved": "2.2.1",
+        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "PPWCode.Vernacular.Semantics.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.1.0",
-        "contentHash": "vBqLlkeNnIFVUPMD0qi7peh0DwOFW298RJVFbUcfUzHiI1oyIxYPYWvOS9ivOHzRX8tlofwf4mlWqcZrSlYUdA==",
+        "resolved": "2.1.1",
+        "contentHash": "FinUam8SELSWvp2Oo27CFRvUk6J0O5mnac7qJkoJirU1Z2iRTt2i1/4De9y1lV3j5JCogdR2H2HrJ3TOQEy2ew==",
         "dependencies": {
           "JetBrains.Annotations": "2025.2.4",
-          "PPWCode.Vernacular.Exceptions.IV": "2.0.1"
+          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
         }
       },
       "StyleCop.Analyzers": {
@@ -316,17 +316,17 @@
       "PPWCode.Vernacular.Exceptions.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.2.0",
-        "contentHash": "3bsFmCmXr/xrrSOeEUwksj1eo3p3GwBLAK98KuyAxC4b1grQTTLM+ZeIoOcyThnQ7PrMX6th5A2KUPzTED6Pwg=="
+        "resolved": "2.2.1",
+        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "PPWCode.Vernacular.Semantics.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.1.0",
-        "contentHash": "vBqLlkeNnIFVUPMD0qi7peh0DwOFW298RJVFbUcfUzHiI1oyIxYPYWvOS9ivOHzRX8tlofwf4mlWqcZrSlYUdA==",
+        "resolved": "2.1.1",
+        "contentHash": "FinUam8SELSWvp2Oo27CFRvUk6J0O5mnac7qJkoJirU1Z2iRTt2i1/4De9y1lV3j5JCogdR2H2HrJ3TOQEy2ew==",
         "dependencies": {
           "JetBrains.Annotations": "2025.2.4",
-          "PPWCode.Vernacular.Exceptions.IV": "2.0.1"
+          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
         }
       },
       "StyleCop.Analyzers": {
@@ -389,17 +389,17 @@
       "PPWCode.Vernacular.Exceptions.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.2.0",
-        "contentHash": "3bsFmCmXr/xrrSOeEUwksj1eo3p3GwBLAK98KuyAxC4b1grQTTLM+ZeIoOcyThnQ7PrMX6th5A2KUPzTED6Pwg=="
+        "resolved": "2.2.1",
+        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "PPWCode.Vernacular.Semantics.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.1.0",
-        "contentHash": "vBqLlkeNnIFVUPMD0qi7peh0DwOFW298RJVFbUcfUzHiI1oyIxYPYWvOS9ivOHzRX8tlofwf4mlWqcZrSlYUdA==",
+        "resolved": "2.1.1",
+        "contentHash": "FinUam8SELSWvp2Oo27CFRvUk6J0O5mnac7qJkoJirU1Z2iRTt2i1/4De9y1lV3j5JCogdR2H2HrJ3TOQEy2ew==",
         "dependencies": {
           "JetBrains.Annotations": "2025.2.4",
-          "PPWCode.Vernacular.Exceptions.IV": "2.0.1"
+          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
         }
       },
       "StyleCop.Analyzers": {
@@ -462,17 +462,17 @@
       "PPWCode.Vernacular.Exceptions.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.2.0",
-        "contentHash": "3bsFmCmXr/xrrSOeEUwksj1eo3p3GwBLAK98KuyAxC4b1grQTTLM+ZeIoOcyThnQ7PrMX6th5A2KUPzTED6Pwg=="
+        "resolved": "2.2.1",
+        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "PPWCode.Vernacular.Semantics.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.1.0",
-        "contentHash": "vBqLlkeNnIFVUPMD0qi7peh0DwOFW298RJVFbUcfUzHiI1oyIxYPYWvOS9ivOHzRX8tlofwf4mlWqcZrSlYUdA==",
+        "resolved": "2.1.1",
+        "contentHash": "FinUam8SELSWvp2Oo27CFRvUk6J0O5mnac7qJkoJirU1Z2iRTt2i1/4De9y1lV3j5JCogdR2H2HrJ3TOQEy2ew==",
         "dependencies": {
           "JetBrains.Annotations": "2025.2.4",
-          "PPWCode.Vernacular.Exceptions.IV": "2.0.1"
+          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
         }
       },
       "StyleCop.Analyzers": {
@@ -531,17 +531,17 @@
       "PPWCode.Vernacular.Exceptions.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.2.0",
-        "contentHash": "3bsFmCmXr/xrrSOeEUwksj1eo3p3GwBLAK98KuyAxC4b1grQTTLM+ZeIoOcyThnQ7PrMX6th5A2KUPzTED6Pwg=="
+        "resolved": "2.2.1",
+        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "PPWCode.Vernacular.Semantics.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.1.0",
-        "contentHash": "vBqLlkeNnIFVUPMD0qi7peh0DwOFW298RJVFbUcfUzHiI1oyIxYPYWvOS9ivOHzRX8tlofwf4mlWqcZrSlYUdA==",
+        "resolved": "2.1.1",
+        "contentHash": "FinUam8SELSWvp2Oo27CFRvUk6J0O5mnac7qJkoJirU1Z2iRTt2i1/4De9y1lV3j5JCogdR2H2HrJ3TOQEy2ew==",
         "dependencies": {
           "JetBrains.Annotations": "2025.2.4",
-          "PPWCode.Vernacular.Exceptions.IV": "2.0.1"
+          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
         }
       },
       "StyleCop.Analyzers": {
@@ -589,17 +589,17 @@
       "PPWCode.Vernacular.Exceptions.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.2.0",
-        "contentHash": "3bsFmCmXr/xrrSOeEUwksj1eo3p3GwBLAK98KuyAxC4b1grQTTLM+ZeIoOcyThnQ7PrMX6th5A2KUPzTED6Pwg=="
+        "resolved": "2.2.1",
+        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "PPWCode.Vernacular.Semantics.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.1.0",
-        "contentHash": "vBqLlkeNnIFVUPMD0qi7peh0DwOFW298RJVFbUcfUzHiI1oyIxYPYWvOS9ivOHzRX8tlofwf4mlWqcZrSlYUdA==",
+        "resolved": "2.1.1",
+        "contentHash": "FinUam8SELSWvp2Oo27CFRvUk6J0O5mnac7qJkoJirU1Z2iRTt2i1/4De9y1lV3j5JCogdR2H2HrJ3TOQEy2ew==",
         "dependencies": {
           "JetBrains.Annotations": "2025.2.4",
-          "PPWCode.Vernacular.Exceptions.IV": "2.0.1"
+          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
         }
       },
       "StyleCop.Analyzers": {
@@ -647,17 +647,17 @@
       "PPWCode.Vernacular.Exceptions.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.2.0",
-        "contentHash": "3bsFmCmXr/xrrSOeEUwksj1eo3p3GwBLAK98KuyAxC4b1grQTTLM+ZeIoOcyThnQ7PrMX6th5A2KUPzTED6Pwg=="
+        "resolved": "2.2.1",
+        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "PPWCode.Vernacular.Semantics.IV": {
         "type": "Direct",
         "requested": "[2.*, )",
-        "resolved": "2.1.0",
-        "contentHash": "vBqLlkeNnIFVUPMD0qi7peh0DwOFW298RJVFbUcfUzHiI1oyIxYPYWvOS9ivOHzRX8tlofwf4mlWqcZrSlYUdA==",
+        "resolved": "2.1.1",
+        "contentHash": "FinUam8SELSWvp2Oo27CFRvUk6J0O5mnac7qJkoJirU1Z2iRTt2i1/4De9y1lV3j5JCogdR2H2HrJ3TOQEy2ew==",
         "dependencies": {
           "JetBrains.Annotations": "2025.2.4",
-          "PPWCode.Vernacular.Exceptions.IV": "2.0.1"
+          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
         }
       },
       "StyleCop.Analyzers": {
