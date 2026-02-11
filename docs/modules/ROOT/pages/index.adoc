@@ -1,17 +1,17 @@
 = About
 
-The library `PPWCode.Vernacular.Persistence.IV` is part of the .NET PPWCode project and encapsulates the _vernacular_ on persistence.
+The library `PPWCode.Vernacular.Persistence.V` is part of the .NET PPWCode project and encapsulates the _vernacular_ on persistence.
 
-`PPWCode.Vernacular.Persistence.IV` is a helper library that defines base classes and interfaces related to persistence.  Persistence in this context refers to storage in a relational database.  The persistence library is database independent.  This is generation `IV` of the `PPWCode.Vernacular.Persistence` library.
+`PPWCode.Vernacular.Persistence.V` is a helper library that defines base classes and interfaces related to persistence.  Persistence in this context refers to storage in a relational database.  The persistence library is database independent.  This is generation `V` of the `PPWCode.Vernacular.Persistence` library.
 
-The library supports both different versions of .NET full framework and more recent (supported) .NET SDKs.
+This library is supported on .NET SDK versions that are currently supported by Microsoft as part of their official support lifecycle.
 
 
 == Development
 
-Development of the PPWCode is done on https://github.com/peopleware/net-ppwcode-vernacular-persistence/tree/IV/next[GitHub].
+Development of the PPWCode is done on https://github.com/peopleware/net-ppwcode-vernacular-persistence/tree/V/next[GitHub].
 
-Releases (both stable and pre-release) are published on https://www.nuget.org/packages/PPWCode.Vernacular.Persistence.IV/[NuGet] by https://www.nuget.org/profiles/PeopleWare[PeopleWare].
+Releases (both stable and pre-release) are published on https://www.nuget.org/packages/PPWCode.Vernacular.Persistence.V/[NuGet] by https://www.nuget.org/profiles/PeopleWare[PeopleWare].
 
 
 == License and Copyright
@@ -29,4 +29,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-

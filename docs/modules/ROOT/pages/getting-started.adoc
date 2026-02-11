@@ -2,7 +2,7 @@
 
 == Add NuGet package
 
-This package is available on NuGet: https://www.nuget.org/packages/PPWCode.Vernacular.Persistence.IV[PPWCode.Vernacular.Persistence.IV].
+This package is available on NuGet: https://www.nuget.org/packages/PPWCode.Vernacular.Persistence.V[PPWCode.Vernacular.Persistence.V].
 
 You can use your IDE to add it as a dependency to your project, or manually add it in the `.csproj` file.  This would look similar to the following:
 
@@ -11,4 +11,4 @@ You can use your IDE to add it as a dependency to your project, or manually add 
 include::example$project.csproj[]
 ----
 
-After the package is added, you can use the base classes and interfaces from `PPWCode.Vernacular.Persistence.IV` in your code.
+After the package is added, you can use the base classes and interfaces from `PPWCode.Vernacular.Persistence.V` in your code.
