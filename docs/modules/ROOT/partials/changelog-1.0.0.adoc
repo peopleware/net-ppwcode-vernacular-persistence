@@ -12,3 +12,6 @@ This file is translated into markdown and used for the release notes in the GitH
 * Supported targets: `.NET 8.0`, `.NET 9.0`, `.NET 10.0`
 * Code built using nullable reference types
 * Use of Microsoft attributes for nullable static analysis
+
+=== Note: breaking change after prerelease
+Property `PageIndex` on `IPagedList` was renamed to `Page` due to confusion regarding it being 1-based (the _index_ part made developers assume this was 0-based)
