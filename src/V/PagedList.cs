@@ -13,11 +13,12 @@ using System.Text.Json.Serialization;
 
 namespace PPWCode.Vernacular.Persistence.V;
 
+/// <inheritdoc/>
 public class PagedList<T> : IPagedList<T>
 {
-    public PagedList(IEnumerable<T> source, int pageIndex, int pageSize, int totalCount)
+    public PagedList(IEnumerable<T> source, int page, int pageSize, int totalCount)
     {
-        PageIndex = pageIndex;
+        Page = page;
         PageSize = pageSize;
         TotalCount = totalCount;
         TotalPages = totalCount / pageSize;
@@ -29,32 +30,39 @@ public class PagedList<T> : IPagedList<T>
         Items = source.ToList();
     }
 
+    /// <inheritdoc/>
     [JsonInclude]
     [JsonPropertyOrder(1)]
-    public int PageIndex { get; }
+    public int Page { get; }
 
+    /// <inheritdoc/>
     [JsonInclude]
     [JsonPropertyOrder(2)]
     public int PageSize { get; }
 
+    /// <inheritdoc/>
     [JsonInclude]
     [JsonPropertyOrder(3)]
     public int TotalCount { get; }
 
+    /// <inheritdoc/>
     [JsonInclude]
     [JsonPropertyOrder(4)]
     public int TotalPages { get; }
 
+    /// <inheritdoc/>
     [JsonInclude]
     [JsonPropertyOrder(5)]
     public bool HasPreviousPage
-        => PageIndex > 1;
+        => Page > 1;
 
+    /// <inheritdoc/>
     [JsonInclude]
     [JsonPropertyOrder(6)]
     public bool HasNextPage
-        => PageIndex < TotalPages;
+        => Page < TotalPages;
 
+    /// <inheritdoc/>
     [JsonInclude]
     [JsonPropertyOrder(7)]
     public IList<T> Items { get; }
