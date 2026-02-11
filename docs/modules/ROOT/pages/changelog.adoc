@@ -8,44 +8,14 @@ the link to the GitHub tag is only added once we are ready to release.
 ////
 
 // some helper attributes for the release links
-:github: https://github.com/peopleware/net-ppwcode-vernacular-persistence/releases/tag/IV%2F
-:nuget: https://www.nuget.org/packages/PPWCode.Vernacular.Persistence.IV/
-:ppwcode-docs: https://peopleware.github.io/net-ppwcode-docs/ppwcode-vernacular-persistence-iv/
+:github: https://github.com/peopleware/net-ppwcode-vernacular-persistence/releases/tag/V%2F
+:nuget: https://www.nuget.org/packages/PPWCode.Vernacular.Persistence.V/
+:ppwcode-docs: https://peopleware.github.io/net-ppwcode-docs/ppwcode-vernacular-persistence-v/
 
-:release: 2.1.1
-== `{release}`
-include::partial$changelog-release-section.adoc[]
-include::partial$changelog-{release}.adoc[]
+:github-user: https://github.com/
+:github-pr: https://github.com/peopleware/net-ppwcode-vernacular-persistence/pull/
+:github-issue: https://github.com/peopleware/net-ppwcode-vernacular-persistence/issues/
 
-:release: 2.1.0
-== `{release}`
-include::partial$changelog-release-section.adoc[]
-include::partial$changelog-{release}.adoc[]
-
-:release: 2.0.0
-== `{release}`
-include::partial$changelog-release-section.adoc[]
-include::partial$changelog-{release}.adoc[]
-
-:release: 1.2.0
-== `{release}`
-include::partial$changelog-release-section.adoc[]
-include::partial$changelog-{release}.adoc[]
-
-:release: 1.1.0
-== `{release}`
-include::partial$changelog-release-section.adoc[]
-include::partial$changelog-{release}.adoc[]
-
-:release: 1.0.2
-== `{release}`
-include::partial$changelog-release-section.adoc[]
-include::partial$changelog-{release}.adoc[]
-
-:release: 1.0.1
-== `{release}`
-include::partial$changelog-release-section.adoc[]
-include::partial$changelog-{release}.adoc[]
 
 :release: 1.0.0
 == `{release}`

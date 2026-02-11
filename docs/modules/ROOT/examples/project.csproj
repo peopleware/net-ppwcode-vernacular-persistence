@@ -3,7 +3,7 @@
 
     <ItemGroup>
         <!-- nuget package dependencies -->
-        <PackageReference Include="PPWCode.Vernacular.Persistence.IV" Version="2.0.0" />
+        <PackageReference Include="PPWCode.Vernacular.Persistence.V" Version="1.0.0" />
     </ItemGroup>
 
     <!-- ... -->
