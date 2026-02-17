@@ -187,6 +187,14 @@
           "PPWCode.Vernacular.Semantics.V": "[1.*, )"
         }
       },
+      "ppwcode.vernacular.persistence.v.testing": {
+        "type": "Project",
+        "dependencies": {
+          "PPWCode.Util.Time.I": "[1.*, )",
+          "PPWCode.Vernacular.Contracts.I": "[1.*, )",
+          "PPWCode.Vernacular.Persistence.V": "[0.0.0-devbuild, )"
+        }
+      },
       "PPWCode.Vernacular.Exceptions.V": {
         "type": "CentralTransitive",
         "requested": "[1.*, )",
@@ -390,6 +398,14 @@
           "PPWCode.Vernacular.Semantics.V": "[1.*, )"
         }
       },
+      "ppwcode.vernacular.persistence.v.testing": {
+        "type": "Project",
+        "dependencies": {
+          "PPWCode.Util.Time.I": "[1.*, )",
+          "PPWCode.Vernacular.Contracts.I": "[1.*, )",
+          "PPWCode.Vernacular.Persistence.V": "[0.0.0-devbuild, )"
+        }
+      },
       "PPWCode.Vernacular.Exceptions.V": {
         "type": "CentralTransitive",
         "requested": "[1.*, )",
@@ -591,6 +607,14 @@
           "PPWCode.Vernacular.Contracts.I": "[1.*, )",
           "PPWCode.Vernacular.Exceptions.V": "[1.*, )",
           "PPWCode.Vernacular.Semantics.V": "[1.*, )"
+        }
+      },
+      "ppwcode.vernacular.persistence.v.testing": {
+        "type": "Project",
+        "dependencies": {
+          "PPWCode.Util.Time.I": "[1.*, )",
+          "PPWCode.Vernacular.Contracts.I": "[1.*, )",
+          "PPWCode.Vernacular.Persistence.V": "[0.0.0-devbuild, )"
         }
       },
       "PPWCode.Vernacular.Exceptions.V": {
