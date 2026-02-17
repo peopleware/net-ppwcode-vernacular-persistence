@@ -11,6 +11,8 @@
 
 using NUnit.Framework;
 
+using PPWCode.Vernacular.Persistence.V.Testing;
+
 namespace PPWCode.Vernacular.Persistence.V.Tests;
 
 [TestFixture]

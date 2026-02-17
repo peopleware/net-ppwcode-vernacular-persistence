@@ -13,7 +13,7 @@ using System.Reflection;
 
 using PPWCode.Vernacular.Exceptions.V;
 
-namespace PPWCode.Vernacular.Persistence.V.Tests;
+namespace PPWCode.Vernacular.Persistence.V.Testing;
 
 public static class PersistentObjectUtils
 {

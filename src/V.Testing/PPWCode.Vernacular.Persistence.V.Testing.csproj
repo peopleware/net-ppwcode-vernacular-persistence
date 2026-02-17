@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\common.props"/>
+
+    <ItemGroup>
+        <PackageReference Include="PPWCode.Util.Time.I" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="../V/PPWCode.Vernacular.Persistence.V.csproj" />
+    </ItemGroup>
+
+ </Project>

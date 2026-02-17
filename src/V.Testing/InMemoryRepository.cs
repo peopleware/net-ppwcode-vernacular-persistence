@@ -11,7 +11,7 @@
 
 using PPWCode.Vernacular.Exceptions.V;
 
-namespace PPWCode.Vernacular.Persistence.V.Tests;
+namespace PPWCode.Vernacular.Persistence.V.Testing;
 
 /// <summary>
 ///     This class is a base class for in-memory repositories that can be used in tests.

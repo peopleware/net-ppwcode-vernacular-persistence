@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\V\PPWCode.Vernacular.Persistence.V.csproj" />
+      <ProjectReference Include="..\V.Testing\PPWCode.Vernacular.Persistence.V.Testing.csproj" />
     </ItemGroup>
 
  </Project>
