@@ -11,14 +11,15 @@
 
 namespace PPWCode.Vernacular.Persistence.V
 {
-    public abstract class AuditLog<TId>
+    public abstract class AuditLog<TId, TTimestamp>
         : PersistentObject<TId>
         where TId : IEquatable<TId>
+        where TTimestamp : struct, IComparable<TTimestamp>, IEquatable<TTimestamp>
     {
         public virtual required string EntryType { get; init; }
         public virtual required string EntityName { get; init; }
         public virtual required string EntityId { get; init; }
-        public virtual required DateTime CreatedAt { get; init; }
+        public virtual required TTimestamp CreatedAt { get; init; }
         public virtual required string CreatedBy { get; init; }
 
         public virtual string? PropertyName { get; set; }
