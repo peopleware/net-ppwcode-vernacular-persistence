@@ -13,3 +13,8 @@ This file is translated into markdown and used for the release notes in the GitH
 ** AuditLogActionEnum
 ** AuditLogAttribute
 ** AuditLogPropertyIgnoreAttribute
+* Add support for versioned entities
+** VersionedPersistentObject
+** AuditableVersionedPersistentObject
+** InsertAuditableVersionedPersistentObject
+** UpdateAuditableVersionedPersistentObject
