@@ -9,6 +9,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.ComponentModel.DataAnnotations;
+
 namespace PPWCode.Vernacular.Persistence.V
 {
     public abstract class AuditLog<TId, TTimestamp>
@@ -16,11 +18,20 @@ namespace PPWCode.Vernacular.Persistence.V
         where TId : IEquatable<TId>
         where TTimestamp : struct, IComparable<TTimestamp>, IEquatable<TTimestamp>
     {
-        public virtual required string EntryType { get; init; }
-        public virtual required string EntityName { get; init; }
-        public virtual required string EntityId { get; init; }
-        public virtual required TTimestamp CreatedAt { get; init; }
-        public virtual required string CreatedBy { get; init; }
+        [Required]
+        public virtual string? EntryType { get; set; }
+
+        [Required]
+        public virtual string? EntityName { get; set; }
+
+        [Required]
+        public virtual string? EntityId { get; set; }
+
+        [Required]
+        public virtual TTimestamp? CreatedAt { get; set; }
+
+        [Required]
+        public virtual string? CreatedBy { get; set; }
 
         public virtual string? PropertyName { get; set; }
         public virtual string? OldValue { get; set; }
