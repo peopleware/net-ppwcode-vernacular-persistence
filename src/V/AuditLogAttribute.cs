@@ -9,12 +9,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace PPWCode.Vernacular.Persistence.V;
+using System.Runtime.InteropServices;
 
-public interface IInsertAuditable<TTimestamp>
-    where TTimestamp : struct, IComparable<TTimestamp>, IEquatable<TTimestamp>
+namespace PPWCode.Vernacular.Persistence.V
 {
-    TTimestamp? CreatedAt { get; set; }
-
-    string? CreatedBy { get; set; }
+    [ComVisible(true)]
+    [AttributeUsage(AttributeTargets.Class)]
+    public class AuditLogAttribute : Attribute
+    {
+        public AuditLogActionEnum AuditLogAction { get; set; } = AuditLogActionEnum.NONE;
+    }
 }

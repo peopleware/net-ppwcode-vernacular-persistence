@@ -65,7 +65,7 @@ public abstract class PersistentObject<TId>
     }
 
     /// <inheritdoc />
-    public bool Equals(PersistentObject<TId>? other)
+    public virtual bool Equals(PersistentObject<TId>? other)
         => IsSame(other);
 
     /// <inheritdoc />

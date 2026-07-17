@@ -9,12 +9,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace PPWCode.Vernacular.Persistence.V;
-
-public interface IInsertAuditable<TTimestamp>
-    where TTimestamp : struct, IComparable<TTimestamp>, IEquatable<TTimestamp>
+namespace PPWCode.Vernacular.Persistence.V
 {
-    TTimestamp? CreatedAt { get; set; }
-
-    string? CreatedBy { get; set; }
+    public interface IVersionedPersistentObject<TId, out TVersion> : IPersistentObject<TId>
+        where TId : IEquatable<TId>
+        where TVersion : IEquatable<TVersion>
+    {
+        TVersion? PersistenceVersion { get; }
+    }
 }
