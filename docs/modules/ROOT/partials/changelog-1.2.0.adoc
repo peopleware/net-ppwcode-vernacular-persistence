@@ -18,6 +18,12 @@ This file is translated into markdown and used for the release notes in the GitH
 ** AuditableVersionedPersistentObject
 ** InsertAuditableVersionedPersistentObject
 ** UpdateAuditableVersionedPersistentObject
+Switched the solution file from `.sln` to `.slnx` format
+* Updated the .NET SDK version to `10.0.302`
+* Added `gen5` to the NuGet package tags
+* Generated portable debug symbols for both Debug and Release configurations
+* Changed test and analyzer package versions to floating versions
+* Updated test project dependencies to the latest available versions
 
 == bugfixes
 * Equals method should be virtual in PersistentObject
